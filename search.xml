@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[UVA1205-Color-a-Tree]]></title>
+    <url>%2F2019%2F06%2F08%2FUVA1205-Color-a-Tree%2F</url>
+    <content type="text"><![CDATA[题意有一棵树，需要给其所有节点染色，每个点染色所需的时间是一样的都是1.给每个点染色，还有一个开销“当前时间×ci”，ci是每个节点的一个权值。(当前时间是染完这个节点的时间) 染色还有另一个约束条件，要染一个点必须要先染好其父节点，所以第一个染的点是根节点. 求最小开销。 思路第一次做的时候的贪心策略有问题 ， 第一次的策略是从根节点开始找 ， 每次枚举最大的点 ， 但是如果遇见两个相同的点而第二次枚举的点的贪心策略更高的话就jj了 。 看了题解 ， 如果我们对于每一次更大的点进行枚举 ， 提前将它的针对它父亲的部分贡献值加入ans ， 那么我们可以枚举整个树上的最大点然后把它的本身的值+它的子树赋予它的值乘以它父亲已经被预遍历的次数就是针对它父亲的部分贡献值 。 然后把它的父亲的本身值加上它的本身值就是合并后（看成整体后）的节点值 。 但是其中最大点是用总共的值、合并的总点数 ， 相当于再次给值的时候针对其中整体中对整个子树进行处理时的收益是最大的。这又是一个贪心的策略。 另外根节点如果进入贡献值后 ， 那么它的子树就找不到其他的父亲了 ， 而且根节点随时可以更新 ， 在找最大点时注意排除他。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;bits/stdc++.h&gt;using namespace std ; int n , r ;struct L &#123; int c , t ; double w ; &#125; rt[10010] ;int father[10010] ;int ans = 0 ;int afind ( ) &#123;double maxn = 0 , ans ; for ( int i = 1 ; i &lt;= n ; i ++ )&#123;if ( i != r &amp;&amp; maxn &lt; rt[i].w ) &#123;maxn = rt[i].w ; ans = i ; &#125;&#125;return ans ;&#125;int main ( ) &#123;cin &gt;&gt; n &gt;&gt; r ; for ( int i = 1 ; i &lt;= n ; i ++ ) &#123;cin &gt;&gt; rt[i].c ;rt[i].w = rt[i].c ;rt[i].t = 1 ; ans += rt[i].c ; &#125;for ( int i = 1 ; i &lt; n ; i ++ ) &#123;int x , y ; cin &gt;&gt; x &gt;&gt; y ; father[y] = x ; &#125;for ( int i = 1 ; i &lt; n ; i ++ )&#123;int now = afind ( ) ; int fa = father[now] ; rt[now].w = 0 ; ans += rt[fa].t * rt[now].c ; for ( int j = 1 ; j &lt;= n ; j ++ )&#123;if ( father[j] == now ) &#123;father[j] = fa ; &#125;&#125;rt[fa].c += rt[now].c ;rt[fa].t += rt[now].t ;rt[fa].w = double (rt[fa].c)/rt[fa].t ; &#125;cout &lt;&lt; ans ;&#125;]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
+      <tags>
+        <tag>省选/NOI-</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[BJWC2008]秦腾与教学评估]]></title>
+    <url>%2F2019%2F06%2F08%2FBJWC2008-%E7%A7%A6%E8%85%BE%E4%B8%8E%E6%95%99%E5%AD%A6%E8%AF%84%E4%BC%B0%2F</url>
+    <content type="text"><![CDATA[当时写的太水，以后填坑 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576#include&lt;iostream&gt;#include&lt;cstdio&gt;//#include&lt;cmath&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;typedef long long lol ; using namespace std ; inline long long read ( ) &#123;char ch = 0 ; long long res = 0 ; long long f = 1 ;while ( ch &gt; '9' || ch &lt; '0' ) &#123;if ( ch == '-' ) &#123;f = -1 ; ch = getchar ( ) ;break ;&#125;ch = getchar ( ) ;&#125;while ( ch &gt;= '0' &amp;&amp; ch &lt;= '9' ) &#123;res = res * 10 + ch - 48 ;ch = getchar ( ) ;&#125;return res * f ; &#125;lol MAX ( lol x , lol y ) &#123;if ( x &gt; y ) return x ; return y ; &#125;lol MIN ( lol x , lol y ) &#123;if ( x &lt; y ) return x ; return y ; &#125;const int MAXN = 200005 ; int T ;lol S[MAXN] , E[MAXN] , D[MAXN] ; lol N = 0 ;lol check ( lol x ) &#123;lol ans = 0 ; for ( lol i = 1 ; i &lt;= N ; i ++ ) &#123;if ( S[i] &lt;= x ) &#123;ans += ( MIN ( x , D[i] ) - S[i] ) / E[i] + 1 ; &#125;&#125;return ans ; &#125;int main ( ) &#123;scanf ( "%d" , &amp; T ) ; while ( T -- ) &#123;N = read ( ) ;lol Max = 0 ;for ( lol i = 1 ; i &lt;= N ; i ++ )&#123;S[i] = read ( ) , E[i] = read ( ) ,D[i] = read ( ) ;Max = MAX ( Max , E[i] ) ;&#125;if ( check ( Max ) % 2 != 1 ) &#123;printf ( "Poor QIN Teng:( \n" ) ; continue ; &#125; lol l = 1 , r = Max ; while ( l &lt; r ) &#123;lol mid = ( l + r ) &gt;&gt; 1 ; if ( check ( mid ) % 2 == 1 ) r = mid ; else l = mid + 1 ; &#125;int ans = 0 ; for ( lol i = 1 ; i &lt;= N ; i ++ ) &#123;if ( S[i] &gt; l || E[i] &lt; l ) continue ; if ( ( l - S[i] ) % D[i] == 0 ) ans ++ ;&#125;printf( "%d %d \n" , l , ans ) ; &#125;&#125;]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
+      <tags>
+        <tag>提高+/省选-</tag>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[UVA529-Addition-Chains]]></title>
+    <url>%2F2019%2F06%2F08%2FUVA529-Addition-Chains%2F</url>
+    <content type="text"><![CDATA[思路昨天打了这道题，一直没想出来深度改变后该怎么搜索，今天才知道迭代加深。 总结来说，迭代加深就是规定输出最小的深度就可以从大到小枚举深度。 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768#include&lt;cstdio&gt;#include&lt;iostream&gt;#include&lt;cmath&gt;#include&lt;cstring&gt;using namespace std ; int N ; int m ; int flag = 0 ; int ans[1000] ; int read ( ) &#123;char ch = 0 ; int res = 0 ; int f = 1 ; while ( ch &gt;'9' || ch &lt; '0' ) &#123;if ( ch == '-' ) &#123;ch = getchar ( ) ;f = -1 ; break ; &#125;ch = getchar ( ) ;&#125;while ( ch &gt;= '0' &amp;&amp; ch &lt;= '9' ) res = res * 10 + ch - 48 , ch = getchar ( ) ; return res * f ; &#125;void search ( int step , int f ) &#123;if ( step == m + 1 ) &#123;if ( ans[m] == N ) flag = 1 ; return ; &#125;for ( int i = step - 1 ; i &gt;= f ; i -- ) &#123;for ( int j = i ; j &gt;= 1 ; j -- ) &#123;ans[step] = ans[i] + ans[j] ; int now = ans[step] ; for ( int i = m - step ; i &gt;= 1 ; i -- )now *= 2 ; if ( now &lt; N ) break ; search ( step + 1 , i + 1 ) ; if ( flag ) return ;ans[step] = 0 ; &#125;&#125;&#125;void print ( ) &#123;for ( int i = 1 ; i &lt; m ; i ++ ) printf ( "%d " , ans[i] ) ; printf ( "%d\n" , ans[m] ) ; return ;&#125;int main ( ) &#123;N = read ( ) ;ans[1] = 1 ;while ( N ) &#123; if ( N == 1 ) &#123;printf( "1\n" ) ;N = read ( ) ; continue ; &#125;flag = 0 ; for ( int i = 2 ; i &lt;= N ; i ++ ) &#123;m = i ; search ( 2 , 1 ) ; if ( flag ) &#123;print ( ) ; break ; &#125;&#125;N = read ( ) ;&#125;&#125;]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
+      <tags>
+        <tag>提高+/省选-</tag>
+        <tag>暴力</tag>
+        <tag>剪枝</tag>
+        <tag>搜索</tag>
+        <tag>迭代加深</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[北极通讯网络]]></title>
+    <url>%2F2019%2F06%2F08%2F%E5%8C%97%E6%9E%81%E9%80%9A%E8%AE%AF%E7%BD%91%E7%BB%9C%2F</url>
+    <content type="text"><![CDATA[题目描述 ：北极的某区域共有 n 座村庄，每座村庄的坐标用一对整数 (x,y) 表示。为了加强联系，决定在村庄之间建立通讯网络。通讯工具可以是无线电收发机，也可以是卫星设备。所有的村庄都可以拥有一部无线电收发机， 且所有的无线电收发机型号相同。但卫星设备数量有限，只能给一部分村庄配备卫星设备。 不同型号的无线电收发机有一个不同的参数 d，两座村庄之间的距离如果不超过 d 就可以用该型号的无线电收发机直接通讯，d 值越大的型号价格越贵。拥有卫星设备的两座村庄无论相距多远都可以直接通讯。 现在有 k 台卫星设备，请你编一个程序，计算出应该如何分配这 k 台卫星设备，才能使所拥有的无线电收发机的 d 值最小，并保证每两座村庄之间都可以直接或间接地通讯。 例如，对于下面三座村庄： 其中 |AB|=10,|BC|=20,|AC|=105–√≈22.36 如果没有任何卫星设备或只有 1 台卫星设备 (k=0 或 k=1)，则满足条件的最小的 d=20，因为 A 和 B，B 和 C 可以用无线电直接通讯；而 A 和 C 可以用 B 中转实现间接通讯 (即消息从 A 传到 B，再从 B 传到 C)； 如果有 2 台卫星设备 (k=2)，则可以把这两台设备分别分配给 B 和 C ，这样最小的 d 可取 10，因为 A 和 B 之间可以用无线电直接通讯；B 和 C 之间可以用卫星直接通讯；A 和 C 可以用 B 中转实现间接通讯。 如果有 3 台卫星设备，则 A,B,C 两两之间都可以直接用卫星通讯，最小的 d 可取 0。 输入输出格式 输入格式 第一行为由空格隔开的两个整数 n,k; 第 2∼n+1 行，每行两个整数，第 i 行的 xi,yi 表示第 i 座村庄的坐标 (xi,yi)。 输出格式 一个实数，表示最小的 d 值，结果保留 2 位小数。 输入输出样例 样例输入 3 2 10 10 10 0 30 0 样例输出 10.00 数据范围与提示 对于全部数据，1≤n≤500,0≤x,y≤104,0≤k≤100。 代码：123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869#include&lt;bits/stdc++.h&gt;using namespace std ; int n , k ; int cnt = 0 ;struct L &#123; int u , v ; double val ;&#125; edge[250050] ; struct M &#123;int x , y ; &#125; point[510] ; int f[10000] ; int father ( int x ) &#123;if ( x == f[x] ) return f[x] ; if ( x != f[x] ) f[x] = father ( f[x] ) ; return f[x] ; &#125;int read ( ) &#123;char ch = 0 ; int res = 0 ; int f = 1 ; while ( ch &gt; '9' || ch &lt; '0' ) &#123;if ( ch == '-' ) f = -1 ; ch = getchar ( ) ; &#125;while ( ch &gt;= '0' &amp;&amp; ch &lt;= '9' ) &#123;res = res * 10 + ch - 48 ; ch = getchar ( ) ;&#125;return res * f; &#125;void pre ( ) &#123; for ( int i = 1 ; i &lt;= n - 1 ; i ++ ) &#123;for ( int j = i + 1 ; j &lt;= n ; j ++ ) &#123;edge[ ++ cnt ].u = i , edge[cnt].v = j , edge[cnt].val = sqrt ( ( point[i].x - point[j].x ) * ( point[i].x - point[j].x ) + ( point[i].y - point[j].y ) * ( point[i].y - point[j].y ) ) ;&#125;&#125;&#125;bool cmp ( const L &amp;x , const L &amp;y ) &#123;return x.val &lt; y.val ; &#125;int main ( ) &#123;n = read ( ) ; k = read ( ) ; if ( k == n ) &#123; printf ( "0" ) ; return 0 ; &#125;for ( int i = 1 ; i &lt;= n ; i ++ ) point[i].x = read ( ) , point[i].y = read ( ) ; pre ( ) ; for ( int i = 1 ; i &lt;= n ; i ++ ) f[i] = i ;sort ( edge + 1 , edge + cnt + 1 , cmp ) ; int va = 0 ; double ans = 100000000000 ; for ( int i = 1 ; i &lt;= cnt ; i ++ ) &#123;int xx = father ( edge[i].u ) , yy = father ( edge[i].v ) ; if ( xx != yy ) &#123;va ++ ; f[xx] = yy ; if ( va + k == n &amp;&amp; ( k != 0 || k != 1 ) ) &#123;ans = edge[i].val ; break ; &#125;if ( ( k == 0 || k == 1 ) &amp;&amp; va == n - 1 ) &#123;ans = edge[i].val ; break ;&#125;&#125;&#125;printf( "%.2lf" , ans ) ; &#125;]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
+      <tags>
+        <tag>提高+/省选-</tag>
+        <tag>最小生成树</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[NexT主题内加入动态背景]]></title>
     <url>%2F2019%2F06%2F08%2FNexT%E4%B8%BB%E9%A2%98%E5%86%85%E5%8A%A0%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF%2F</url>
     <content type="text"><![CDATA[主题内新添加内容 _layout.swig找到themes\next\layout_layout.swig文件，添加内容：在里添加： 123&lt;div class=&quot;bg_content&quot;&gt;&lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;&lt;/div&gt; 仍是该文件，在末尾添加： 1&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/dynamic_bg.js&quot;&gt;&lt;/script&gt; dynamic_bg.js在themes\next\source\js\src中新建文件dynamic_bg.js，代码: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148var canvas = document.getElementById(&quot;canvas&quot;);var ctx = canvas.getContext(&quot;2d&quot;);var cw = canvas.width = window.innerWidth,cx = cw / 2;var ch = canvas.height = window.innerHeight,cy = ch / 2;ctx.fillStyle = &quot;#000&quot;;var linesNum = 16;var linesRy = [];var requestId = null;function Line(flag) &#123;this.flag = flag;this.a = &#123;&#125;;this.b = &#123;&#125;;if (flag == &quot;v&quot;) &#123;this.a.y = 0;this.b.y = ch;this.a.x = randomIntFromInterval(0, ch);this.b.x = randomIntFromInterval(0, ch);&#125; else if (flag == &quot;h&quot;) &#123;this.a.x = 0;this.b.x = cw;this.a.y = randomIntFromInterval(0, cw);this.b.y = randomIntFromInterval(0, cw);&#125;this.va = randomIntFromInterval(25, 100) / 100;this.vb = randomIntFromInterval(25, 100) / 100;this.draw = function() &#123;ctx.strokeStyle = &quot;#ccc&quot;;ctx.beginPath();ctx.moveTo(this.a.x, this.a.y);ctx.lineTo(this.b.x, this.b.y);ctx.stroke();&#125;this.update = function() &#123;if (this.flag == &quot;v&quot;) &#123;this.a.x += this.va;this.b.x += this.vb;&#125; else if (flag == &quot;h&quot;) &#123;this.a.y += this.va;this.b.y += this.vb;&#125;this.edges();&#125;this.edges = function() &#123;if (this.flag == &quot;v&quot;) &#123;if (this.a.x &lt; 0 || this.a.x &gt; cw) &#123;this.va *= -1;&#125;if (this.b.x &lt; 0 || this.b.x &gt; cw) &#123;this.vb *= -1;&#125;&#125; else if (flag == &quot;h&quot;) &#123;if (this.a.y &lt; 0 || this.a.y &gt; ch) &#123;this.va *= -1;&#125;if (this.b.y &lt; 0 || this.b.y &gt; ch) &#123;this.vb *= -1;&#125;&#125;&#125;&#125;for (var i = 0; i &lt; linesNum; i++) &#123;var flag = i % 2 == 0 ? &quot;h&quot; : &quot;v&quot;;var l = new Line(flag);linesRy.push(l);&#125;function Draw() &#123;requestId = window.requestAnimationFrame(Draw);ctx.clearRect(0, 0, cw, ch);for (var i = 0; i &lt; linesRy.length; i++) &#123;var l = linesRy[i];l.draw();l.update();&#125;for (var i = 0; i &lt; linesRy.length; i++) &#123;var l = linesRy[i];for (var j = i + 1; j &lt; linesRy.length; j++) &#123;var l1 = linesRy[j]Intersect2lines(l, l1);&#125;&#125;&#125;function Init() &#123;linesRy.length = 0;for (var i = 0; i &lt; linesNum; i++) &#123;var flag = i % 2 == 0 ? &quot;h&quot; : &quot;v&quot;;var l = new Line(flag);linesRy.push(l);&#125;if (requestId) &#123;window.cancelAnimationFrame(requestId);requestId = null;&#125;cw = canvas.width = window.innerWidth,cx = cw / 2;ch = canvas.height = window.innerHeight,cy = ch / 2;Draw();&#125;;setTimeout(function() &#123;Init();addEventListener(&apos;resize&apos;, Init, false);&#125;, 15);function Intersect2lines(l1, l2) &#123;var p1 = l1.a,p2 = l1.b,p3 = l2.a,p4 = l2.b;var denominator = (p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y);var ua = ((p4.x - p3.x) * (p1.y - p3.y) - (p4.y - p3.y) * (p1.x - p3.x)) / denominator;var ub = ((p2.x - p1.x) * (p1.y - p3.y) - (p2.y - p1.y) * (p1.x - p3.x)) / denominator;var x = p1.x + ua * (p2.x - p1.x);var y = p1.y + ua * (p2.y - p1.y);if (ua &gt; 0 &amp;&amp; ub &gt; 0) &#123;markPoint(&#123;x: x,y: y&#125;)&#125;&#125;function markPoint(p) &#123;ctx.beginPath();ctx.arc(p.x, p.y, 2, 0, 2 * Math.PI);ctx.fill();&#125;function randomIntFromInterval(mn, mx) &#123;return ~~(Math.random() * (mx - mn + 1) + mn);&#125; custom.styl在themes\next\source\css_custom\custom.styl文件末尾添加内容： 1234567.bg_content &#123;position: fixed;top: 0;z-index: -1;width: 100%;height: 100%;&#125; 如果选用自己背景：可无视以上内容：在themes\next\source\css_custom\custom.styl文件末尾添加内容： 1body &#123; background:url(yourpicture);&#125; 例如 1body &#123; background:url(https://acg.toubiec.cn/random.php?fa8e648d8f8fcb8469b51515);&#125;]]></content>
@@ -31,9 +82,10 @@
         <category>代码</category>
       </categories>
       <tags>
+        <tag>提高+/省选-</tag>
+        <tag>搜索</tag>
         <tag>最短路</tag>
         <tag>NOIP</tag>
-        <tag>搜索</tag>
       </tags>
   </entry>
   <entry>
@@ -45,9 +97,9 @@
       </categories>
       <tags>
         <tag>最短路</tag>
+        <tag>省选/NOI-</tag>
         <tag>分层图</tag>
         <tag>代码</tag>
-        <tag>提高+/省选-</tag>
       </tags>
   </entry>
   <entry>
