@@ -4,6 +4,13 @@
     <title><![CDATA[NexT主题内加入动态背景]]></title>
     <url>%2F2019%2F06%2F08%2FNexT%E4%B8%BB%E9%A2%98%E5%86%85%E5%8A%A0%E5%85%A5%E5%8A%A8%E6%80%81%E8%83%8C%E6%99%AF%2F</url>
     <content type="text"><![CDATA[主题内新添加内容 _layout.swig找到themes\next\layout_layout.swig文件，添加内容：在里添加： 123&lt;div class=&quot;bg_content&quot;&gt;&lt;canvas id=&quot;canvas&quot;&gt;&lt;/canvas&gt;&lt;/div&gt; 仍是该文件，在末尾添加： 1&lt;script type=&quot;text/javascript&quot; src=&quot;/js/src/dynamic_bg.js&quot;&gt;&lt;/script&gt; dynamic_bg.js在themes\next\source\js\src中新建文件dynamic_bg.js，代码: 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148var canvas = document.getElementById(&quot;canvas&quot;);var ctx = canvas.getContext(&quot;2d&quot;);var cw = canvas.width = window.innerWidth,cx = cw / 2;var ch = canvas.height = window.innerHeight,cy = ch / 2;ctx.fillStyle = &quot;#000&quot;;var linesNum = 16;var linesRy = [];var requestId = null;function Line(flag) &#123;this.flag = flag;this.a = &#123;&#125;;this.b = &#123;&#125;;if (flag == &quot;v&quot;) &#123;this.a.y = 0;this.b.y = ch;this.a.x = randomIntFromInterval(0, ch);this.b.x = randomIntFromInterval(0, ch);&#125; else if (flag == &quot;h&quot;) &#123;this.a.x = 0;this.b.x = cw;this.a.y = randomIntFromInterval(0, cw);this.b.y = randomIntFromInterval(0, cw);&#125;this.va = randomIntFromInterval(25, 100) / 100;this.vb = randomIntFromInterval(25, 100) / 100;this.draw = function() &#123;ctx.strokeStyle = &quot;#ccc&quot;;ctx.beginPath();ctx.moveTo(this.a.x, this.a.y);ctx.lineTo(this.b.x, this.b.y);ctx.stroke();&#125;this.update = function() &#123;if (this.flag == &quot;v&quot;) &#123;this.a.x += this.va;this.b.x += this.vb;&#125; else if (flag == &quot;h&quot;) &#123;this.a.y += this.va;this.b.y += this.vb;&#125;this.edges();&#125;this.edges = function() &#123;if (this.flag == &quot;v&quot;) &#123;if (this.a.x &lt; 0 || this.a.x &gt; cw) &#123;this.va *= -1;&#125;if (this.b.x &lt; 0 || this.b.x &gt; cw) &#123;this.vb *= -1;&#125;&#125; else if (flag == &quot;h&quot;) &#123;if (this.a.y &lt; 0 || this.a.y &gt; ch) &#123;this.va *= -1;&#125;if (this.b.y &lt; 0 || this.b.y &gt; ch) &#123;this.vb *= -1;&#125;&#125;&#125;&#125;for (var i = 0; i &lt; linesNum; i++) &#123;var flag = i % 2 == 0 ? &quot;h&quot; : &quot;v&quot;;var l = new Line(flag);linesRy.push(l);&#125;function Draw() &#123;requestId = window.requestAnimationFrame(Draw);ctx.clearRect(0, 0, cw, ch);for (var i = 0; i &lt; linesRy.length; i++) &#123;var l = linesRy[i];l.draw();l.update();&#125;for (var i = 0; i &lt; linesRy.length; i++) &#123;var l = linesRy[i];for (var j = i + 1; j &lt; linesRy.length; j++) &#123;var l1 = linesRy[j]Intersect2lines(l, l1);&#125;&#125;&#125;function Init() &#123;linesRy.length = 0;for (var i = 0; i &lt; linesNum; i++) &#123;var flag = i % 2 == 0 ? &quot;h&quot; : &quot;v&quot;;var l = new Line(flag);linesRy.push(l);&#125;if (requestId) &#123;window.cancelAnimationFrame(requestId);requestId = null;&#125;cw = canvas.width = window.innerWidth,cx = cw / 2;ch = canvas.height = window.innerHeight,cy = ch / 2;Draw();&#125;;setTimeout(function() &#123;Init();addEventListener(&apos;resize&apos;, Init, false);&#125;, 15);function Intersect2lines(l1, l2) &#123;var p1 = l1.a,p2 = l1.b,p3 = l2.a,p4 = l2.b;var denominator = (p4.y - p3.y) * (p2.x - p1.x) - (p4.x - p3.x) * (p2.y - p1.y);var ua = ((p4.x - p3.x) * (p1.y - p3.y) - (p4.y - p3.y) * (p1.x - p3.x)) / denominator;var ub = ((p2.x - p1.x) * (p1.y - p3.y) - (p2.y - p1.y) * (p1.x - p3.x)) / denominator;var x = p1.x + ua * (p2.x - p1.x);var y = p1.y + ua * (p2.y - p1.y);if (ua &gt; 0 &amp;&amp; ub &gt; 0) &#123;markPoint(&#123;x: x,y: y&#125;)&#125;&#125;function markPoint(p) &#123;ctx.beginPath();ctx.arc(p.x, p.y, 2, 0, 2 * Math.PI);ctx.fill();&#125;function randomIntFromInterval(mn, mx) &#123;return ~~(Math.random() * (mx - mn + 1) + mn);&#125; custom.styl在themes\next\source\css_custom\custom.styl文件末尾添加内容： 1234567.bg_content &#123;position: fixed;top: 0;z-index: -1;width: 100%;height: 100%;&#125; 如果选用自己背景：可无视以上内容：在themes\next\source\css_custom\custom.styl文件末尾添加内容： 1body &#123; background:url(yourpicture);&#125; 例如 1body &#123; background:url(https://acg.toubiec.cn/random.php?fa8e648d8f8fcb8469b51515);&#125;]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>背景图片</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[配对堆]]></title>
@@ -37,9 +44,9 @@
         <category>代码</category>
       </categories>
       <tags>
+        <tag>最短路</tag>
         <tag>分层图</tag>
         <tag>代码</tag>
-        <tag>最短路</tag>
         <tag>提高+/省选-</tag>
       </tags>
   </entry>
