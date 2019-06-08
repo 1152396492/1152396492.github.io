@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="提高+/省选-,省选/NOI-,状压,dp,背包,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="// 当时我还很年幼，犯了些弱智错误，但题是真的不错下午打了一套我终于能看懂题目的一套题了，感觉这道题很有意思，而且适合我这个苣蒻做，于是我就写写人生第一份套题的题解； T1题意：打包 packs.c/cpp/pas (1s/256M)Hulu 辛苦的搬回了两大箱货物。第一箱装的全是笔记本，而第二箱里全是签字 笔。但这些笔记本和签字笔都不是单独一本本或是一支支分开的;它们都被提前 打包好了。Hul">
+<meta name="keywords" content="提高+&#x2F;省选-,省选&#x2F;NOI-,状压,dp,背包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018.11.4套题">
+<meta property="og:url" content="http://yoursite.com/2019/06/09/2018-11-4套题/index.html">
+<meta property="og:site_name" content="DS-FLY">
+<meta property="og:description" content="// 当时我还很年幼，犯了些弱智错误，但题是真的不错下午打了一套我终于能看懂题目的一套题了，感觉这道题很有意思，而且适合我这个苣蒻做，于是我就写写人生第一份套题的题解； T1题意：打包 packs.c/cpp/pas (1s/256M)Hulu 辛苦的搬回了两大箱货物。第一箱装的全是笔记本，而第二箱里全是签字 笔。但这些笔记本和签字笔都不是单独一本本或是一支支分开的;它们都被提前 打包好了。Hul">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3ujqgi1dnj31hc0u0e81.jpg">
+<meta property="og:updated_time" content="2019-06-08T23:23:28.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018.11.4套题">
+<meta name="twitter:description" content="// 当时我还很年幼，犯了些弱智错误，但题是真的不错下午打了一套我终于能看懂题目的一套题了，感觉这道题很有意思，而且适合我这个苣蒻做，于是我就写写人生第一份套题的题解； T1题意：打包 packs.c/cpp/pas (1s/256M)Hulu 辛苦的搬回了两大箱货物。第一箱装的全是笔记本，而第二箱里全是签字 笔。但这些笔记本和签字笔都不是单独一本本或是一支支分开的;它们都被提前 打包好了。Hul">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3ujqgi1dnj31hc0u0e81.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/09/2018-11-4套题/">
+
+
+
+
+
+  <title>2018.11.4套题 | DS-FLY</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DS-FLY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Amentiraz</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/09/2018-11-4套题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2018.11.4套题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-09T07:13:13+08:00">
+                2019-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>// 当时我还很年幼，犯了些弱智错误，但题是真的不错<br>下午打了一套我终于能看懂题目的一套题了，感觉这道题很有意思，而且<del>适合我这个苣蒻做</del>，于是我就写写人生第一份套题的题解；</p>
+<h2 id="T1"><a href="#T1" class="headerlink" title="T1"></a>T1</h2><h3 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h3><p>打包 packs.c/cpp/pas (1s/256M)<br>Hulu 辛苦的搬回了两大箱货物。第一箱装的全是笔记本，而第二箱里全是签字 笔。但这些笔记本和签字笔都不是单独一本本或是一支支分开的;它们都被提前 打包好了。<br>Hulu 数了一下，在装笔记本的箱子中，一共有 N 包;每一包里面的笔记本数量 分别为 A1, A2, …, AN;而在装签字笔的箱子中，一共有 M 包，每一包里面的签 字笔数量为 B1, B2, …, BM。Hulu 想从里面挑出各挑选几包，使得笔记本的总数量 和签字笔的总数量相等。他想知道，如果可能的话，最少能挑选几包?<br>【输入格式】packs.in<br>第一行首先一个正整数 N，代表笔记本的包数;后面接着 N 个正整数，代表者 N 个包每个包的笔记本数。<br>第二行首先一个正整数 M，代表签字本的包数;后面接着 M 个正整数，代表者 M 个包每个包的签字本数。<br>【输出格式】packs.out<br>如果存在挑选的方案，输出一个整数，代表最小的包数;否则输出一行“impossible” (不含引号)。<br>【样例输入 1】<br>4 10 10 10 10<br>10 8 8 8 12 12 12 8 8 12 12<br>【样例输出 1】<br>4
+【样例输入 2】<br>4 7 7 14 7 3 11 22 11<br>【样例输出 2】<br>impossible<br>【数据范围与约束】<br>对于 50%的数据，N,M&lt;=10,<br>对于 100%的数据，N,M&lt;=100, 1&lt;=Ai,Bi&lt;=1000</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>原先我以为和P1651很像，然后弱智的我想了一个小时没有肝出来，我陷入了写差值dp的黑洞。<br>后来看了一位同学的题解，看了不到三十秒恍然大悟。这tm就是一个双背包的dp算相等时，ans的大小</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">210</span>],b[<span class="number">201</span>];</span><br><span class="line"><span class="keyword">int</span> f1[<span class="number">1000005</span>]; </span><br><span class="line"><span class="keyword">int</span> f2[<span class="number">1000004</span>];</span><br><span class="line"><span class="keyword">int</span> ans=<span class="number">0xAC20188</span>;</span><br><span class="line"><span class="keyword">int</span> max1,max2,min1=<span class="number">0xAC20188</span>,min2=<span class="number">0xAC20188</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">freopen(<span class="string">"packs.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">freopen(<span class="string">"packs.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line"><span class="built_in">memset</span>(f1,<span class="number">0x3f3f3f</span>,<span class="keyword">sizeof</span>(f1));</span><br><span class="line"><span class="built_in">memset</span>(f2,<span class="number">0x3f3f3f</span>,<span class="keyword">sizeof</span>(f2));</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]),max1+=a[i],min1=min(min1,a[i]);</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;m);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;b[i]),max2+=b[i],min2=min(min2,b[i]);</span><br><span class="line">f1[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=max1;j&gt;=a[i];j--)&#123;</span><br><span class="line">f1[j]=min(f1[j],f1[j-a[i]]+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">f2[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=max2;j&gt;=b[i];j--)&#123;</span><br><span class="line">f2[j]=min(f2[j],f2[j-b[i]]+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> minx,maxn;</span><br><span class="line">minx=max(min1,min2);</span><br><span class="line">maxn=min(max1,max2);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=minx;i&lt;=maxn;i++)&#123;</span><br><span class="line">ans=min(f1[i]+f2[i],ans);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(ans&lt;<span class="number">0xAC20188</span>)</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,ans);</span><br><span class="line"><span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"impossible"</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>为什么可行，f数组的下标记录的是货物数量，当我们最后用i遍历一遍每堆货物的所用的包数取最小值就好了</p>
+<h2 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>小鸟 bird.c/cpp/pas (1s/256M)<br>Kirkland 市市中心由 R 条东西向的大街和 C 条南北向的大道组成的。今年初，科 学家就对市中心的 N 只小鸟实行监测，并且惊奇地发现，对于每一只小鸟 i，它 可能的活动范围是一个长方形——准确地说，是从东西向 Xa 到 Xb 大街之间，南 北向 Ya 到 Yb 大道之间。<br>今天，科学家决定再进行一次监测。他们在第 X 大街，第 Y 大道放置了一个监测 仪;接下来，他们获得了若干组由小鸟发出的信号。每个信号都是由被监测的 N 只小鸟的其中一只发出的，但具体是哪一只并不清楚，而且信号上记录了这只小 鸟到检测仪的曼哈顿距离。(所谓曼哈顿距离，(X,Y)到(Z,W)的距离 D=|X-Z|+|Y-W|， 也就是两个地点的横向距离+纵向距离) 很明显地，一只小鸟无论在自己的区域里怎么活动，都无法发出其中的一些信号 (距离太近或者太远);于是监测人员想知道，对于每一个信号，找出哪些小鸟 是可能发出这信号的;由于这个问题比较复杂，你只需要统计小鸟的数量即可。<br>【输入格式】bird.in<br>第一行两个整数 N 与 Q，分别代表被监测小鸟的总数和接收到的信号数。 第二行两个整数 X 与 Y，代表监测仪的位置。<br>接下来 N 行每行四个整数，Xa, Ya, Xb, Yb,代表一只小鸟的活动区域。 接下来 Q 行每行一个整数 D，代表信号所记录的距离。<br>【输出格式】bird.out<br>Q 行，每行一个整数，代表可能发射信号的小鸟的数量。<br>【样例输入】<br>6 13 14 0716 3503 0132 4653 8774 8072 0<br>1 2<br>3
+4<br>5   
+6<br>7
+8<br>9
+10<br>11<br>12<br>【样例输出】<br>1
+1<br>3
+4<br>3   
+2<br>2
+1<br>2
+2<br>2
+1<br>0
+【数据范围与约束】<br>对于 30%的数据，N&lt;=10,    0&lt;=X,Y,Xa,Xb,Ya,Yb&lt;=1,000, 0&lt;=D&lt;=2,000;<br>对于另外 30%的数据，Q&lt;=10, 0&lt;=X,Y,Xa,Xb,Ya,Yb&lt;=1,000, 0&lt;=D&lt;=2,000;<br>对于 100%的数据，N,Q&lt;=100,000, 0&lt;=X,Y,Xa,Xb,Ya,Yb&lt;=1,000,000, 0&lt;=D&lt;=2,000,000.</p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p>经验不足的我看到要求前缀和就想到树状数组，然后就不敢写就挂了，只有五十分；<br>其实只有当要改变某个数的时候用树数组比较好。<br>其他直接for循环一遍找就好了</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> M=<span class="number">10000000</span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">char</span> ch=getchar();</span><br><span class="line"><span class="keyword">while</span> (ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)ch=getchar();</span><br><span class="line"><span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)res=res*<span class="number">10</span>+ch<span class="number">-48</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> disn[<span class="number">100000</span>],disx[<span class="number">100000</span>];</span><br><span class="line"><span class="keyword">int</span> task[<span class="number">10000001</span>];</span><br><span class="line"><span class="keyword">int</span> ans[<span class="number">100000</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">freopen(<span class="string">"bird.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">freopen(<span class="string">"bird.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line"><span class="keyword">int</span> N,Q,X,Y;</span><br><span class="line">N=read(),Q=read(),X=read(),Y=read();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=N;i++)&#123;</span><br><span class="line"><span class="keyword">int</span> x1,x2,y1,y2;</span><br><span class="line"><span class="keyword">int</span> disxn,disxx,disyn,disyx;</span><br><span class="line">x1=read(),y1=read(),x2=read(),y2=read();</span><br><span class="line"><span class="keyword">if</span>(x1&gt;x2)swap(x1,x2);<span class="keyword">if</span>(y1&gt;y2)swap(y1,y2);</span><br><span class="line"><span class="keyword">if</span>(x1&lt;=X&amp;&amp;x2&gt;=X)&#123;</span><br><span class="line"><span class="keyword">if</span>(y1&lt;=Y&amp;&amp;y2&gt;=Y)&#123;</span><br><span class="line">disxn=disyn=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">disxn=<span class="number">0</span>;</span><br><span class="line">disyn=min(<span class="built_in">abs</span>(Y-y1),<span class="built_in">abs</span>(Y-y2));</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(y1&lt;=Y&amp;&amp;y2&gt;=Y)&#123;</span><br><span class="line"><span class="keyword">if</span>(x1&lt;=X&amp;&amp;x2&gt;=X)&#123;</span><br><span class="line">disxn=disyn=<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">disyn=<span class="number">0</span>;</span><br><span class="line">disxn=min(<span class="built_in">abs</span>(X-x1),<span class="built_in">abs</span>(X-x2));</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">disxn=min(<span class="built_in">abs</span>(X-x1),<span class="built_in">abs</span>(X-x2));</span><br><span class="line">disyn=min(<span class="built_in">abs</span>(Y-y1),<span class="built_in">abs</span>(Y-y2));</span><br><span class="line">&#125;</span><br><span class="line">disxx=max(<span class="built_in">abs</span>(X-x1),<span class="built_in">abs</span>(X-x2));</span><br><span class="line">disyx=max(<span class="built_in">abs</span>(Y-y1),<span class="built_in">abs</span>(Y-y2));</span><br><span class="line">disn[i]=disxn+disyn;</span><br><span class="line">disx[i]=disxx+disyx;</span><br><span class="line">task[disn[i]]++;</span><br><span class="line">task[disx[i]+<span class="number">1</span>]--;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=M;i++)task[i]+=task[i<span class="number">-1</span>];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=Q;i++)&#123;</span><br><span class="line"><span class="keyword">int</span> D;</span><br><span class="line">D=read();</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d\n"</span>,task[D]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="T3"><a href="#T3" class="headerlink" title="T3"></a>T3</h2><h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p>包装 envelope.c/cpp/pas (1s/256M)<br>为了准备课堂上的游戏，George 提前买了 N 种不同的卡片。对于第 i 种卡片， George 买了 Ci 张，每张卡片长 Ai，宽 Bi。<br>接下来他需要把这些卡片包进 K 个信封里。他规定，对于同一种卡片，都必须放 进同一个信封里;并且对于一个信封里的所有卡片，它的长宽都不能大于信封的 长宽。例如，假设 George 有 3 种卡片，大小分别为 10<em>3, 5</em>11, 7<em>7，它们需要 装进一个信封里，则信封的大小至少为 10</em>11。(注意卡片的长宽不能调换) 对于每一张卡片，George 都会计算它所浪费的空间:例如，在上述例子当中， 每种卡片的浪费空间为 10<em>11 – 10</em>3 = 80, 10<em>11 – 5</em>11 = 55, 10<em>11 – 7</em>7 = 61，假 设每种卡片分别有 3，6，5 张，则浪费的空间总和为 80<em>3 + 55</em>6 + 61*5 = 875。 George 想知道，他所能达到的浪费的空间最小是多少?<br>【输入格式】envelope.in<br>第一行两个整数，N 和 K，代表卡片的种数和信封数。<br>接下来 N 行，每行代表每种卡片的情况，三个整数 Ai, Bi, Ci，代表卡片的长、宽 与数量。<br>【输出格式】envelope.out<br>一个整数，代表浪费的最小空间。<br>【样例输入 1】<br>52<br>10 10 5 9 8 10 4 12 20 12 4 8 2 3 16<br>【样例输出 1】<br>1828<br>【样例输入 2】<br>33 10 3 5 11 77<br>【样例输出 2】<br>0
+【数据范围与约束】<br>对于 20%的数据，K=1;<br>对于额外的 10%的数据，K=N;<br>对于 60%的数据，N&lt;=10;<br>对于 100%的数据，N&lt;=15, 1&lt;=K&lt;=N,  1&lt;=Ai,Bi,Ci&lt;=1000</p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>一道很基础的状压dp<br>给自己提个醒，以后看到N&lt;=15这种数据范围不是状压就是爆搜。。。<br>预处理每种情况的cost然后简化状态dp</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">char</span> ch=getchar();</span><br><span class="line"><span class="keyword">while</span> (ch&gt;<span class="string">'9'</span>||ch&lt;<span class="string">'0'</span>)ch=getchar();</span><br><span class="line"><span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)res=(res&lt;&lt;<span class="number">3</span>)+(res&lt;&lt;<span class="number">1</span>)+ch<span class="number">-48</span>,ch=getchar();</span><br><span class="line"><span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M=<span class="number">15</span>;</span><br><span class="line"><span class="keyword">int</span> N,K;</span><br><span class="line"><span class="keyword">const</span> ll S=<span class="number">1</span>&lt;&lt;M;</span><br><span class="line">ll INF=<span class="number">1e18</span>;</span><br><span class="line"><span class="keyword">int</span> a[M],b[M],c[M];</span><br><span class="line">ll cost[S];</span><br><span class="line"><span class="keyword">int</span> w[S],h[S];</span><br><span class="line">ll m;</span><br><span class="line">ll f[S][M+<span class="number">1</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prep</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;m;i++)&#123;</span><br><span class="line">cost[i]=w[i]=h[i]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++)&#123;</span><br><span class="line"><span class="keyword">if</span>((<span class="number">1</span>&lt;&lt;j)&amp;i)&#123;</span><br><span class="line">w[i]=max(w[i],a[j]);</span><br><span class="line">h[i]=max(h[i],b[j]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++)&#123;</span><br><span class="line"><span class="keyword">if</span>((<span class="number">1</span>&lt;&lt;j)&amp;i)&#123;</span><br><span class="line">cost[i]+=ll(w[i]*h[i]-a[j]*b[j])*c[j];</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span> <span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++) </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=K;++j)</span><br><span class="line">f[i][j]=INF; </span><br><span class="line">f[m<span class="number">-1</span>][K]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=m<span class="number">-1</span>;i;i--)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=K;j;j--)<span class="keyword">if</span>(f[i][j]!=INF)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> s=i;s;s=(s<span class="number">-1</span>)&amp;i)</span><br><span class="line">f[i-s][j<span class="number">-1</span>]=min(f[i-s][j<span class="number">-1</span>],f[i][j]+cost[s]);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;f[<span class="number">0</span>][<span class="number">0</span>]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">freopen(<span class="string">"envelope.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">freopen(<span class="string">"envelope.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;N&gt;&gt;K;</span><br><span class="line">m=<span class="number">1</span>&lt;&lt;N;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)<span class="built_in">cin</span>&gt;&gt;a[i]&gt;&gt;b[i]&gt;&gt;c[i];</span><br><span class="line">prep();</span><br><span class="line">solve();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用01 代表取与不取，按位找。。。<br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3ujqgi1dnj31hc0u0e81.jpg" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/提高-省选/" rel="tag"># 提高+/省选-</a>
+          
+            <a href="/tags/省选-NOI/" rel="tag"># 省选/NOI-</a>
+          
+            <a href="/tags/状压/" rel="tag"># 状压</a>
+          
+            <a href="/tags/dp/" rel="tag"># dp</a>
+          
+            <a href="/tags/背包/" rel="tag"># 背包</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/08/树链剖分/" rel="next" title="树链剖分">
+                <i class="fa fa-chevron-left"></i> 树链剖分
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg" alt="lishu">
+            
+              <p class="site-author-name" itemprop="name">lishu</p>
+              <p class="site-description motion-element" itemprop="description">生活嘛，还是需要一点情怀的</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1"><span class="nav-number">1.</span> <span class="nav-text">T1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意："><span class="nav-number">1.1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T2"><span class="nav-number">2.</span> <span class="nav-text">T2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-1"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T3"><span class="nav-number">3.</span> <span class="nav-text">T3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-1"><span class="nav-number">3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-2"><span class="nav-number">3.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by DS-FLY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
