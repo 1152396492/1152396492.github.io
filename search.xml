@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[树链剖分]]></title>
+    <url>%2F2019%2F06%2F08%2F%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86%2F</url>
+    <content type="text"><![CDATA[树链剖分finished 写了有20day ， 中间心态都写炸了 ， 怀疑线段树有问题怀疑了将近有一周 ， 对着三份代码检查 ， 眼睛都瞎了 。 总结一下 ：写dfs1 的时候更新siz（树的大小 ， father（爸爸是谁 ， dep（深度，其中size用来在update的时候便于更改一棵子树的数据 ， father在dfs2的时候可以防止自己走入死循环 ， dep在LCA的时候可以判断向上跳的人头 。 写dfs2 的时候记录每个点的top（LCA的时候可以直接跳过轻边 ， 记录每个点的编号 ， 编号中每个点的子树一定是以它为线段树中最小的值 ， 然后加上siz - 1 就可以直接对应线段树 。 写Qchange的时候先跳深的点 ， 可以向上跳与y持平 ， 在从小到大改变 ， 注意深度越小的数据越大 （ 就这个点卡了两周 。。。 写query与Qchange注意事项一样 。 。 。代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159160161162163164165166167168169170#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;#include&lt;algorithm&gt;using namespace std ;typedef long long lol ;const int MAXN = 200045 ;int dep[MAXN] , siz[MAXN] , father[MAXN] , son[MAXN] ,top[MAXN] ;int deep , id[MAXN] , dfn ;int a[MAXN] ;int N , M , R , mod ;int head[MAXN] , nex[MAXN] , to[MAXN] ,cnt = 0 ;int rec[MAXN] ;struct tree &#123;int l , r ;int add , val ;&#125; t[MAXN&lt;&lt;2] ;inline void add ( int x , int y )&#123;nex[++cnt] = head[x] ;head[x] = cnt ;to[cnt] = y ;&#125;//线段树操作void build ( int p , int l , int r )&#123;t[p].l = l ; t[p].r = r ;if ( l == r ) &#123; t[p].val = rec[l] ; return ; &#125;int mid = ( l + r ) &gt;&gt; 1 ;build ( p * 2 , l , mid ) ;build ( p * 2 + 1 , mid + 1 , r ) ;t[p].val = ( t[p&lt;&lt;1].val + t[p&lt;&lt;1|1].val ) % mod ;&#125;void spread ( int p )&#123;if( t[p].add )&#123;t[p&lt;&lt;1].val = ( t[p&lt;&lt;1].val + t[p].add * ( t[p&lt;&lt;1].r - t[p&lt;&lt;1].l + 1 ) ) % mod ;t[p&lt;&lt;1|1].val = ( t[p&lt;&lt;1|1].val + t[p].add * ( t[p&lt;&lt;1|1].r - t[p&lt;&lt;1|1].l + 1 ) ) % mod ;t[p&lt;&lt;1].add += t[p].add ;t[p&lt;&lt;1|1].add += t[p].add ;t[p].add = 0 ;&#125;&#125;void change ( int p , int x , int y , int z )&#123;if ( x &lt;= t[p].l &amp;&amp; y &gt;= t[p].r ) &#123;t[p].val += z * ( t[p].r - t[p].l + 1 ) % mod ;t[p].add += z ;return ;&#125;spread( p ) ;int mid = ( t[p].l + t[p].r ) &gt;&gt; 1 ;if ( x &lt;= mid ) change ( p * 2 , x , y , z ) ;if ( y &gt; mid ) change ( p * 2 + 1 , x , y , z ) ;t[p].val = (t[p&lt;&lt;1].val + t[p&lt;&lt;1|1].val) % mod ;&#125;int get ( int p , int x , int y )&#123;if( t[p].l &gt;= x &amp;&amp; t[p].r &lt;= y ) return t[p].val% mod ;spread ( p ) ;int ans = 0 ;int mid = ( t[p].l + t[p].r ) &gt;&gt; 1 ;if ( x &lt;= mid )ans = ( ans + get ( p * 2 , x , y ) ) % mod ;if ( y &gt; mid ) ans = ( ans + get ( p * 2 + 1 , x , y ) ) % mod ;return ans % mod ;&#125;//dfs1:标记深度dep[] ， 标记 父亲fa[] ， 标记每个非子节点的//子树大小，标记重儿子编号inline void dfs1 ( int x , int f , int depth ) &#123;siz[x] = 1 ;father[x] = f ;dep[x] = depth ;for ( int i = head[x] ; i ; i = nex[i] )&#123;if ( to[i] == f ) continue ;dfs1( to[i] , x , depth + 1 ) ;siz[x] += siz[to[i]] ;if( siz[to[i]] &gt; siz[son[x]] )son[x] = to[i] ;&#125;&#125;//标记每个点的新编号 ， 赋值每个点的初始值到新编号上（便于线段树操作）//处理每个点所在链的顶端 ，处理每条链 ；inline void dfs2 ( int x , int y )&#123;top[x] = y ; id[x] = ++ dfn ; rec[dfn] = a[x] ; if ( !son[x] ) return ;if( son[x] ) &#123;dfs2( son[x] , y ) ;&#125;for ( int i = head[x] ; i ; i = nex[i] )&#123;if( to[i] == father[x] || to[i] == son[x] ) continue ;//处理轻边dfs2 ( to[i] , to[i] ) ;&#125;&#125;//查询结点x到y的值int query( int x , int y ) &#123;int ans = 0 ;while ( top[x] != top[y] )&#123;if( dep[top[x]] &lt; dep[top[y]] )swap( x , y ) ;//先处理深度更深的点 ；ans = ( ans + get ( 1 , id[top[x]] , id[x] ) ) ;ans %= mod ;x = father[top[x]] ;//跳过轻边 ；&#125;if ( dep[x] &lt; dep[y] )swap( x , y ) ;ans = ( ans + get( 1 , id[y] , id[x] ) ) ;ans %= mod ;return ans % mod ;&#125;inline int read()&#123;int f = 1 ; char ch = 0 ; int res = 0 ;while ( ch &gt; '9' || ch &lt; '0' )&#123;if ( ch == '-' ) &#123;f = -1 ;break ;&#125;ch = getchar() ;&#125; while ( ch &gt;= '0' &amp;&amp; ch &lt;= '9' ) &#123;res = res * 10 + ch - 48 ;ch = getchar() ;&#125;return res * f ;&#125;inline void Qchange ( int x , int y , int k )&#123;//同上 k%=mod;while( top[x] != top[y] )&#123;if ( dep[top[x]] &lt; dep[top[y]] ) swap( x , y ) ;change ( 1 , id[top[x]] , id[x] , k ) ;x = father[top[x]];&#125;if( dep[x] &gt; dep[y] ) swap( x , y ) ;change ( 1 , id[x] , id[y] , k ) ;&#125;int main()&#123;N = read() ; M = read() ; R = read() ; mod = read() ;for ( int i = 1 ; i &lt;= N ; i ++ ) a[i] = read() ;for ( int i = 1 ; i &lt; N ; i ++ )&#123;int x , y ;x = read( ) ;y = read( ) ;add ( x , y ) ; add ( y , x ) ;&#125;int command ;dfs1 ( R , 0 , 1 ) ; dfs2 ( R , R ) ;build ( 1 , 1 , N ) ;while ( M -- ) &#123;command = read () ;int x , y , z ;if ( command == 1 )&#123;x = read() , y = read() , z = read() ;Qchange ( x , y , z % mod ) ;&#125;if ( command == 2 )&#123;x = read() , y = read() ;cout &lt;&lt; query( x , y )&lt;&lt; endl ;&#125;if ( command == 3 )&#123;x = read() , z = read() ;change ( 1 , id[x] , id[x] + siz[x] - 1 , z % mod ) ;&#125;if ( command == 4 )&#123;x = read() ;cout &lt;&lt; get ( 1 , id[x] , id[x] + siz[x] - 1 ) &lt;&lt; endl ;&#125;&#125;&#125;]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
+      <tags>
+        <tag>省选/NOI-</tag>
+        <tag>树链剖分</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[UVA1205-Color-a-Tree]]></title>
     <url>%2F2019%2F06%2F08%2FUVA1205-Color-a-Tree%2F</url>
     <content type="text"><![CDATA[题意有一棵树，需要给其所有节点染色，每个点染色所需的时间是一样的都是1.给每个点染色，还有一个开销“当前时间×ci”，ci是每个节点的一个权值。(当前时间是染完这个节点的时间) 染色还有另一个约束条件，要染一个点必须要先染好其父节点，所以第一个染的点是根节点. 求最小开销。 思路第一次做的时候的贪心策略有问题 ， 第一次的策略是从根节点开始找 ， 每次枚举最大的点 ， 但是如果遇见两个相同的点而第二次枚举的点的贪心策略更高的话就jj了 。 看了题解 ， 如果我们对于每一次更大的点进行枚举 ， 提前将它的针对它父亲的部分贡献值加入ans ， 那么我们可以枚举整个树上的最大点然后把它的本身的值+它的子树赋予它的值乘以它父亲已经被预遍历的次数就是针对它父亲的部分贡献值 。 然后把它的父亲的本身值加上它的本身值就是合并后（看成整体后）的节点值 。 但是其中最大点是用总共的值、合并的总点数 ， 相当于再次给值的时候针对其中整体中对整个子树进行处理时的收益是最大的。这又是一个贪心的策略。 另外根节点如果进入贡献值后 ， 那么它的子树就找不到其他的父亲了 ， 而且根节点随时可以更新 ， 在找最大点时注意排除他。 代码12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#include&lt;bits/stdc++.h&gt;using namespace std ; int n , r ;struct L &#123; int c , t ; double w ; &#125; rt[10010] ;int father[10010] ;int ans = 0 ;int afind ( ) &#123;double maxn = 0 , ans ; for ( int i = 1 ; i &lt;= n ; i ++ )&#123;if ( i != r &amp;&amp; maxn &lt; rt[i].w ) &#123;maxn = rt[i].w ; ans = i ; &#125;&#125;return ans ;&#125;int main ( ) &#123;cin &gt;&gt; n &gt;&gt; r ; for ( int i = 1 ; i &lt;= n ; i ++ ) &#123;cin &gt;&gt; rt[i].c ;rt[i].w = rt[i].c ;rt[i].t = 1 ; ans += rt[i].c ; &#125;for ( int i = 1 ; i &lt; n ; i ++ ) &#123;int x , y ; cin &gt;&gt; x &gt;&gt; y ; father[y] = x ; &#125;for ( int i = 1 ; i &lt; n ; i ++ )&#123;int now = afind ( ) ; int fa = father[now] ; rt[now].w = 0 ; ans += rt[fa].t * rt[now].c ; for ( int j = 1 ; j &lt;= n ; j ++ )&#123;if ( father[j] == now ) &#123;father[j] = fa ; &#125;&#125;rt[fa].c += rt[now].c ;rt[fa].t += rt[now].t ;rt[fa].w = double (rt[fa].c)/rt[fa].t ; &#125;cout &lt;&lt; ans ;&#125;]]></content>
@@ -33,9 +45,9 @@
       </categories>
       <tags>
         <tag>提高+/省选-</tag>
+        <tag>搜索</tag>
         <tag>暴力</tag>
         <tag>剪枝</tag>
-        <tag>搜索</tag>
         <tag>迭代加深</tag>
       </tags>
   </entry>
@@ -83,9 +95,9 @@
       </categories>
       <tags>
         <tag>提高+/省选-</tag>
-        <tag>搜索</tag>
         <tag>最短路</tag>
         <tag>NOIP</tag>
+        <tag>搜索</tag>
       </tags>
   </entry>
   <entry>
