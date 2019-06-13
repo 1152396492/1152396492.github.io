@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="同余,中国剩余定理,欧拉定理,扩展欧几里得,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、同余的概述定义1:给定正整数m，若用m除以两个整数a和b所得余数相同，称a和b对模m同余，记作a≡b（mod m），并称该式子为同余式；否则称a和b对模m不同余。定义2：整数对集合被分为m个不同的集合，这些集合被称为模m剩余类（同余类）。每个同类中的任意两个整数都是模m同余的。定理1：a≡b（mod m），当且仅当m|（a-b）。定理2：a≡b（mod m），当且仅当存在整数k，使得a=b+k">
+<meta name="keywords" content="同余,中国剩余定理,欧拉定理,扩展欧几里得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数论学习">
+<meta property="og:url" content="http://yoursite.com/2019/06/13/数论学习/index.html">
+<meta property="og:site_name" content="DS-FLY">
+<meta property="og:description" content="一、同余的概述定义1:给定正整数m，若用m除以两个整数a和b所得余数相同，称a和b对模m同余，记作a≡b（mod m），并称该式子为同余式；否则称a和b对模m不同余。定义2：整数对集合被分为m个不同的集合，这些集合被称为模m剩余类（同余类）。每个同类中的任意两个整数都是模m同余的。定理1：a≡b（mod m），当且仅当m|（a-b）。定理2：a≡b（mod m），当且仅当存在整数k，使得a=b+k">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g3zfeaixs2j301b00dgle.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3zff13zwoj302v00oq2x.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g3zffmj1vjj308300u74y.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g3zfl8e68wj301y00i0sl.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3zflk1bswj303o00nwej.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g3zflv377cj301c00ndfo.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g3zfm9vtx4j301c00ndfo.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfnf8hplj304a00ojri.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfnstpt9j300m00c3y9.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfo0zxbgj30bj00l74y.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g3zfsiorccj31hc0u0e7o.jpg">
+<meta property="og:updated_time" content="2019-06-13T05:11:01.836Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数论学习">
+<meta name="twitter:description" content="一、同余的概述定义1:给定正整数m，若用m除以两个整数a和b所得余数相同，称a和b对模m同余，记作a≡b（mod m），并称该式子为同余式；否则称a和b对模m不同余。定义2：整数对集合被分为m个不同的集合，这些集合被称为模m剩余类（同余类）。每个同类中的任意两个整数都是模m同余的。定理1：a≡b（mod m），当且仅当m|（a-b）。定理2：a≡b（mod m），当且仅当存在整数k，使得a=b+k">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g3zfeaixs2j301b00dgle.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/13/数论学习/">
+
+
+
+
+
+  <title>数论学习 | DS-FLY</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DS-FLY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Amentiraz</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/数论学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数论学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T13:08:58+08:00">
+                2019-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、同余的概述"><a href="#一、同余的概述" class="headerlink" title="一、同余的概述"></a>一、同余的概述</h3><p>定义1:给定正整数m，若用m除以两个整数a和b所得余数相同，称a和b对模m同余，记作a≡b（mod m）<br>，并称该式子为同余式；否则称a和b对模m不同余。<br>定义2：整数对集合被分为m个不同的集合，这些集合被称为模m剩余类（同余类）。每个同类中的任意两个整数都是模m同余的。<br>定理1：a≡b（mod m），当且仅当m|（a-b）。<br>定理2：a≡b（mod m），当且仅当存在整数k，使得a=b+km。<br>费马小定理：若p是质数，则对于任意整数a，有<img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zfeaixs2j301b00dgle.jpg" alt>（mod p）。在后文中与欧拉函数一起讲。</p>
+<h3 id="二、同余的性质"><a href="#二、同余的性质" class="headerlink" title="二、同余的性质"></a>二、同余的性质</h3><p>自反性，对称性，传递性，同加性，同乘性，同幂性。</p>
+<h3 id="同余的几个基本的定理"><a href="#同余的几个基本的定理" class="headerlink" title="同余的几个基本的定理"></a>同余的几个基本的定理</h3><h4 id="欧拉定理证明："><a href="#欧拉定理证明：" class="headerlink" title="欧拉定理证明："></a>欧拉定理证明：</h4><p>欧拉定理：设a,m∈N，(a,m)=1，则<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zff13zwoj302v00oq2x.jpg" alt>(mod m)<br>(注：φ(m)指模m的简系个数， φ(m)=m-1，如果m是素数；<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zffmj1vjj308300u74y.jpg" alt></p>
+<p>若正整数a , n互质，则aφ(n)≡1(mod n)其中φ(n)是欧拉函数（1~n)与n互质的数。</p>
+<p>证明如下：<br>不妨设X1，X2…… Xφn是1~n与n互质的数。</p>
+<p>　　首先我们先来考虑一些数：aX1，aX2…… aXφn<br>　　这些数有如下两个性质：( |是整除的意思）</p>
+<p>　
+　<br>　（1）任意两个数模n余数一定不同：（反证）若存在aX1≡aX2（mod n），则n |（ aX1-aX2），而a，n互质且（X1- X2）&lt; n，所以n不可能整除（ aX1-aX2），也就是说<br>不存在aX1≡aX2（mod n）。</p>
+<p>归纳法：对于任意的与n互质的Xi均成立。故得证。</p>
+<p>　　那么因为有φn个这样的数，Ximod n（i=1<del>φn） 所以就有φn个不同的余数，并且都是模数自然是（0</del>n-1）。</p>
+<p>　（2）对于任意的aXi（mod n）都与n互质。这不难想，因为a与n互质这是欧拉函数的条件，Xi是（1~n）与n互质的数的集合中的元素。所以如果a * Xi做为分子，n做为分母，那么<br>他们构成的显然就是一个最简分数，也就是aXi和n互质。接下来就可以用欧几里得算法：因为：gcd（aXi，n）==1所以：gcd（aXi，n）== gcd（n，aXi%n）== 1</p>
+<pre><code>这样，我们把上面两个性质结合一下来说，aX1（mod n），aX2（mod n）...... aXφn（mod n）构成了一个集合（性质1证明了所有元素的互异性），并且这些数是1~n与n互</code></pre><p>质的所有数构成的集合（性质1已说明）。这样，我们巧妙的发现了.. aXφn（mod n）}经过一定的排序后和集合{X1，X2…… Xφn}<br>完全一一对应。那么：aX1（mod n)<em>aX2（mod n）</em> …… * aXφn（mod n）= X1 * X2* …… * Xφn</p>
+<p>因此：我们可以写出以下式子：<br>aX1* aX2 *  …… * aXφn ≡  X1 * X2 * …… * Xφn  （mod n），即：（aφn -1）X1 * X2 * …… * Xφn ≡ 0 （mod n）<br>　　又因为X1<em>X2</em> ……* Xφn与n互质，所以， （aφn -1）| n，那么aφn ≡ 1（mod n）。欧拉定理得证。</p>
+<h4 id="费马小定理证明-："><a href="#费马小定理证明-：" class="headerlink" title="费马小定理证明 ："></a>费马小定理证明 ：</h4><p>费马小定理：</p>
+<p>　　对于质数p，任意整数a，均满足：<img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3zfl8e68wj301y00i0sl.jpg" alt>（mod p）</p>
+<p>证明如下：<br>　　这个可以用欧拉定理来说明：首先，我们把这个式子做一个简单变换得：<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zflk1bswj303o00nwej.jpg" alt>（mod p） 因为a ≡ a（mod p）恒成立，所以<img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zflv377cj301c00ndfo.jpg" alt>mod p == 1时费马小定理才成立，又因为p<br>是质数，所以 φn == n-1 ,所以根据欧拉定理：若a，p互质则<img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3zfm9vtx4j301c00ndfo.jpg" alt>mod p == 1成立。那么对于a，p不互质，因为p是质数，所以，a一定是倍数≡ a ≡ 0（mod p）。综上所述，费马小定理<br>成立，其实它算是欧拉定理的一个特例。</p>
+<h4 id="欧拉定理的推论："><a href="#欧拉定理的推论：" class="headerlink" title="欧拉定理的推论："></a>欧拉定理的推论：</h4><p>若正整数a，n互质，则对于任意正整数b，有<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfnf8hplj304a00ojri.jpg" alt>(mod n)<br>证明：设,其中0&lt;=r&lt; <img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfnstpt9j300m00c3y9.jpg" alt>。于是<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfo0zxbgj30bj00l74y.jpg" alt>mod(n)</p>
+<h5 id="eg"><a href="#eg" class="headerlink" title="eg"></a>eg</h5><p>给定a，n求出 S=((((aa)a)a)a⋅⋅⋅⋅)a （mod 998244353）共n个a。<br>思路：</p>
+<p>先求出指数，即a^n-1（快速幂求解），并将指数对mod-1（因为mod是质数，那么φ（mod）= mod-1），再用更新后的指数做为新的指数用快速幂求解即可。</p>
+<p>大部分引用自<a href="https://www.cnblogs.com/zylAK/p/9569668.html" target="_blank" rel="noopener">zylAK</a></p>
+<h3 id="三、扩展欧几里得算法"><a href="#三、扩展欧几里得算法" class="headerlink" title="三、扩展欧几里得算法"></a>三、扩展欧几里得算法</h3><p>概述</p>
+<p>欧几里德算法又称辗转相除法，用于计算两个整数a,b的最大公约数。其计算原理依赖于下面的定理：</p>
+<p>gcd函数就是用来求(a,b)的最大公约数的。</p>
+<p>gcd函数的基本性质：</p>
+<p>gcd(a,b)=gcd(b,a)=gcd(-a,b)=gcd(|a|,|b|)</p>
+<p>公式表述</p>
+<p>gcd(a,b)=gcd(b,a mod b)</p>
+<p>证明：a可以表示成a = kb + r，则r = a mod b</p>
+<p>假设d是a,b的一个公约数，则有</p>
+<p>d|a, d|b，而r = a - kb，因此d|r</p>
+<p>因此d是(b,a mod b)的公约数</p>
+<p>假设d 是(b,a mod b)的公约数，则</p>
+<p>d | b , d |r ，但是a = kb +r</p>
+<p>因此d也是(a,b)的公约数</p>
+<p>因此(a,b)和(b,a mod</p>
+<p>b)的公约数是一样的，其最大公约数也必然相等，得证</p>
+<p>求解gcd代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span> <span class="params">( <span class="keyword">int</span> a , <span class="keyword">int</span> b )</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> b?gcd ( b , a % b ) : a ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为gcd(a,b)=gcd(b,a mod b )</p>
+<p>证明：设gcd(a,b)=c,</p>
+<p>a = k1 * c , b = k2 * c .</p>
+<p>a%b=(k1-k2) * c|c</p>
+<p>故gcd(a,b)=gcd(b,a mod b )</p>
+<p>求解方程：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> b,<span class="keyword">long</span> <span class="keyword">long</span> &amp;x, <span class="keyword">long</span> <span class="keyword">long</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=<span class="number">1</span>;</span><br><span class="line">        y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    r=exgcd(b,a%b,x,y);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> cnt=x;</span><br><span class="line">    x=y;</span><br><span class="line">    y=cnt-a/b*y;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="贝祖定理-："><a href="#贝祖定理-：" class="headerlink" title="贝祖定理 ："></a>贝祖定理 ：</h4><p>  即如果a、b是整数，那么一定存在整数x、y使得ax+by=gcd(a,b)。<br>换句话说，如果ax+by=m有解，那么m一定是gcd(a,b)的若干倍。（可以来判断一个这样的式子有没有解）<br><em>有一个直接的应用就是 如果ax+by=1有解，那么gcd(a,b)=1；</em><br>故对于不定方程ax+by=c当且仅当gcd(a,b)|c时方程有解</p>
+<p>未完待续···<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zfsiorccj31hc0u0e7o.jpg" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/同余/" rel="tag"># 同余</a>
+          
+            <a href="/tags/中国剩余定理/" rel="tag"># 中国剩余定理</a>
+          
+            <a href="/tags/欧拉定理/" rel="tag"># 欧拉定理</a>
+          
+            <a href="/tags/扩展欧几里得/" rel="tag"># 扩展欧几里得</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/09/Tarjan算法的原理及使用方式/" rel="next" title="Tarjan算法的原理及使用方式">
+                <i class="fa fa-chevron-left"></i> Tarjan算法的原理及使用方式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg" alt="lishu">
+            
+              <p class="site-author-name" itemprop="name">lishu</p>
+              <p class="site-description motion-element" itemprop="description">生活嘛，还是需要一点情怀的</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、同余的概述"><span class="nav-number">1.</span> <span class="nav-text">一、同余的概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、同余的性质"><span class="nav-number">2.</span> <span class="nav-text">二、同余的性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同余的几个基本的定理"><span class="nav-number">3.</span> <span class="nav-text">同余的几个基本的定理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#欧拉定理证明："><span class="nav-number">3.1.</span> <span class="nav-text">欧拉定理证明：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#费马小定理证明-："><span class="nav-number">3.2.</span> <span class="nav-text">费马小定理证明 ：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#欧拉定理的推论："><span class="nav-number">3.3.</span> <span class="nav-text">欧拉定理的推论：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#eg"><span class="nav-number">3.3.1.</span> <span class="nav-text">eg</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、扩展欧几里得算法"><span class="nav-number">4.</span> <span class="nav-text">三、扩展欧几里得算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贝祖定理-："><span class="nav-number">4.1.</span> <span class="nav-text">贝祖定理 ：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by DS-FLY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
