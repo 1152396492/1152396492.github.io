@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="中国剩余定理,数论,拓展欧几里得,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="T1越狱题意1~n n个数，每个数有m种情况，相邻两个数情况一样的情况有多少种 思路据某位大佬说，OI学到最后就是看有没有学傻就是求总情况数与不一样的情况的差 代码123456789101112131415161718192021222324252627282930313233343536#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;">
+<meta name="keywords" content="中国剩余定理,数论,拓展欧几里得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数论综合练习赛1">
+<meta property="og:url" content="http://yoursite.com/2019/07/08/数论综合练习赛1/index.html">
+<meta property="og:site_name" content="DS-FLY">
+<meta property="og:description" content="T1越狱题意1~n n个数，每个数有m种情况，相邻两个数情况一样的情况有多少种 思路据某位大佬说，OI学到最后就是看有没有学傻就是求总情况数与不一样的情况的差 代码123456789101112131415161718192021222324252627282930313233343536#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4sohcne1mj30n50miagc.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/006tNc79gy1g4spm3dd92j30xa0jsn11.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g4spor2pvdj304i01hweb.jpg">
+<meta property="og:updated_time" content="2019-07-08T12:44:16.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数论综合练习赛1">
+<meta name="twitter:description" content="T1越狱题意1~n n个数，每个数有m种情况，相邻两个数情况一样的情况有多少种 思路据某位大佬说，OI学到最后就是看有没有学傻就是求总情况数与不一样的情况的差 代码123456789101112131415161718192021222324252627282930313233343536#include&amp;lt;iostream&amp;gt;#include&amp;lt;cstdio&amp;gt;#include&amp;">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4sohcne1mj30n50miagc.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/08/数论综合练习赛1/">
+
+
+
+
+
+  <title>数论综合练习赛1 | DS-FLY</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DS-FLY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">暑假每天A5题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/08/数论综合练习赛1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数论综合练习赛1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-08T19:44:16+08:00">
+                2019-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="T1越狱"><a href="#T1越狱" class="headerlink" title="T1越狱"></a>T1越狱</h2><h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>1~n n个数，每个数有m种情况，相邻两个数情况一样的情况有多少种</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>据某位大佬说，OI学到最后就是看有没有学傻<br>就是求总情况数与不一样的情况的差</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> <span class="title">read</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar ( ) ; <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">while</span> ( ch &gt; <span class="string">'9'</span> || ch &lt; <span class="string">'0'</span> ) ch = getchar ( ) ;</span><br><span class="line">    <span class="keyword">while</span> ( ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span> ) res = res * <span class="number">10</span> + ch - <span class="number">48</span> , ch = getchar ( ) ;</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">q</span> <span class="params">( <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> a , <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> b )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">while</span> ( b ) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( b &amp; <span class="number">1</span> ) ans = ( ans * a ) % <span class="number">100003</span> ;</span><br><span class="line">        a *= a ; a %= <span class="number">100003</span> ;</span><br><span class="line">        b &gt;&gt;= <span class="number">1</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> <span class="title">change</span> <span class="params">( <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> x )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> ( x &lt; <span class="number">0</span> ) x += <span class="number">100003</span> ;</span><br><span class="line">    <span class="keyword">return</span> x % <span class="number">100003</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> <span class="keyword">int</span> m , n ;</span><br><span class="line">    m = read ( ) , n = read ( ) ;</span><br><span class="line">    <span class="built_in">printf</span> ( <span class="string">"%lld"</span> , change ( q ( m , n ) % <span class="number">100003</span> -  ( m * q ( m - <span class="number">1</span> , n - <span class="number">1</span> ) ) % <span class="number">100003</span> ) % <span class="number">100003</span> ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="T2"><a href="#T2" class="headerlink" title="T2"></a>T2</h2><h3 id="题意-1"><a href="#题意-1" class="headerlink" title="题意"></a>题意</h3><p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4sohcne1mj30n50miagc.jpg" alt></p>
+<h3 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h3><p><del>考场思路只有暴力</del><br>枚举每两只猴子之间相遇的年数（或者遇不到）<br>用拓展欧几里得求解<br>枚举山洞数<br>如果c！=gcd那么就无解，符合情况<br>如果求出的年数比最小存在时间长也符合情况<br>反之就返回错误<br>我们只要x，所以保证a为正数就行<br>在求x的最小正数解时，我们可以先看一下<a href="https://www.luogu.org/problemnew/show/P1516" target="_blank" rel="noopener">青蛙的约会</a><br>1.两只青蛙相遇，会有[(x-y)+k(m-n)]%l=0;(k表示跳的次数)。【方程来源】</p>
+<p>2.将(x-y)记为A,(m-n)记为B,即(A+kB)%l=0,(A+kB)对l取余等于零可以等价为(A+kB)减去y个l等于零，即(A+kB)-yl=0，移项得kB-yl=-A。【方程】</p>
+<p>3.将k换为x，得到xB-yl=A(由于将-A变成了A，在开始赋值时若B=m-n，A就为y-x，若B=n-m，A就为x-y)，然后判断是否有解：令d为B与l的最大公约数gcd(B,l);方程两边同时除以d，得到</p>
+<p>了xB/d-yl/d=A/d,由于d=gcd(B,l),所以B/d、l/d为整数，然后x、-y也是整数，所以方程成立的条件就是A/d也为整数。【证明方程成立】</p>
+<p>4.这个方程就是扩展欧几里得exgcd(B,l,x,y)（忽略y前的负号），这样可以解出x，此时的x不是最优解，还要转换，<strong>即((x * (A/d))%(l/d)+(l/d))%(l/d)</strong>【求最小解的式子，不理解先背下来】。<br>然后我们套公式，就求出最小的x解就可以完美的解决这个问题了！<br><del>数论真奇妙</del></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n ;</span><br><span class="line"><span class="keyword">int</span> c[<span class="number">20</span>] , p[<span class="number">20</span>] , l[<span class="number">20</span>] ;</span><br><span class="line"><span class="keyword">int</span> maxx ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span> <span class="params">( <span class="keyword">int</span> a , <span class="keyword">int</span> b )</span> </span>&#123; <span class="keyword">return</span> b ? gcd ( b , a % b ) : a ; &#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span> <span class="params">( <span class="keyword">int</span> a , <span class="keyword">int</span> b , <span class="keyword">int</span> &amp; x , <span class="keyword">int</span>  &amp; y )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( !b ) &#123;</span><br><span class="line">        x = <span class="number">1</span> ; y = <span class="number">0</span> ;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    exgcd ( b , a % b , x , y ) ;</span><br><span class="line">    <span class="keyword">int</span> t = x ; x = y ; y = t - a / b * y ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span> <span class="params">( <span class="keyword">int</span> m )</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x , y ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> j = i + <span class="number">1</span> ; j &lt;= n ; j ++ ) &#123;</span><br><span class="line">            <span class="keyword">int</span> a = p[i] - p[j] , b = m , c1 = c[j] - c[i] ;</span><br><span class="line">            <span class="keyword">int</span> g = gcd ( a , b ) ;</span><br><span class="line">            <span class="keyword">if</span> ( c1 % g == <span class="number">0</span> ) &#123;</span><br><span class="line">                a /= g , b /= g , c1 /= g ;</span><br><span class="line">                exgcd ( a , b , x , y ) ;</span><br><span class="line">                b = <span class="built_in">abs</span>( b ) ;</span><br><span class="line">                x = ( ( x * c1 ) % b + b ) % b ;</span><br><span class="line">                <span class="keyword">if</span> ( !x ) x += b ;</span><br><span class="line">                <span class="keyword">if</span> ( x &lt;= min ( l[i] , l[j] ) ) <span class="keyword">return</span> <span class="literal">false</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> ( <span class="string">"%d"</span> , &amp; n ) ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">        <span class="built_in">scanf</span> ( <span class="string">"%d%d%d"</span> , &amp; c[i] , &amp; p[i] , &amp; l[i] ) ;</span><br><span class="line">        maxx = max ( maxx , c[i] ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> ( !check( maxx ) ) maxx ++ ;</span><br><span class="line">    <span class="built_in">printf</span>( <span class="string">"%d"</span> , maxx ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="T3-Biorhythms"><a href="#T3-Biorhythms" class="headerlink" title="T3 Biorhythms"></a>T3 Biorhythms</h2><h3 id="题意-2"><a href="#题意-2" class="headerlink" title="题意"></a>题意</h3><p><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g4spm3dd92j30xa0jsn11.jpg" alt></p>
+<h3 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h3><p>中国剩余定理<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g4spor2pvdj304i01hweb.jpg" alt><br>t为Mi的逆元<br>逆元可以用拓展欧几里得求就是ax+py=1就可以求出a在模p意义下的逆元</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a , b , c ;</span><br><span class="line"><span class="keyword">int</span> p , e , i , d ;</span><br><span class="line"><span class="keyword">int</span> midb , midc ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> ( <span class="string">"%d%d%d%d"</span> , &amp; p , &amp; e , &amp; i , &amp; d ) ;</span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">0</span>  ;</span><br><span class="line">    <span class="keyword">while</span> ( p != <span class="number">-1</span> || e != <span class="number">-1</span> || i != <span class="number">-1</span> || d != <span class="number">-1</span> ) &#123;</span><br><span class="line">        t ++ ;</span><br><span class="line">        <span class="built_in">printf</span> ( <span class="string">"Case %d: the next triple peak occurs in %d days.\n"</span> , t , ( ( p * <span class="number">5544</span> + e * <span class="number">14421</span> + i * <span class="number">1288</span> - d + <span class="number">21252</span> ) % <span class="number">21252</span> ) ? ( ( p * <span class="number">5544</span> + e * <span class="number">14421</span> + i * <span class="number">1288</span> - d + <span class="number">21252</span> ) % <span class="number">21252</span> ) : <span class="number">21252</span> ) ;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">scanf</span> ( <span class="string">"%d%d%d%d"</span> , &amp; p , &amp; e , &amp; i , &amp; d ) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/中国剩余定理/" rel="tag"># 中国剩余定理</a>
+          
+            <a href="/tags/数论/" rel="tag"># 数论</a>
+          
+            <a href="/tags/拓展欧几里得/" rel="tag"># 拓展欧几里得</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/07/线性筛素数/" rel="next" title="线性筛素数">
+                <i class="fa fa-chevron-left"></i> 线性筛素数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg" alt="lishu">
+            
+              <p class="site-author-name" itemprop="name">lishu</p>
+              <p class="site-description motion-element" itemprop="description">人生最大的不幸就是自己的无能</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1越狱"><span class="nav-number">1.</span> <span class="nav-text">T1越狱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-number">1.2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T2"><span class="nav-number">2.</span> <span class="nav-text">T2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-1"><span class="nav-number">2.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-1"><span class="nav-number">2.2.</span> <span class="nav-text">思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T3-Biorhythms"><span class="nav-number">3.</span> <span class="nav-text">T3 Biorhythms</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意-2"><span class="nav-number">3.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路-2"><span class="nav-number">3.2.</span> <span class="nav-text">思路</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by DS-FLY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
