@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[计算器]]></title>
+    <url>%2F2019%2F07%2F10%2F%E8%AE%A1%E7%AE%97%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[BSGS大步小步算法拔山盖世算法解决y^x=z ( mod p )的问题设x=a*m-b m=sqrt（p）化简枚举y的b次方用map存数利用了分块的思想。。。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;cmath&gt;#include&lt;map&gt;#define LL long longusing namespace std ;int T , K ;int gcd ( int a , int b ) &#123; return b ? gcd ( b , a % b ) : a ; &#125;LL ksm ( LL a , LL b , LL mod ) &#123; LL ans = 1 ; while ( b ) &#123; if ( b &amp; 1 ) ans = ( ans * a ) % mod ; a = ( a * a ) % mod ; b &gt;&gt;= 1 ; &#125; return ans ;&#125;void exgcd ( int a , int b , int &amp;x , int &amp; y ) &#123; if ( ! b ) &#123; x = 1 ; y = 0 ; return ; &#125; exgcd ( b , a % b , x , y ) ; int t = x ; x = y ; y = t - ( a / b ) * y ;&#125;map &lt; int , int &gt; pw ;void BSGS ( int x , int y , int p ) &#123; pw.clear ( ) ; if ( y == 1 ) &#123; cout &lt;&lt; "0" &lt;&lt; endl ; return ; &#125; int ans = -1 , m = sqrt ( p ) + 1 , xx , s = y ; for ( int i = 0 ; i &lt; m ; i ++ ) &#123; pw[s] = i ; s = 1LL * s * x % p ; &#125; xx = ksm ( x , m , p ) ; s = 1 ; for ( int i = 1 ; i &lt;= m + 1 ; i ++ ) &#123; s = 1LL * s * xx % p ; if ( pw.count ( s ) ) &#123; ans = i * m - pw[s] ; break ; &#125; &#125; if ( ans &lt; 0 ) printf ( "Orz, I cannot find x!\n" ) ; else printf ( "%d\n" , ans ) ;&#125;int main ( ) &#123; cin &gt;&gt; T &gt;&gt; K ; while ( T -- )&#123; if ( K == 1 ) &#123; LL y , z , p ; scanf ( "%lld%lld%lld" , &amp;y , &amp; z , &amp; p ) ; cout &lt;&lt; ksm( y , z , p ) &lt;&lt; endl ; &#125; else if ( K == 2 ) &#123; LL a , c , b ; cin &gt;&gt; a &gt;&gt; c &gt;&gt; b ; int g = gcd ( a , b ) ; if ( c % g ) &#123; printf ( "Orz, I cannot find x!\n" ) ; continue ; &#125; int x , y ; exgcd ( a , b , x , y ) ; printf( "%lld\n" , (((x/g)*(c/g))%(b/g)+(b/g))%(b/g) ) ; &#125; else &#123; LL y , z , p ; cin &gt;&gt; y &gt;&gt; z &gt;&gt; p ; if ( y % p &amp;&amp; z ) BSGS ( y % p , z % p , p ) ; else printf ( "Orz, I cannot find x!\n" ) ; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+        <tag>BSGS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[NOI屠龙勇士]]></title>
     <url>%2F2019%2F07%2F10%2FNOI%E5%B1%A0%E9%BE%99%E5%8B%87%E5%A3%AB%2F</url>
-    <content type="text"><![CDATA[写这份代码的难度，不亚于屠一条龙早上这道题没有一个人对了任意一分。。。后来发现确实能的至少20的过程分下午老师努力吹嘘这道题有多简单多简单然后我从下午2:40开始做这道题下午4:00看懂题解晚上6:30看懂代码的大半并抄了一遍题解提交两次AC但实际上有至少两个点不懂。。。不懂的地方：1.muliset怎么用的 12345678910for ( int i = 1 ; i &lt;= n ; i ++ ) &#123; it = ( cs[i] &lt; ( *s.begin( ) ) ) ? s.begin ( ) : ( --s.upper_bound(cs[i]) ) ; xs[i] = *it ; s.erase ( it ) ; s.insert ( gif[i] ) ;&#125;``` 代码意思懂，但是如何实现还是很懵逼2.龟速乘。。。```c++inline ll mul(ll a,ll b,const ll&amp; md)//龟速乘 &#123;ll ret=0;b=b%md;b=(b&gt;0)?b:b+md;for(;b;b&gt;&gt;=1,a=(a+a)%md)(ret+=a*(b&amp;1))%=md;return ret;&#125; 主要没精力再想了脑子爆栈了 代码：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;#include&lt;algorithm&gt;#include&lt;set&gt;using namespace std ;const int N = 1e5+10;typedef long long ll ;int T , n , m ;multiset &lt; ll &gt; s ; ll mod[N] , xs[N] , cs[N] , st[N] , gif[N] ;inline ll gcd ( ll a , ll b ) &#123; return b ? gcd ( b , a % b ) : a ; &#125;inline void exgcd ( ll a , ll b , ll &amp; x , ll &amp; y ) &#123; if ( b == 0 ) &#123; x = 1 ; y = 0 ; return ; &#125; exgcd ( b , a % b , x , y ) ; ll t = x ; x = y ; y = t - a / b * y ; &#125;inline ll mul(ll a,ll b,const ll&amp; md)//龟速乘&#123;ll ret=0;b=b%md;b=(b&gt;0)?b:b+md;for(;b;b&gt;&gt;=1,a=(a+a)%md)(ret+=a*(b&amp;1))%=md;return ret;&#125;inline ll inv ( ll a , ll p ) &#123; a %= p ; ll x ; ll y ; exgcd ( a , p , x , y ) ; return ( x % p + p ) % p ; &#125;inline void spsolve2 ( ) &#123; ll lc = 1 ; for ( int i = 1 ; i &lt;= n ; i ++ ) &#123; ll ds = mod[i] / gcd ( mod[i],xs[i] ) ; lc = lc / gcd ( lc , ds ) * ds ; &#125; printf( "%lld\n" , lc ) ;&#125;inline void spsolve ( ) &#123; ll res = 0 ; for ( int i = 1 ; i &lt;= n ; i ++ ) res = max ( res , ( ( cs[i] + xs[i] - 1 ) / xs[i] ) ) ; printf ( "%lld\n" , res ) ;&#125;inline void cfil ( ) &#123; printf( "-1\n" ) ; &#125;inline void solve ( ) &#123; scanf ( "%d%d" , &amp; n , &amp; m ) ; for ( int i = 1 ; i &lt;= n ; i ++ ) scanf ( "%lld" , &amp; cs[i] ) ; for ( int i = 1 ; i &lt;= n ; i ++ ) scanf ( "%lld" , &amp; mod[i] ) ; for ( int i = 1 ; i &lt;= n ; i ++ ) scanf ( "%lld" , &amp; gif[i] ) ; for ( int i = 1 ; i &lt;= m ; i ++ ) scanf ( "%lld" , &amp; st[i] ) ; for ( int i = 1 ; i &lt;= m ; i ++ ) s.insert ( st[i] ) ; /**/multiset &lt;ll&gt;:: iterator it ; for ( int i = 1 ; i &lt;= n ; i ++ ) &#123; it = ( cs[i] &lt; ( *s.begin( ) ) ) ? s.begin ( ) : ( --s.upper_bound(cs[i]) ) ; xs[i] = *it ; s.erase ( it ) ; s.insert ( gif[i] ) ; &#125; for ( int i = 1 ; i &lt;= m ; i ++ ) if ( mod[i] != cs[i] ) goto ski ; spsolve2 ( ) ; return ; ski: ; for ( int i = 1 ; i &lt;= n ; i ++ ) if ( mod[i] != 1 ) goto skp ; spsolve ( ) ; return ; skp: ; for ( int i = 1 ; i &lt;= n ; i ++ ) xs[i] %= mod[i] ; /**/for ( int i = 1 ; i &lt;= n ; i ++ ) if ( xs[i] == 0 ) &#123; if ( mod[i] == cs[i] ) &#123; xs[i] = 1 ; mod[i] = 1 ; cs[i] = 0 ; &#125; else &#123; cfil ( ) ; return ; &#125; &#125; for ( int i = 1 ; i &lt;= n ; i ++ ) &#123; ll sx , sy ; ll g = gcd ( xs[i] , mod[i] ) ; if ( cs[i] % g != 0 ) &#123; cfil ( ) ; return ; &#125; exgcd ( xs[i] , mod[i] , sx , sy ) ; mod[i] = mod[i] / g ; sx = ( sx % mod[i] + mod[i] ) % mod[i] ;//找sx为一个正整数的特解。。。 cs[i] = mul ( sx , cs[i] / g , mod[i] ) ; &#125; for ( int i = 1 ; i &lt;= n - 1 ; i ++ ) &#123; ll g = gcd ( mod[i] , mod[i+1] ) ; if ( ( cs[i+1] - cs[i] ) % g != 0 ) &#123; cfil( ) ; return ; &#125; ll ncs = mul ( inv ( mod[i] / g , mod[i+1] / g ) , ( cs[i+1] - cs[i] ) / g , mod[i+1] / g ) ; ll nmod = mod[i]/g*mod[i+1] ; ncs = mul ( ncs , mod[i] , nmod ) ; ( ncs += cs[i] ) %= nmod ; cs[i+1] = ncs ; mod[i+1] = nmod ; &#125; printf( "%lld\n" , cs[n] ) ; return ;&#125;int main ( ) &#123; scanf ( "%d" , &amp; T ) ; for ( int z = 1 ; z &lt;= T ; z ++ ) &#123; solve ( ) , s.clear ( ) ; &#125; return 0 ;&#125; 只是抄了一遍你谷第一篇题解但是收获真的很大 收获逆元求法1inline ll inv ( ll a , ll p ) &#123; a %= p ; ll x ; ll y ; exgcd ( a , p , x , y ) ; return ( x % p + p ) % p ; &#125; 拓展中国剩余定理[dalao的博客推柿子](https://www.cnblogs.com/zwfymqz/p/8425731.html） 奇妙的一个操作直接可以套进去求最小简直碉堡了 思想大胆推柿子实在不行找表上的样例，条件拿部分分某dalao这道题直接水可以水到40分]]></content>
+    <content type="text"><![CDATA[写这份代码的难度，不亚于屠一条龙早上这道题没有一个人对了任意一分。。。后来发现确实能的至少20的过程分下午老师努力吹嘘这道题有多简单多简单然后我从下午2:40开始做这道题下午4:00看懂题解晚上6:30看懂代码的大半并抄了一遍题解提交两次AC但实际上有至少两个点不懂。。。不懂的地方： 1.muliset怎么用的1234for ( int i = 1 ; i &lt;= n ; i ++ ) &#123; it = ( cs[i] &lt; ( *s.begin( ) ) ) ? s.begin ( ) : ( --s.upper_bound(cs[i]) ) ; xs[i] = *it ; s.erase ( it ) ; s.insert ( gif[i] ) ;&#125; 代码意思懂，但是如何实现还是很懵逼 2.龟速乘。。。12inline ll mul(ll a,ll b,const ll&amp; md)//龟速乘 &#123;ll ret=0;b=b%md;b=(b&gt;0)?b:b+md;for(;b;b&gt;&gt;=1,a=(a+a)%md)(ret+=a*(b&amp;1))%=md;return ret;&#125; 主要没精力再想了脑子爆栈了 代码：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;cmath&gt;#include&lt;algorithm&gt;#include&lt;set&gt;using namespace std ;const int N = 1e5+10;typedef long long ll ;int T , n , m ;multiset &lt; ll &gt; s ; ll mod[N] , xs[N] , cs[N] , st[N] , gif[N] ;inline ll gcd ( ll a , ll b ) &#123; return b ? gcd ( b , a % b ) : a ; &#125;inline void exgcd ( ll a , ll b , ll &amp; x , ll &amp; y ) &#123; if ( b == 0 ) &#123; x = 1 ; y = 0 ; return ; &#125; exgcd ( b , a % b , x , y ) ; ll t = x ; x = y ; y = t - a / b * y ; &#125;inline ll mul(ll a,ll b,const ll&amp; md)//龟速乘&#123;ll ret=0;b=b%md;b=(b&gt;0)?b:b+md;for(;b;b&gt;&gt;=1,a=(a+a)%md)(ret+=a*(b&amp;1))%=md;return ret;&#125;inline ll inv ( ll a , ll p ) &#123; a %= p ; ll x ; ll y ; exgcd ( a , p , x , y ) ; return ( x % p + p ) % p ; &#125;inline void spsolve2 ( ) &#123; ll lc = 1 ; for ( int i = 1 ; i &lt;= n ; i ++ ) &#123; ll ds = mod[i] / gcd ( mod[i],xs[i] ) ; lc = lc / gcd ( lc , ds ) * ds ; &#125; printf( "%lld\n" , lc ) ;&#125;inline void spsolve ( ) &#123; ll res = 0 ; for ( int i = 1 ; i &lt;= n ; i ++ ) res = max ( res , ( ( cs[i] + xs[i] - 1 ) / xs[i] ) ) ; printf ( "%lld\n" , res ) ;&#125;inline void cfil ( ) &#123; printf( "-1\n" ) ; &#125;inline void solve ( ) &#123; scanf ( "%d%d" , &amp; n , &amp; m ) ; for ( int i = 1 ; i &lt;= n ; i ++ ) scanf ( "%lld" , &amp; cs[i] ) ; for ( int i = 1 ; i &lt;= n ; i ++ ) scanf ( "%lld" , &amp; mod[i] ) ; for ( int i = 1 ; i &lt;= n ; i ++ ) scanf ( "%lld" , &amp; gif[i] ) ; for ( int i = 1 ; i &lt;= m ; i ++ ) scanf ( "%lld" , &amp; st[i] ) ; for ( int i = 1 ; i &lt;= m ; i ++ ) s.insert ( st[i] ) ; /**/multiset &lt;ll&gt;:: iterator it ; for ( int i = 1 ; i &lt;= n ; i ++ ) &#123; it = ( cs[i] &lt; ( *s.begin( ) ) ) ? s.begin ( ) : ( --s.upper_bound(cs[i]) ) ; xs[i] = *it ; s.erase ( it ) ; s.insert ( gif[i] ) ; &#125; for ( int i = 1 ; i &lt;= m ; i ++ ) if ( mod[i] != cs[i] ) goto ski ; spsolve2 ( ) ; return ; ski: ; for ( int i = 1 ; i &lt;= n ; i ++ ) if ( mod[i] != 1 ) goto skp ; spsolve ( ) ; return ; skp: ; for ( int i = 1 ; i &lt;= n ; i ++ ) xs[i] %= mod[i] ; /**/for ( int i = 1 ; i &lt;= n ; i ++ ) if ( xs[i] == 0 ) &#123; if ( mod[i] == cs[i] ) &#123; xs[i] = 1 ; mod[i] = 1 ; cs[i] = 0 ; &#125; else &#123; cfil ( ) ; return ; &#125; &#125; for ( int i = 1 ; i &lt;= n ; i ++ ) &#123; ll sx , sy ; ll g = gcd ( xs[i] , mod[i] ) ; if ( cs[i] % g != 0 ) &#123; cfil ( ) ; return ; &#125; exgcd ( xs[i] , mod[i] , sx , sy ) ; mod[i] = mod[i] / g ; sx = ( sx % mod[i] + mod[i] ) % mod[i] ;//找sx为一个正整数的特解。。。 cs[i] = mul ( sx , cs[i] / g , mod[i] ) ; &#125; for ( int i = 1 ; i &lt;= n - 1 ; i ++ ) &#123; ll g = gcd ( mod[i] , mod[i+1] ) ; if ( ( cs[i+1] - cs[i] ) % g != 0 ) &#123; cfil( ) ; return ; &#125; ll ncs = mul ( inv ( mod[i] / g , mod[i+1] / g ) , ( cs[i+1] - cs[i] ) / g , mod[i+1] / g ) ; ll nmod = mod[i]/g*mod[i+1] ; ncs = mul ( ncs , mod[i] , nmod ) ; ( ncs += cs[i] ) %= nmod ; cs[i+1] = ncs ; mod[i+1] = nmod ; &#125; printf( "%lld\n" , cs[n] ) ; return ;&#125;int main ( ) &#123; scanf ( "%d" , &amp; T ) ; for ( int z = 1 ; z &lt;= T ; z ++ ) &#123; solve ( ) , s.clear ( ) ; &#125; return 0 ;&#125; 只是抄了一遍你谷第一篇题解但是收获真的很大 收获逆元求法1inline ll inv ( ll a , ll p ) &#123; a %= p ; ll x ; ll y ; exgcd ( a , p , x , y ) ; return ( x % p + p ) % p ; &#125; 拓展中国剩余定理[dalao的博客推柿子](https://www.cnblogs.com/zwfymqz/p/8425731.html） 奇妙的一个操作直接可以套进去求最小简直碉堡了 思想大胆推柿子实在不行找表上的样例，条件拿部分分某dalao这道题直接水可以水到40分]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+        <tag>拓展中国剩余定理</tag>
+        <tag>muliset</tag>
+        <tag>逆元</tag>
+        <tag>NOI/省选-</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[拓展卢卡斯定理学习笔记]]></title>
@@ -18,12 +40,12 @@
         <category>代码</category>
       </categories>
       <tags>
-        <tag>中国剩余定理</tag>
         <tag>数论</tag>
-        <tag>拓展欧几里得</tag>
+        <tag>中国剩余定理</tag>
         <tag>拓展卢卡斯定理</tag>
         <tag>矩阵乘法</tag>
         <tag>KMP</tag>
+        <tag>拓展欧几里得</tag>
       </tags>
   </entry>
   <entry>
@@ -34,8 +56,8 @@
         <category>代码</category>
       </categories>
       <tags>
-        <tag>中国剩余定理</tag>
         <tag>数论</tag>
+        <tag>中国剩余定理</tag>
         <tag>拓展欧几里得</tag>
       </tags>
   </entry>
@@ -93,8 +115,8 @@
         <category>代码</category>
       </categories>
       <tags>
-        <tag>同余</tag>
         <tag>中国剩余定理</tag>
+        <tag>同余</tag>
         <tag>欧拉定理</tag>
         <tag>扩展欧几里得</tag>
       </tags>
