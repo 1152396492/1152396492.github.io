@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="概率,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前言0我们绝大多数人都是依靠自己的感觉做出决定或者对某些事物做出评判。但事实上，人的感觉是非常不靠谱的，如果完全依靠自己的感觉做出决策或进行判断，最终往往会被自己的感觉所欺骗。比如在做理综题的时候接下来就借用三门问题，来谈谈我们的感觉在有些情况下是多么的不靠谱。 前言1已经写不完作业了，不如看番吧点开终物语，14:30我绝对没有在安利番剧 什么是三门问题三门问题（Monty Hall proble">
+<meta name="keywords" content="概率">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三门问题">
+<meta property="og:url" content="http://yoursite.com/2019/08/27/三门问题/index.html">
+<meta property="og:site_name" content="DS-FLY">
+<meta property="og:description" content="前言0我们绝大多数人都是依靠自己的感觉做出决定或者对某些事物做出评判。但事实上，人的感觉是非常不靠谱的，如果完全依靠自己的感觉做出决策或进行判断，最终往往会被自己的感觉所欺骗。比如在做理综题的时候接下来就借用三门问题，来谈谈我们的感觉在有些情况下是多么的不靠谱。 前言1已经写不完作业了，不如看番吧点开终物语，14:30我绝对没有在安利番剧 什么是三门问题三门问题（Monty Hall proble">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g5qvrjhcyjj310n0m4jx3.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/006tNc79gy1g5q9uomrt6j31hc0u0tn4.jpg">
+<meta property="og:updated_time" content="2019-08-27T13:22:03.704Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="三门问题">
+<meta name="twitter:description" content="前言0我们绝大多数人都是依靠自己的感觉做出决定或者对某些事物做出评判。但事实上，人的感觉是非常不靠谱的，如果完全依靠自己的感觉做出决策或进行判断，最终往往会被自己的感觉所欺骗。比如在做理综题的时候接下来就借用三门问题，来谈谈我们的感觉在有些情况下是多么的不靠谱。 前言1已经写不完作业了，不如看番吧点开终物语，14:30我绝对没有在安利番剧 什么是三门问题三门问题（Monty Hall proble">
+<meta name="twitter:image" content="http://ww4.sinaimg.cn/large/006tNc79gy1g5qvrjhcyjj310n0m4jx3.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/27/三门问题/">
+
+
+
+
+
+  <title>三门问题 | DS-FLY</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DS-FLY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">暑假每天A5题</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-favorite">
+          <a href="/favorite/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            favorite
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/三门问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">三门问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-27T18:25:03+08:00">
+                2019-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/生活/" itemprop="url" rel="index">
+                    <span itemprop="name">生活</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言0"><a href="#前言0" class="headerlink" title="前言0"></a>前言0</h2><p>我们绝大多数人都是依靠自己的感觉做出决定或者对某些事物做出评判。<br>但事实上，人的感觉是非常不靠谱的，如果完全依靠自己的感觉做出决策或进行判断，最终往往会被自己的感觉所欺骗。<br><del>比如在做理综题的时候</del><br>接下来就借用三门问题，来谈谈我们的感觉在有些情况下是多么的不靠谱。</p>
+<h2 id="前言1"><a href="#前言1" class="headerlink" title="前言1"></a>前言1</h2><p><del>已经写不完作业了，不如看番吧</del><br>点开<a href="https://www.bilibili.com/bangumi/play/ep72072?from=search&seid=4948104384750079715" target="_blank" rel="noopener">终物语，14:30</a><br><del>我绝对没有在安利番剧</del></p>
+<h2 id="什么是三门问题"><a href="#什么是三门问题" class="headerlink" title="什么是三门问题"></a>什么是三门问题</h2><p>三门问题（Monty Hall problem）亦称为蒙提霍尔问题、蒙特霍问题或蒙提霍尔悖论，大致出自美国的电视游戏节目Let’s Make a Deal。问题名字来自该节目的主持人蒙提·霍尔（Monty Hall）。<br>“假设你正在参加一个游戏节目，你被要求在三扇门中选择一扇：其中一扇后面有一辆车；其余两扇后面则是山羊。你选择了一道门，假设是一号门，然后<strong>知道门后面有什么的主持人</strong>，开启了另一扇后面有山羊的门，假设是三号门。他然后问你：“你想选择二号门吗？”<strong>转换你的选择</strong>对你来说是一种优势吗？”<br>我们可以将问题给增加点难度<br><strong>换和不换的获胜概率分别为多？</strong></p>
+<h2 id="改变与不改变"><a href="#改变与不改变" class="headerlink" title="改变与不改变"></a>改变与不改变</h2><p>对于这个问题，基本上大家都会分成两派，一派认为不需要改变选择；而另一派认为需要改变选择。<br>首先，认为不需要改变选择的这一派人的逻辑非常简单：A、B、C三道门背后有车的概率已经是确定的，也就是三分之一，而刚才打开B门的这个动作，并不会改变A门和C门背后有车的概率，所以无需改变选择。<br>也就是：改不改选的命中率是一样的，选择前A、B、C的命中率是三分之一，哪怕在最初一开始选择之前，告诉你B没中也是一样的<br>而认为需要改变选择这一派人的理由也非常简单：一开始有三个门，那么每扇门背后有车的概率是三分之一，而现在只有两扇门，那么改变选择，选中车的概率不就变成了二分之一吗？当然对于这个理由，认为不应该改变选择的那一派人可以马上找到理由进行反驳，因为在裁判打开B门后，只剩下了A、C两道门，所以C门背后有车的概率也会从三分之一自动上升到了二分之一，所以无论是否改变，对最终的获得车的概率都是一样一样的。<br><del>最后我们会发现，两种解释都在扯淡</del><br>那么最终的答案是什么呢，换获胜的概率是三分之二，不换是三分之一</p>
+<h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>现在已经有很多人知道了这个结论，好像也是概率论例题，并且也就觉得这题不过如此，很简单，很容易理解。可是在当时这个三门问题在刚被提出的时候引起了相当大的关注</p>
+<p>这里介绍一个人物</p>
+<h3 id="玛丽莲·沃斯·莎凡特"><a href="#玛丽莲·沃斯·莎凡特" class="headerlink" title="玛丽莲·沃斯·莎凡特"></a>玛丽莲·沃斯·莎凡特</h3><p>（Marilyn vos Savant，1946年8月11日－）是截至目前（2008年）为止吉尼斯世界纪录所认定拥有最高智商（IQ）的人类及女性。她于1946年出生于美国密苏里州的圣路易斯，在刚满10岁的1956年9月时初次接受斯坦福-比奈智商测验，测得智商高达228 。后来数十年间陆陆续续接受数次智力测试， 最高达到243。<br>这位著名的高智商学者，最聪明的人类，在她的专栏的回答改选会更有优势，<br>她认为换获胜的概率是三分之二，不换是三分之一</p>
+<blockquote>
+</blockquote>
+<p>Yes; you should switch. The first door has a 1/3 chance of winning, but the second door has a 2/3 chance. Here’s a good way to visualize what happened. Suppose there are a million doors, and you pick door #1. Then the host, who knows what’s behind the doors and will always avoid the one with the prize, opens them all except door #777,777. You’d switch to that door pretty fast, wouldn’t you?<br>是的，你应该换。你第一次选的门只有1/3胜率，但是剩下的另一扇门却有2/3的机会。所以你应该立马选择另一扇门，不是么？</p>
+<blockquote>
+</blockquote>
+<p>其实不光是现在的部分读者会觉得这个答案奇怪且荒谬，当时莎凡特的回答在美国也是引起了激烈的争议，甚至于一些批评和人身攻击：<br>当时人们非莎凡特寄来了数千封抱怨信，很多寄信人都是<strong>具备一定文化水平的老师或学者</strong>，不少人对此猛烈批评，甚至使用了十分过激的攻击字眼。<br>比如一位来自佛罗里达大学的读者写道：“这个国家已经有够多的数学文盲了，我们不想再有个世界上智商最高的人来充数！真让人羞愧！”<br>另一个人阴阳怪气地对她嘲讽道：“我看你就是那只山羊！”<br>美国陆军研究所的工作人员埃弗雷特·哈曼写道，“如果连博士（莎凡特）都会犯这种错误，我看这个美国马上要陷入严重的灾难中了。”<br>因为直觉告诉这些写信的人们：如果被打开的门后什么都没有，这个信息会改变剩余的两种选择的概率，哪一种都只能是1/2。<br>经过统计，持有上述这种观点的大约有十分之一是来自数学或科学研究机构，有的人甚至有博士学位。<br>还有大批报纸专栏作家也开始加入了声讨莎凡特的行列。</p>
+<p>在我看来天才遇到秀才是远可怕于秀才遇到兵的。<br>自以为是的愚民对拥有正确答案的人带来的毁灭是巨大的。<br>在现实中举个例子<br><a href="https://www.bilibili.com/video/av54674402?from=search&seid=8911676543477182277" target="_blank" rel="noopener">卢本伟他真的没有开挂</a><br><del>你们的实锤打脸吧</del></p>
+<p>回到原问题<br>在这种情况下，莎凡特选择向全国的读者和粉丝求救，后来有数万名学生进行了模拟试验。一个星期后，实验结果从全国各地反馈回来，经过莎凡特的统计得出，结论就是2/3和1/3。<br>例如根据福尔曼大学的埃勒维兹·鲁迪的反馈，因为数学课上的大部分老师认为莎凡特是错误的。于是25名老师带着学生们去中学做了大量实验，得到了1480个样本，最后却证明了莎凡特是正确的，即应该换门。</p>
+<h2 id="那么1-3和2-3究竟是怎么来的呢？"><a href="#那么1-3和2-3究竟是怎么来的呢？" class="headerlink" title="那么1/3和2/3究竟是怎么来的呢？"></a>那么1/3和2/3究竟是怎么来的呢？</h2><p>那就是有一个十分重要隐藏条件：<br>显然，作为知道答案的主持人，不可能选择开启有车的门。所以他永远都会挑一扇有山羊的门，也就是说主持人选择开启其中一扇门时，他的选择并不是一个纯随机事件。<br>那么有以下推论。<br>如果参赛者选择了一扇有山羊的门，主持人必须挑另一扇有山羊的门。<br>如果参赛者选择了一扇有跑车的门，主持人随机在另外两扇门中挑一扇有山羊的门。<br>我们可以遍历所有可能性，那么假设参赛者选择1号门，那么如下图所示，存在3中等可能情形：<br>参赛者选择汽车 主持人选择山羊甲 转换失败<br>参赛者选择山羊甲 主持人选择山羊乙转换成功<br>参赛者选择山羊乙 主持人选择山羊甲 转换成功<br>可见转换选择后的成功概率就是2/3.</p>
+<p><del>这么简单明了的结论，本苣蒻居然想了1个月</del></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>妄下断言是不对的，有些时候，我们人类的感觉真的很不靠谱<br>王小波曾经说过</p>
+<blockquote>
+</blockquote>
+<p>人活在世界上，不可以有偏差；而且多少要费点劲，才能把自己保持在理性的轨道上</p>
+<blockquote>
+</blockquote>
+<p>保持理性，看见别人看不见的东西，还是很难与痛苦的。</p>
+<p>首位呼应：<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g5qvrjhcyjj310n0m4jx3.jpg" alt><br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g5q9uomrt6j31hc0u0tn4.jpg" alt></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/概率/" rel="tag"># 概率</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/08/互不侵犯/" rel="next" title="互不侵犯">
+                <i class="fa fa-chevron-left"></i> 互不侵犯
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg" alt="lishu">
+            
+              <p class="site-author-name" itemprop="name">lishu</p>
+              <p class="site-description motion-element" itemprop="description">ガヴリールが1人 zzz~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言0"><span class="nav-number">1.</span> <span class="nav-text">前言0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前言1"><span class="nav-number">2.</span> <span class="nav-text">前言1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是三门问题"><span class="nav-number">3.</span> <span class="nav-text">什么是三门问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变与不改变"><span class="nav-number">4.</span> <span class="nav-text">改变与不改变</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#历史"><span class="nav-number">5.</span> <span class="nav-text">历史</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#玛丽莲·沃斯·莎凡特"><span class="nav-number">5.1.</span> <span class="nav-text">玛丽莲·沃斯·莎凡特</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#那么1-3和2-3究竟是怎么来的呢？"><span class="nav-number">6.</span> <span class="nav-text">那么1/3和2/3究竟是怎么来的呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by DS-FLY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
