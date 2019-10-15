@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="DS-FLY">
 <meta property="og:description" content="按位与、或、非、异或总结 按位与操作 0&amp;amp;0=0; 0&amp;amp;1=0; 1&amp;amp;0=0; 1&amp;amp;1=1即只有1&amp;amp;1为1与运算”的特殊用途：（1）清零。如果想将一个单元清零，即使其全部二进制位为0，只要与一个各位都为零的数值相与，结果为零。（2）取一个数中指定位方法：找一个数，对应X要取的位，该数的对应位为1，其余位为零，此数与X进行“与运算”可以得到X中的指定位。 按位">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-10T13:59:02.713Z">
+<meta property="og:updated_time" content="2019-10-14T08:32:08.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初赛资料">
 <meta name="twitter:description" content="按位与、或、非、异或总结 按位与操作 0&amp;amp;0=0; 0&amp;amp;1=0; 1&amp;amp;0=0; 1&amp;amp;1=1即只有1&amp;amp;1为1与运算”的特殊用途：（1）清零。如果想将一个单元清零，即使其全部二进制位为0，只要与一个各位都为零的数值相与，结果为零。（2）取一个数中指定位方法：找一个数，对应X要取的位，该数的对应位为1，其余位为零，此数与X进行“与运算”可以得到X中的指定位。 按位">
@@ -392,6 +392,18 @@
 <p>APIO：:IOI2006期间，部分亚洲与太平洋地区参赛团领队在多次领队会协商的基础上，经IOI主席、IOI国际委员会与科学委员会批准决定从2007年开始举办该项赛事。</p>
 <h2 id="2018-T17"><a href="#2018-T17" class="headerlink" title="2018 T17"></a>2018 T17</h2><p>方程 a * b = (a or b) * (a and b)，在 a, b 都取 [0, 31] 中的整数时，共有__ 组解。（ * 表示乘法；or 表示按位或运算；and 表示按位与运算）</p>
 <p>0~31就是5位二进制数<br>然后，满足这个等式的a,b两数满足如下关系：一个数中是1的位，在另一个数中也都是1<br>举例：3和7，分别是00011和00111，3的两位1在7中也是1；3和5，分别是00011和00101，就不满足这个关系<br>然后，我们只要根据其中一个数中1的位数进行分类，用组合数求出每一类的个数，然后乘以每一类对应的满足关系的数字个数，就可以得到结果<br>比如：有1位1的数，有C(5,1)=5个，对应的满足关系的数有两种情况：这一位是1，另外4位任意，有2^4=16个；另外4位是0，这一位任意，有2^1=2个；再减去重复计算的两数相等的1种情况；最终得到这类数字对应的满足等式的数字对有C(5,1) * (16+2-1)=85个<br>以下是完整的计算式：<br>C(5,0) * (32+1-1)+C(5,1) * (16+2-1)+C(5,2) * (8+4-1)+C(5,3) * (4+8-1)+C(5,4) * (2+16-1)+C(5,5) * (1+32-1)</p>
+<ol start="8">
+<li>由四个不同的点构成的简单无向连通图的个数是( )。</li>
+</ol>
+<p>A. 32 B. 35 C. 38D. 41</p>
+<p>C</p>
+<p>4个不同点构成简单无向连通图，最多有4 * （4-1）/2=6 条边（强联通图），最少有4-1=3 条边（树），但注意，不是所有的任选3条边都满足条件，有一种情况是三个点形成一个三角形而孤立一个点，这种情况共有4种</p>
+<p>所以 ans=C（6，3）-4+C（6，4）+C（6，5）+C（6，6）=38</p>
+<h2 id="隔板法"><a href="#隔板法" class="headerlink" title="隔板法"></a>隔板法</h2><p>在n个元素间的n-1个空插入k个板，把元素分成k+1组<br>每个组至少分得一个元素，元素一样组别相异</p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>插入排序：<br>average：n^2<br>good:n<br>bad:n^2</p>
+<p>希尔排序：<br>average: n^1.3<br>bad:n^2</p>
+<p>选择排序：<br>average = good = bad = n^2</p>
+<p>冒泡排序：<br>good:n<br>bad:n^2<br>average：n^2<br>快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要Ο(n log n)次比较。在最坏状况下则需要Ο(n2)次比较，但这种状况并不常见。事实上，快速排序通常明显比其他Ο(n log n) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
 
       
     </div>
@@ -513,7 +525,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -568,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#按位与、或、非、异或总结"><span class="nav-number">1.</span> <span class="nav-text">按位与、或、非、异或总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU"><span class="nav-number">2.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉图"><span class="nav-number">3.</span> <span class="nav-text">欧拉图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU的组成"><span class="nav-number">4.</span> <span class="nav-text">CPU的组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#∧-∨"><span class="nav-number">5.</span> <span class="nav-text">∧ ∨</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">6.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历"><span class="nav-number">7.</span> <span class="nav-text">遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中根遍历"><span class="nav-number">7.1.</span> <span class="nav-text">中根遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前序遍历"><span class="nav-number">7.2.</span> <span class="nav-text">前序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后根遍历"><span class="nav-number">7.3.</span> <span class="nav-text">后根遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存换算"><span class="nav-number">8.</span> <span class="nav-text">内存换算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后缀，中缀，前缀转换"><span class="nav-number">9.</span> <span class="nav-text">后缀，中缀，前缀转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-T17"><span class="nav-number">10.</span> <span class="nav-text">2018 T17</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#按位与、或、非、异或总结"><span class="nav-number">1.</span> <span class="nav-text">按位与、或、非、异或总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU"><span class="nav-number">2.</span> <span class="nav-text">CPU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#欧拉图"><span class="nav-number">3.</span> <span class="nav-text">欧拉图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU的组成"><span class="nav-number">4.</span> <span class="nav-text">CPU的组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#∧-∨"><span class="nav-number">5.</span> <span class="nav-text">∧ ∨</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库"><span class="nav-number">6.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历"><span class="nav-number">7.</span> <span class="nav-text">遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中根遍历"><span class="nav-number">7.1.</span> <span class="nav-text">中根遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前序遍历"><span class="nav-number">7.2.</span> <span class="nav-text">前序遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后根遍历"><span class="nav-number">7.3.</span> <span class="nav-text">后根遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存换算"><span class="nav-number">8.</span> <span class="nav-text">内存换算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后缀，中缀，前缀转换"><span class="nav-number">9.</span> <span class="nav-text">后缀，中缀，前缀转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-T17"><span class="nav-number">10.</span> <span class="nav-text">2018 T17</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隔板法"><span class="nav-number">11.</span> <span class="nav-text">隔板法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序"><span class="nav-number">12.</span> <span class="nav-text">排序</span></a></li></ol></div>
             
 
           </div>
