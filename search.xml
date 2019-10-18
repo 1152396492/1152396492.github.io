@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[NOIP2014T21]]></title>
+    <url>%2F2019%2F10%2F18%2FNOIP2014T21%2F</url>
+    <content type="text"><![CDATA[有数字1,1,2,4,8,8所组成的不同的四位数的个数是 _ _ _ _ _ . 网上很多解答不是打胡乱说，就是看不懂。自己问了老师，私下琢磨了下终于看懂了，尽量清晰的说一下 首先要理解一个公式不全相异的元素的排列如果在n个元素中，有n1个元素彼此相同，有n2个元素彼此相同。。。。有nm个元素彼此相同，并且n1+n2+。。。+nm=n，则这n个元素的权排列叫做不全相异元素的全排列。其公式为：n!/(n1! * n2! * … * nm! ) 那么针对这道题中1，1，2，4的排列数是多少呢4!/2!=12那么1、1、2、8；1、1、4、8；1、2、8、8；1、4、8、8；2、4、8、8都与1、1、2、4的排列数相同一共有12 * 6 = 72种 1、1、8、8这种情况4!/(2! * 2!) = 6 ; 现在有相同元素的弄完了剩下的都很好算了 A(P)(n,m) = n!/(n-m)!(n个不同元素取m个排成一列C(n,m)=A(m,n)/(A(m,m))=n!/(m!(n-m)!)(从n个不同元素取m个的组合个数 1、2、4、8这种情况直接A(4,4)=24 累加起来72+6+24=102这道题就解决了 补充一个没有提到的：循环排列（circular permutation）亦称圆排列、环排列等。是排列的一种，指从n个不同元素中取出m（1≤m≤n）个不同的元素排列成一个环形，既无头也无尾。两个循环排列相同当且仅当所取元素的个数相同并且元素取法一直，在环上的排列顺序一致。 ——百度百科方案数为A(n,m)/m=n!/(m(n-m)!)]]></content>
+      <categories>
+        <category>代码</category>
+      </categories>
+      <tags>
+        <tag>初赛</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[运输计划]]></title>
     <url>%2F2019%2F10%2F15%2F%E8%BF%90%E8%BE%93%E8%AE%A1%E5%88%92%2F</url>
     <content type="text"><![CDATA[第一次凭自己的本事A掉紫题，而且一遍过样例，两遍过评测感觉自己屌爆了有木有。。。题目大意是对于一棵树，更改一条边的权值为0，使得更改后的多条路径最大值为最小最大值最小，显然是二分啊。但貌似树链剖分也能做树剖打下来就比较久，还是写LCA吧某竞赛教练说近些年NOIP喜欢考树上乱搞让我们开心的来乱搞吧！ 树上差分：如果是点的话，路径两头++，LCA++，LCA的papa ++如果是边，路径两头++，LCA+=2求和从根遍历加就好了 思路对于本题枚举最小值，把超过的路径拿出来，树上差分找公共边，如果一条边删去后成立且饱含在所有路径中，那么这个限制是成立的成立后我们继续二分答案就好了 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081#include&lt;cstdio&gt;#include&lt;cstring&gt;#include&lt;algorithm&gt;#include&lt;iostream&gt;#include&lt;cmath&gt;using namespace std ;const int maxn = 300005 ;int n , m ;int lca[maxn] , dis[maxn][20] , head[maxn&lt;&lt;1] , to[maxn&lt;&lt;1] , val[maxn&lt;&lt;1] , nex[maxn&lt;&lt;1] , cnt = 0 ;int father[maxn][20] , dep[maxn] , power[maxn] ;int L , R , mid , tot = 0 , Max = 0 ; int pd ;struct M &#123; int len , x , y ; int lca ;&#125; t[maxn&lt;&lt;1] ;void add ( int x , int y , int z ) &#123; nex[++cnt] = head[x] ; head[x] = cnt ; to[cnt] = y ; val[cnt] = z ; &#125;void dfs ( int x , int fa , int depth , int v ) &#123; father[x][0] = fa ; dep[x] = depth ; dis[x][0] = v ; for ( int i = 1 ; i &lt;= 19 ; i ++ ) father[x][i] = father[father[x][i-1]][i-1] , dis[x][i] = dis[x][i-1] + dis[father[x][i-1]][i-1] ; for ( int i = head[x] ; i ; i = nex[i] ) &#123; if ( to[i] != fa ) dfs ( to[i] , x , depth + 1 , val[i] ) ; &#125;&#125;int LCA ( int x , int y ) &#123; if ( dep[x] &lt; dep[y] ) swap ( x , y ) ; for ( int i = 19 ; i &gt;= 0 ; i -- ) &#123; if ( dep[x] - ( 1 &lt;&lt; i ) &gt;= dep[y] ) x = father[x][i] ; &#125; if ( x == y ) return x ; for ( int i = 19 ; i &gt;= 0 ; i -- ) if ( father[x][i] != father[y][i] ) x = father[x][i] , y = father[y][i] ; return father[x][0] ;&#125;void dfs2 ( int x , int fa , int limit ) &#123; for ( int i = head[x] ; i ; i = nex[i] ) &#123; if ( to[i] != fa )&#123; dfs2 ( to[i] , x , limit ) ; power[x] += power[to[i]] ; &#125; &#125; if ( power[x] == tot &amp;&amp; dis[x][0] + limit &gt;= Max ) pd = 1 ;&#125;bool check ( int limit ) &#123; memset ( power , 0 , sizeof ( power ) ) ; tot = 0 ; pd = 0 ; for ( int i = 1 ; i &lt;= m ; i ++ ) &#123; if ( t[i].len &gt; limit ) &#123; power[t[i].x] ++ , power[t[i].y] ++ , power[t[i].lca] -= 2 ; tot ++ ; &#125; &#125; dfs2 ( 1 , 0 , limit ) ; return pd ;&#125;int main ( ) &#123; scanf ( "%d%d" , &amp; n , &amp; m ) ; for ( int i = 1 ; i &lt; n ; i ++ ) &#123; int x , y , z ; scanf ( "%d%d%d" , &amp; x , &amp; y , &amp; z ) ; add ( x , y , z ) , add ( y , x , z ) ; L = max ( L , z ) ; &#125; dfs ( 1 , 0 , 1 , 0 ) ; for ( int i = 1 ; i &lt;= m ; i ++ ) &#123; scanf ( "%d%d" , &amp; t[i].x , &amp; t[i].y ) ; t[i].lca = LCA ( t[i].x , t[i].y ) ; t[i].len = dis[t[i].x][19] + dis[t[i].y][19] - 2 * dis[t[i].lca][19] ; R = max ( R , t[i].len ) ; Max = R ; &#125; int ans = 0 ; while ( L &lt;= R ) &#123; int mid = ( L + R ) &gt;&gt; 1 ; if ( check ( mid ) ) R = mid - 1 , ans = mid ; else L = mid + 1 ; &#125; printf ( "%d" , ans ) ;&#125; 阳炎project真好看]]></content>
@@ -374,8 +385,8 @@
         <category>代码</category>
       </categories>
       <tags>
-        <tag>省选/NOI-</tag>
         <tag>最短路</tag>
+        <tag>省选/NOI-</tag>
         <tag>分层图</tag>
         <tag>代码</tag>
       </tags>
