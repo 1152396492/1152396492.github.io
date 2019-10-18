@@ -91,7 +91,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g80c9w4141j31400fegqa.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g80c9yj0v8j31400l9qaf.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/006y8mN6gy1g81ji889naj30ks0abjsh.jpg">
-<meta property="og:updated_time" content="2019-10-18T06:35:17.277Z">
+<meta property="og:updated_time" content="2019-10-18T08:28:47.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初赛资料">
 <meta name="twitter:description" content="按位与、或、非、异或总结 按位与操作 0&amp;amp;0=0; 0&amp;amp;1=0; 1&amp;amp;0=0; 1&amp;amp;1=1即只有1&amp;amp;1为1与运算”的特殊用途：（1）清零。如果想将一个单元清零，即使其全部二进制位为0，只要与一个各位都为零的数值相与，结果为零。（2）取一个数中指定位方法：找一个数，对应X要取的位，该数的对应位为1，其余位为零，此数与X进行“与运算”可以得到X中的指定位。 按位">
@@ -413,10 +413,10 @@
 <p>冒泡排序：<br>good:n<br>bad:n^2<br>average：n^2<br>快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要Ο(n log n)次比较。在最坏状况下则需要Ο(n2)次比较，但这种状况并不常见。事实上，快速排序通常明显比其他Ο(n log n) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
 <h2 id="汉字"><a href="#汉字" class="headerlink" title="汉字"></a>汉字</h2><p>一个汉字占2字节<br>一个字母占1字节<br>一个数字占8字节</p>
 <h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>尾指针==头指针为空</p>
-<h2 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h2><h3 id="floyed："><a href="#floyed：" class="headerlink" title="floyed："></a>floyed：</h3><p>珂以计算图中任意两点间的最短路径，适用于出现负边权的情况</p>
-<h3 id="dijkstra"><a href="#dijkstra" class="headerlink" title="dijkstra"></a>dijkstra</h3><p>只能计算起点只有一个的情况<br>不能处理负边权的情况<br>B. 当图中不存在负权环但是存在负权边，Dijkstra算法一定不能求最短路，这是错的，可以求部分</p>
-<h3 id="bellman-ford"><a href="#bellman-ford" class="headerlink" title="bellman-ford"></a>bellman-ford</h3><p>处理负边权，不能处理负权回路<br>负权回路：边权之和为负数的一条回路</p>
-<h3 id="SPFA"><a href="#SPFA" class="headerlink" title="SPFA"></a>SPFA</h3><p>类似于bellman-ford</p>
+<h2 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h2><h3 id="floyed："><a href="#floyed：" class="headerlink" title="floyed："></a>floyed：</h3><p>珂以计算图中任意两点间的最短路径，适用于出现负边权的情况<br>n^3</p>
+<h3 id="dijkstra"><a href="#dijkstra" class="headerlink" title="dijkstra"></a>dijkstra</h3><p>只能计算起点只有一个的情况<br>不能处理负边权的情况<br>B. 当图中不存在负权环但是存在负权边，Dijkstra算法一定不能求最短路，这是错的，可以求部分<br>朴素:n^2<br>优化:((n+m)logm)) </p>
+<h3 id="bellman-ford"><a href="#bellman-ford" class="headerlink" title="bellman-ford"></a>bellman-ford</h3><p>处理负边权，不能处理负权回路<br>负权回路：边权之和为负数的一条回路<br>n * m</p>
+<h3 id="SPFA"><a href="#SPFA" class="headerlink" title="SPFA"></a>SPFA</h3><p>类似于bellman-ford<br>kE &amp; n * m</p>
 <h2 id="汉诺塔"><a href="#汉诺塔" class="headerlink" title="汉诺塔"></a>汉诺塔</h2><p>法国数学家爱德华·卢卡斯曾编写过一个印度的古老传说：在世界中心贝拿勒斯（在印度北部）的圣庙里，一块黄铜板上插着三根宝石针。印度教的主神梵天在创造世界的时候，在其中一根针上从下到上地穿好了由大到小的64片金片，这就是所谓的汉诺塔。不论白天黑夜，总有一个僧侣在按照下面的法则移动这些金片：一次只移动一片，不管在哪根针上，小片必须在大片上面。僧侣们预言，当所有的金片都从梵天穿好的那根针上移到另外一根针上时，世界就将在一声霹雳中消灭，而梵塔、庙宇和众生也都将同归于尽。 [2]<br>不管这个传说的可信度有多大，如果考虑一下把64片金片，由一根针上移到另一根针上，并且始终保持上小下大的顺序。这需要多少次移动呢?这里需要递归的方法。假设有n片，移动次数是f(n).显然f(1)=1,f(2)=3,f(3)=7，且f(k+1)=2 * f(k)+1。此后不难证明f(n)=2^n-1。n=64时，<br>假如每秒钟一次，共需多长时间呢？一个平年365天有31536000 秒，闰年366天有31622400秒，平均每年31556952秒，计算一下：<br>18446744073709551615秒<br>这表明移完这些金片需要5845.54亿年以上，而地球存在至今不过45亿年，太阳系的预期寿命据说也就是数百亿年。真的过了5845.54亿年，不说太阳系和银河系，至少地球上的一切生命，连同梵塔、庙宇等，都早已经灰飞烟灭。</p>
 <h2 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h2><p>又称卡塔兰数，英文名Catalan number，是组合数学中一个常出现在各种计数问题中出现的数列。以比利时的数学家欧仁·查理·卡塔兰 (1814–1894)的名字来命名，其前几项为（从第零项开始） : 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, 208012, 742900, 2674440, 9694845, 35357670, 129644790, 477638700, 1767263190, 6564120420, 24466267020, 91482563640, 343059613650, 1289904147324, 4861946401452, …<br>可解决问题：</p>
 <p>1.n个节点二叉树有多少种形态？</p>
@@ -469,7 +469,14 @@
 <h2 id="完全图"><a href="#完全图" class="headerlink" title="完全图"></a>完全图</h2><p>若一个图的每一对不同顶点恰有一条边相连，则称为完全图。完全图是每对顶点之间都恰连有一条边的简单图。n个端点的完全图有n个端点及n(n − 1) / 2条边，B显然是不可以的；</p>
 <h2 id="others"><a href="#others" class="headerlink" title="others:"></a>others:</h2><p>4) 华人学者目前仅有2000年图灵奖得主姚期智先生(对)<br>6) ENIAC是世界上第一台通用计算机(对)<br>byte是计算机的基本存储单位<br>计算机中最小的存储单位是bit<br>面向对象语言:C++等。面向过程语言:C/Pascal/Basic 等<br>RAM:Random，随机存储器，断电数据丢失。ROM:Read Only，只读存储器，断电数据保留，硬盘是 ROM<br>目前最快的计算机是“顶点”，它的运算速度在每秒 20 亿亿次的浮点运算速度峰值<br>FTP(File Transfer Protocol，文件传输协议)可以用于电脑之间传输文件。</p>
 <p>世界上第一台通用计算机 ENIAC 诞生于( B )<br>A. 1943年 B. 1946年 C. 1949年 D. 1950年<br>解析:Windows 操作系统下可执行文件的默认扩展名是 exe，如 C++程序编译产生的可执行文件就是.exe。但是 Linux 里面扩展名没有实际意义</p>
-<p>递归过程或函数调用时，处理参数和返回地址，通常使用一种称为( )的数据结构。<br>A. 队列<br>B. 多维数组<br>C. 线性表<br>D. 栈 解析:大家都知道递归是用栈实现的，大家写深搜的时候老师应该有提过非递归实现其实也是借助了栈的，所以先 D。</p>
+<p>递归过程或函数调用时，处理参数和返回地址，通常使用一种称为( )的数据结构。<br>A. 队列<br>B. 多维数组<br>C. 线性表<br>D. 栈 解析:大家都知道递归是用栈实现的，大家写深搜的时候老师应该有提过非递归实现其实也是借助了栈的，所以先 D。<br>1948 年,( 克劳德·艾尔伍德·香农（Claude Elwood Shannon）)将热力学中的熵引入信息通信领域,标志着信息论研究的开端.</p>
+<ol start="12">
+<li>（ ）是一种通用的字符编码，它为世界上绝大部分语言设定了统一并且唯一的二进  制编码，以满足跨语言、跨平台的文本交换。目前它已经收录了超过十万个不同字符。    </li>
+</ol>
+<p>A. ASCII B. Unicode C. GBK 2312 D. BIG5      </p>
+<p>B</p>
+<p>又到了一年一度拼人品的时候了=w=，不过显然A是不选的</p>
+<p>Unicode（统一码、万国码、单一码）是计算机科学领域里的一项业界标准,包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。1990年开始研发，1994年正式公布。</p>
 
       
     </div>

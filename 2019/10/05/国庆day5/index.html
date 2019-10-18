@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="逆元,背包,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="ガヴリールが1人 zzz~">
+<meta name="description" content="for ( int i = 0 ; i &amp;lt;= 10005 ; i ++ ) C[i][0] = 1 ; for ( int i = 1 ; i &amp;lt;= 10005 ; i ++ ) {     for ( int j = 1 ; j &amp;lt;= i ; j ++ ) {         C[i][j] = ( C[i-1][j-1] + C[i-1][j] ) % mod ;     }">
+<meta name="keywords" content="逆元,背包">
 <meta property="og:type" content="article">
 <meta property="og:title" content="国庆day5">
 <meta property="og:url" content="http://yoursite.com/2019/10/05/国庆day5/index.html">
 <meta property="og:site_name" content="DS-FLY">
-<meta property="og:description" content="ガヴリールが1人 zzz~">
+<meta property="og:description" content="for ( int i = 0 ; i &amp;lt;= 10005 ; i ++ ) C[i][0] = 1 ; for ( int i = 1 ; i &amp;lt;= 10005 ; i ++ ) {     for ( int j = 1 ; j &amp;lt;= i ; j ++ ) {         C[i][j] = ( C[i-1][j-1] + C[i-1][j] ) % mod ;     }">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-05T04:32:23.962Z">
+<meta property="og:updated_time" content="2019-10-18T06:50:00.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="国庆day5">
-<meta name="twitter:description" content="ガヴリールが1人 zzz~">
+<meta name="twitter:description" content="for ( int i = 0 ; i &amp;lt;= 10005 ; i ++ ) C[i][0] = 1 ; for ( int i = 1 ; i &amp;lt;= 10005 ; i ++ ) {     for ( int j = 1 ; j &amp;lt;= i ; j ++ ) {         C[i][j] = ( C[i-1][j-1] + C[i-1][j] ) % mod ;     }">
 
 
 
@@ -339,7 +340,61 @@
       
 
       
-        
+        <pre><code>for ( int i = 0 ; i &lt;= 10005 ; i ++ )
+C[i][0] = 1 ;
+for ( int i = 1 ; i &lt;= 10005 ; i ++ ) {
+    for ( int j = 1 ; j &lt;= i ; j ++ ) {
+        C[i][j] = ( C[i-1][j-1] + C[i-1][j] ) % mod ;
+    }
+}
+
+
+设n是一个质数,那么1到n-1都与n互质，因此1到n-1在模n意义下都有逆元</code></pre><p>1的逆元为1<br>对x(1&lt;x&lt;n)求逆元<br>设a=?n/x?,b=n%x<br>n=a<em>x+b<br>b=-a</em>x
+b^-1b=-b-1<em>a</em>x
+1≡-b-1<em>a</em>x(mod n)<br>-b-1*a即为x的逆元</p>
+<pre><code>inv[1]=1;</code></pre><p>for(i=2;i&lt;=n-1;i++)<br>   inv[i]=(n-inv[n%i]*(n/i)%n)%n;</p>
+<h2 id="01背包"><a href="#01背包" class="headerlink" title="01背包"></a>01背包</h2><p>多种物品,每种物品只有一个.求能获得的最大总价值.</p>
+<p>　我们考虑是否选择第i件物品时,是需要考虑前i-1件物品对答案的贡献的.<br>如果我们不选择第i件物品,那我们就相当于是用i-1件物品,填充了体积为v的背包所得到的最优解.</p>
+<p>　而我们选择第i件物品的时候,我们要得到体积为v的背包,我们需要通过填充用i-1件物品填充得到的体积为v-c[i]的背包得到体积为v的背包.<br>二维：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">	<span class="comment">//顺次逆次都可以</span></span><br><span class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= V ; j ++ ) &#123;</span><br><span class="line">		<span class="keyword">if</span> ( j &gt;= c[i] ) f[i][j] = max ( f[i<span class="number">-1</span>][j] , f[i<span class="number">-1</span>][j-c[i]] + w[i] ) ;</span><br><span class="line">		<span class="keyword">else</span> f[i][j] = f[i<span class="number">-1</span>][j] ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>则,一维的状态转移方程是 f[j]=max(f[j],f[j-c[i]]+w[i]).f[j]=max(f[j],f[j?c[i]]+w[i]).</p>
+<p>容易发现的是,我们的 f[i]只会被i以前的状态影响.</p>
+<p>如果我们顺序枚举,我们的 f[i]可能被前面的状态影响.</p>
+<p>所以我们考虑倒叙枚举,这样我们的 f[i] 不会被i以前的状态影响,而我们更新的话也不会影响其他位置的状态.</p>
+<p>(可以手绘一下这个过程,应该不是很难理解.)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> j = V ; j &gt;= c[i] ; j -- ) &#123;</span><br><span class="line">		f[j] = max ( f[j] , f[j-c[i]] + w[i] ) ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>此类背包问题中,我们的每种物品有无限多个,可重复选取.</p>
+<p>　类似于01背包,我们依旧需要考虑前i-1件物品的影响.</p>
+<p>此时我们依旧可以设得二维状态</p>
+<p>f[i][v]f[i][v] 代表用i件物品填充为体积为v的背包得到的最大价值</p>
+<p>依旧很容易写出状态转移方程</p>
+<p>f[i][v]=max(f[i-1][v],f[i-1][j-k<em>c[i]]+k</em>w[i])f[i][v]=max(f[i-1][v],f[i-1][j-k<em>c[i]]+k</em>w[i])</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//枚举物品</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=V;j++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=V/c[i];k++)<span class="comment">//我们的物品最多只能放多少件.</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(k*c[i]&lt;=j)</span><br><span class="line">                    f[i][j]=max(f[i<span class="number">-1</span>][j],f[i<span class="number">-1</span>][j-k*c[i]]+k*w[i]);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    f[i][j]=f[i<span class="number">-1</span>][j];</span><br><span class="line">                 <span class="comment">//判断条件与01背包相同.</span></span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+
+<p>f[i] 代表体积为i的时候所能得到的最大价值</p>
+<p>与01背包不同的是,我们可以重复选取同一件物品.</p>
+<p>此时,我们就需要考虑到前面i-1件物品中是否有已经选取过(其实没必要</p>
+<p>即,我们当前选取的物品,可能之前已经选取过.我们需要考虑之前物品对答案的贡献.</p>
+<p>因此我们需要顺序枚举.</p>
+<p>与01背包一维的写法类似.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> j = c[i] ; j &lt;= V ; j ++ ) &#123;</span><br><span class="line">		f[j] = max ( f[j] , f[j-c[i]] + w[i] ) ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="多重背包"><a href="#多重背包" class="headerlink" title="多重背包"></a>多重背包</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//枚举物品</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=V;j&gt;=<span class="number">0</span>;j--)<span class="comment">//枚举体积</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=num[i],k++)</span><br><span class="line">            <span class="comment">//这个枚举到num[i]更省心的 qwq</span></span><br><span class="line">            <span class="keyword">if</span>(j-k*c[i]&gt;=<span class="number">0</span>)<span class="comment">//判断能否装下.</span></span><br><span class="line">                f[j]=max(f[j],f[j-k*c[i]]+k*w[i]);</span><br></pre></td></tr></table></figure>
+
+<p>二进制拆分<br>二进制拆分的原理</p>
+<p>二进制拆分的做法</p>
+<p>因为我们的二进制表示法可以表示从 11 到 num[i]num[i] 的所有数,我们对其进行拆分,就得到好多个大物品(这里的大物品代表多个这样的物品打包得到的一个大物品).</p>
+<p>(简单来讲,我们可以用一个大物品代表 1,2,4,8..1,2,4,8.. 件物品的和。)</p>
+<p>而这些大物品又可以根据上面的原理表示出其他不是2的次幂的物品的和.</p>
+<p>因此这样的做法是可行的.</p>
+<p>我们又得到了多个大物品,所以再去跑01背包即可.</p>
+<p>这里只给出拆分部分的代码,相信你可以码出01背包的代码.</p>
+<p>code</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=num[i];j&lt;&lt;=<span class="number">1</span>)</span><br><span class="line">    <span class="comment">//二进制每一位枚举.</span></span><br><span class="line">    <span class="comment">//注意要从小到大拆分</span></span><br><span class="line">    &#123;</span><br><span class="line">        num[i]-=j;<span class="comment">//减去拆分出来的</span></span><br><span class="line">        new_c[++tot]=j*c[i];<span class="comment">//合成一个大的物品的体积</span></span><br><span class="line">        new_w[tot]=j*w[i];<span class="comment">//合成一个大的物品的价值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(num[i])<span class="comment">//判断是否会有余下的部分.</span></span><br><span class="line">    <span class="comment">//就好像我们某一件物品为13,显然拆成二进制为1,2,4.</span></span><br><span class="line">    <span class="comment">//我们余出来的部分为6,所以需要再来一份.</span></span><br><span class="line">    &#123;</span><br><span class="line">        new_c[++tot]=num[i]*c[i];</span><br><span class="line">        new_w[tot]=num[i]*w[i];</span><br><span class="line">        num[i]=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -353,6 +408,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/逆元/" rel="tag"># 逆元</a>
+          
+            <a href="/tags/背包/" rel="tag"># 背包</a>
+          
+        </div>
       
 
       
@@ -427,8 +490,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -490,6 +562,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#01背包"><span class="nav-number">1.</span> <span class="nav-text">01背包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完全背包"><span class="nav-number">2.</span> <span class="nav-text">完全背包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多重背包"><span class="nav-number">3.</span> <span class="nav-text">多重背包</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
