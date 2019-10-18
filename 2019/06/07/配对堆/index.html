@@ -45,6 +45,56 @@
 
 
 
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|16:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
 
 
 
@@ -163,7 +213,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">暑假每天A5题</p>
+        <p class="site-subtitle"></p>
       
   </div>
 
@@ -364,7 +414,7 @@
       
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="——百度百科："><a href="#——百度百科：" class="headerlink" title="——百度百科："></a>——百度百科：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">配对堆是一种实现简单、均摊复杂度优越的堆数据结构，由Michael Fredman、罗伯特·塞奇威克、Daniel Sleator、罗伯特·塔扬于1986年发明。配对堆是一种多叉树，并且可以被认为是一种简化的斐波那契堆。对于实现例如普林姆最小生成树算法等算法，配对堆是一个更优的选择</span><br></pre></td></tr></table></figure>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="——百度百科："><a href="#——百度百科：" class="headerlink" title="——百度百科："></a>——百度百科：</h3><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">配对堆是一种实现简单、均摊复杂度优越的堆数据结构，由Michael Fredman、罗伯特·塞奇威克、Daniel Sleator、罗伯特·塔扬于<span class="number">1986</span>年发明。配对堆是一种多叉树，并且可以被认为是一种简化的斐波那契堆。对于实现例如普林姆最小生成树算法等算法，配对堆是一个更优的选择</span><br></pre></td></tr></table></figure>
 
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>配对堆就是一种可合并的堆，在计算机里面，有比如说像是堆排序等等，虽然能够做到快速的排序，但是如果说要将几个堆合并在一起，那么我们需要把每个堆中的元素给弹出来再进行合并，这样的话复杂度就是弹出的O（n）加上合并的O（nlogn），十分复杂，而使用配对堆，合并只需要O（1）的时间复杂度，十分方便，这种算法在c++可以直接用pd_ds中的函数进行，也可以自己写代码。</p>
 <p>对于每个节点，我们存储两个信息，一个是它的下面的最左端的节点（儿子节点），一个是存储它的右兄弟。兄弟就在同一层，儿子就在下一层，如下图中最上面的节点是第二排的节点的父亲。  有如下几个操作： merge（x，y ）：合并以x，y为根的两个配对堆，若x，y中有空树则返回非空树，否则将节点大的一棵树插入到小的树中（假设为小根堆）。 insert（x）：插入一个点，直接merge（x，root）。 pop（x）：删除堆顶元素。将根所有的子树从左到右两两合并，也就是把根节点的左儿子的前两个拿出来做一次merge然后后面的两个做相同的操作后递归合并。 kill（x），把x的儿子兄弟断开，相当于把它单独变成一个堆。</p>
