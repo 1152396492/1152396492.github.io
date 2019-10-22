@@ -322,6 +322,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/operator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/operator/" itemprop="url">operator</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T09:17:01+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="结构体内的比较函数模版："><a href="#结构体内的比较函数模版：" class="headerlink" title="结构体内的比较函数模版："></a>结构体内的比较函数模版：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> node &amp;a)<span class="keyword">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> r &lt; a.r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;a[maxn];</span><br></pre></td></tr></table></figure>
+
+<p>直接写比较函数是裸的r表示当前的值，如果r&lt;a.r，那么就是从小到大排序，但是优先队列的是相反的。</p>
+<p>sort默认为从小到大排序，优先队列默认为从大到小。</p>
+<h3 id="优先队列的比较函数模版："><a href="#优先队列的比较函数模版：" class="headerlink" title="优先队列的比较函数模版："></a>优先队列的比较函数模版：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> node &amp;a)<span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> r&gt;a.r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;node&gt; q;</span><br></pre></td></tr></table></figure>
+
+<p>那么这个优先队列是按r小的优先出队。</p>
+<p>结构体内嵌比较函数的使用就是直接sort就可以，sort(a,a+n);</p>
+<h3 id="特殊情况："><a href="#特殊情况：" class="headerlink" title="特殊情况："></a>特殊情况：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;x) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(l&lt;=r&amp;&amp;x.l&gt; x.r) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(l&gt; r&amp;&amp;x.l&lt; x.r) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(l&lt;=r&amp;&amp;x.l&lt;=x.r) <span class="keyword">return</span> l&lt;x.l;</span><br><span class="line">        <span class="keyword">if</span>(l&gt; r&amp;&amp;x.l&gt; x.r) <span class="keyword">return</span> r&gt;x.r;</span><br><span class="line">        <span class="comment">//return false;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;a[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a[i].l,&amp;a[i].r);</span><br><span class="line">    sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;a[i].l&lt;&lt;<span class="string">" "</span>&lt;&lt;a[i].r&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就用上面的代码举栗子吧。</p>
+<p>假设我要比较的数列为:</p>
+<p>(l,r): (1,3) (4,3) (5,6) (8,2) (7,1) 那么我按照以上代码排序，排完序之后的数列是什么样的呢？</p>
+<p>　　(1,3) (5,6) (4,3) (8,2) (7,1)<br>　　<br>　　发现什么了吗？为什么要用两种颜色标记呢？蓝色的都是l&lt;=r的，粉色的都是l&gt;r的，排序的时候，没有参数的l,r比有参数的x.l，x.r的级别高，就相当于是比较的时候的第一个数。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/互不侵犯/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1653,158 +1808,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/2019月考总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lishu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DS-FLY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/13/2019月考总结/" itemprop="url">2019月考总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T14:05:39+08:00">
-                2019-06-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/高考/" itemprop="url" rel="index">
-                    <span itemprop="name">高考</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次考试不是很理想，虽然较上次<del>应该</del>有进步，但是总体来说，不尽人意。<br>我的考试状态是不对的，原因有很多。<br>考试成绩：语数外物化生：106+106+100.5+90+56+54=512.5 年排200</p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>1.在全班都狂热的想着换老师的时候，我并没有管好自己，虽然意识到了这样不对，但是或多或少的影响了我自身的数学学习，<br>自己在半期以后分为了两个阶段：<br>（1）数学老师瞎讲，我听课但不认真，上数学课效率极低<br>（2）数学老师被逼着好好讲，不听课，跟着旁边一个早就学完的人鬼混刷题，效率倒是高了，但是不知为何其他课都没了心思听课这样导致了我生物、化学、英语、语文都不听课，效率也很低。而且<strong>数学刷题根本不投入、其他课也根本不投入</strong>。
-在考试前两天反应过来，利用了节补习课找回了状态。如果说这些，其实也不会对我的考试成绩有太大的影响，我可以说依然能够考出理想的分数但是我的心态是出了问题的。<br>本次考试考两天，第一天考语文、物理、化学，第二天考英语、生物、数学。<br>考的不错的有：生物、物理<br>其他都没有发挥出水平。</p>
-<h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>压力过大，心态不对，考前复习扰乱了思维，受人影响，考试没有激情<del>就是不想考</del></p>
-<h4 id="语文："><a href="#语文：" class="headerlink" title="语文："></a>语文：</h4><p>考前几天由于文言部分没有背，考前一天才背完，语文<del>本身就不好的</del>思维，结果被打乱了，这是我语文失败的最重要的原因。还有个原因是，本身打算在考前看一下之前现代文的分析来把握考前状态，结果被打断。</p>
-<h4 id="数学："><a href="#数学：" class="headerlink" title="数学："></a>数学：</h4><p>仗着自己学的快结果全部不扎实，考前看的知识点直接考到还是错了。<br>填空题全错，历史记录刷新了。<br>考前某位老师说要让最好的班平均分100出头，然后转换考试状态，估计题出的难又多，于是就在复杂但简单的题上有意识去检查但是并没有检查。结果填空全员得分的我全错，选择题靠选项带入没错，简直闻所未闻。</p>
-<h4 id="英语"><a href="#英语" class="headerlink" title="英语"></a>英语</h4><p>做阅读题的状态不对，使用了平时不常用的方法：看一遍文章后直接看选项再回文章检查，但自己对文章的第一印象有自己主观的偏差，导致出错了许多不该错的题。<br>脑袋里面是昏的，做首字母填空的思维扩展能力不够。</p>
-<h4 id="物理"><a href="#物理" class="headerlink" title="物理"></a>物理</h4><p>本以为会考差结果班级rank2，还不错，但是有很基础的题算错的现象<br>物理表示没有时间复习，出乎意料。</p>
-<h4 id="化学"><a href="#化学" class="headerlink" title="化学"></a>化学</h4><p>考完物理脑细胞都死完了<br>尽力了，对完答案70，选择题背了很多锅<del>但选择题说这锅不背</del>，确实脑子负荷太大。化学本身平时就学的不错，复习后反倒连乙醇的催化氧化都不会了。</p>
-<h4 id="生物"><a href="#生物" class="headerlink" title="生物"></a>生物</h4><p>做题技巧对了<br>考试的方式与心态不对。<br>背书最重要！！！</p>
-<h3 id="考试中的知识点"><a href="#考试中的知识点" class="headerlink" title="考试中的知识点"></a>考试中的知识点</h3><p>元素周期表复习<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3zjb4iq5oj30z30ottg5.jpg" alt><br>制取乙炔时有杂质PH3，H2S生成<br>聚乙烯（PE）和聚氯乙烯（PVC）的单体都是不饱和烃，均能使溴水褪色 ，错误<br>聚氯乙烯的单体为氯乙烯，氯乙烯为烃的衍生物</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1857,7 +1860,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1879,7 +1882,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
