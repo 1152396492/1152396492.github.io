@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://fonts.cat.net/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|24:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="状压dp,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="没怎么练过状压dp，导致打这道题时知道是状压但想不出来dp式下午看题解后对着题解的过程打怎么都打不出来，结果是题解在口胡。。。 题意Yazid 最近沉迷于一款冒险类游戏无法自拔。这款游戏的地图可以抽象成一张包含 n 个节点 m 条边的无向图(节点和边的编号 均从 1 开始)，每条边带有边权，也就是说通过每条边所需的时间不尽相同。Yazid 接到了 k 个副本任务，每个任务都要求 Yazid 进入一">
+<meta name="keywords" content="状压dp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="副本挑战">
+<meta property="og:url" content="http://yoursite.com/2019/11/05/副本挑战/index.html">
+<meta property="og:site_name" content="DS-FLY">
+<meta property="og:description" content="没怎么练过状压dp，导致打这道题时知道是状压但想不出来dp式下午看题解后对着题解的过程打怎么都打不出来，结果是题解在口胡。。。 题意Yazid 最近沉迷于一款冒险类游戏无法自拔。这款游戏的地图可以抽象成一张包含 n 个节点 m 条边的无向图(节点和边的编号 均从 1 开始)，每条边带有边权，也就是说通过每条边所需的时间不尽相同。Yazid 接到了 k 个副本任务，每个任务都要求 Yazid 进入一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-05T13:18:51.376Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="副本挑战">
+<meta name="twitter:description" content="没怎么练过状压dp，导致打这道题时知道是状压但想不出来dp式下午看题解后对着题解的过程打怎么都打不出来，结果是题解在口胡。。。 题意Yazid 最近沉迷于一款冒险类游戏无法自拔。这款游戏的地图可以抽象成一张包含 n 个节点 m 条边的无向图(节点和边的编号 均从 1 开始)，每条边带有边权，也就是说通过每条边所需的时间不尽相同。Yazid 接到了 k 个副本任务，每个任务都要求 Yazid 进入一">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/05/副本挑战/">
+
+
+
+
+
+  <title>副本挑战 | DS-FLY</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DS-FLY</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-favorite">
+          <a href="/favorite/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heart"></i> <br>
+            
+            favorite
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/副本挑战/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">副本挑战</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-05T21:00:29+08:00">
+                2019-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>没怎么练过状压dp，导致打这道题时知道是状压但想不出来dp式<br>下午看题解后对着题解的过程打怎么都打不出来，结果是题解在口胡。。。</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>Yazid 最近沉迷于一款冒险类游戏无法自拔。<br>这款游戏的地图可以抽象成一张包含 n 个节点 m 条边的无向图(节点和边的编号 均从 1 开始)，每条边带有边权，也就是说通过每条边所需的时间不尽相同。<br>Yazid 接到了 k 个副本任务，每个任务都要求 Yazid 进入一个独一无二的副本挑战 Boss。<br>其中，第 i 个任务(1 ≤ i ≤ k)的副本入口在节点 ui，其入口开放时间为[li, ri]，换 而言之，Yazid 需要在规定时间内到达(或等候在)节点 ui，才能进入副本，挑战 Boss。<br>除此之外，每个副本的难度对于 Yazid 而言也不尽相同，经过精确的计算，Yazid 成功挑战第 i 个副本所需的时间为 ti，也就是说，如果 Yazid 在 T 时刻进入副本 i，那 么他将在 T + ti 时刻将 Boss 挑落马下，并继续他的征程。<br>需要注意的是，入口开放时间只对玩家的进入副本时间作出限制，玩家仅仅被要求 在入口关闭前进入副本，并不被要求在入口关闭前完成 Boss 挑战。<br>每个任务的重要程度也是不尽相同的。完成第 i 个任务可以获得 ci 个金币的奖励。 在第 0 时刻，Yazid 的角色身处节点 1。<br>请问，假设 Yazid 的策略安排得当，他总共最多能够获得多少金币奖励呢?<br>【输入格式】<br>从文件 instance.in 中读入数据。<br>第 1 行 2 个用单个用单个空格隔开的正整数 n, m，分别表示图的节点数、边数。 接下来 m 行，每行 3 个用单个空格隔开的整数 x, y, z，描述一条连接节点 x, y 的、<br>需要花 z 单位时间通过的无向边。<br>• 在这里，我们保证 1 ≤ x, y ≤ n。<br>接下来 1 行 1 个正整数 k，表示副本任务的数量。<br>接下来 k 行，每行 5 用单个空格隔开的整数 ui, li, ri, ti, ci 描述一个任务，意义见<br>【题目描述】。<br>• 在这里，我们保证1 ≤ ui ≤ n，li ≤ ri。<br>【输出格式】<br>输出到文件 instance.out 中。<br>输出一行一个整数，表示 Yazid 最多能够获得的奖励金币数目。<br>【样例 1 输入】<br>3 2<br>1 2 10<br>2 3 10<br>2
+1 0 50 20 1<br>2 0 39 20 1<br>【样例 1 输出】<br>2 
+【样例 1 解释】<br>Yazid 应先前往 2 号节点执行第 2 个任务，然后再回到 1 号节点执行第 1 个任务，<br>才能同时完成 2 个任务。<br>【样例 2 输入】<br>4 6<br>1 2 1<br>1 3 5<br>1 4 10<br>2 3 2<br>2 4 3<br>3 4 15<br>3
+1 0 20 2 1<br>3 4 20 6 2<br>4 15 15 2 2<br>【样例 2 输出】<br>4
+【样例 2 解释】<br>Yazid 可以依次完成任务 2, 3，但如若这么做，他将不得不错过任务 1，因此他最 多只能获得 4 个金币。</p>
+<p>对于所有测试点，保证n ≤ 200，m ≤ 20,000，k ≤ 18，1 ≤ z ≤ 10^4，0 ≤ li,ri,ti ≤ 107， ci ≤ 104。</p>
+<h3 id="分析题意"><a href="#分析题意" class="headerlink" title="分析题意"></a>分析题意</h3><p>完成任务就能得到金币，所以我们不能一直刷副本<br>这个样例一是有毒的吧，(<del>从样例开始口胡</del>) ， 先走1、2不是一样的？<br>n &lt;= 200 分析样例二，可以很明显的发现随便跑floyed<br>不管了先跑floyed<br>我们枚举的下一个点一定是由上一个任务或1节点转移的<br>可以感受到一股浓浓的dp气息<br>任务18个，可以状压任务<br>可以发现状压任务后，其实可以直接由任务转入金钱<br>我们用dp[i][j]来表示，在任务i下状态为j的最短时间<br>为什么是最短时间？<br>如果时间过大（也就是跑不到这种情况） 那么这种情况的任务状态也是不行的</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>如果你像我一样，考场上并不会状压dp，让我们就来k！的暴力吧！</p>
+<h3 id="60-points"><a href="#60-points" class="headerlink" title="60 points"></a>60 points</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ; </span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n , m , k ; </span><br><span class="line"><span class="keyword">int</span> dis[<span class="number">205</span>][<span class="number">205</span>] ; </span><br><span class="line"><span class="keyword">int</span> vis[<span class="number">30</span>] ; </span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">L</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> u , l , r , t , c ; </span><br><span class="line">&#125; misn[<span class="number">20</span>] ; <span class="keyword">int</span> ans = <span class="number">0</span> ; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> ch = <span class="number">0</span> ; <span class="keyword">int</span> res = <span class="number">0</span> , f = <span class="number">1</span> ; </span><br><span class="line">	<span class="keyword">while</span> ( ch &gt; <span class="string">'9'</span> || ch &lt; <span class="string">'0'</span> ) &#123;</span><br><span class="line">		<span class="keyword">if</span> ( ch == <span class="string">'-'</span> ) f = <span class="number">-1</span> ; </span><br><span class="line">		ch = getchar ( ) ; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> ( ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span> ) &#123;</span><br><span class="line">		res = res * <span class="number">10</span> + ch - <span class="number">48</span> ; </span><br><span class="line">		ch = getchar ( ) ; 	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res * f ; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs1</span> <span class="params">( <span class="keyword">int</span> times , <span class="keyword">int</span> fa , <span class="keyword">int</span> x , <span class="keyword">int</span> val )</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> ( times &gt; misn[x].r ) <span class="keyword">return</span> ; </span><br><span class="line">	times = max ( misn[x].l , times ) ; </span><br><span class="line">	times += misn[x].t ; val += misn[x].c ; </span><br><span class="line">	ans = max ( ans , val ) ; </span><br><span class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= k ; i ++ ) &#123;</span><br><span class="line">		<span class="keyword">if</span> ( ! vis[i] ) &#123;</span><br><span class="line">			vis[i] = <span class="number">1</span> ; </span><br><span class="line">			dfs1 ( times + dis[misn[x].u][misn[i].u] , misn[x].u , i , val ) ; </span><br><span class="line">			vis[i] = <span class="number">0</span> ; </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">	freopen ( <span class="string">"instance.in"</span> , <span class="string">"r"</span> , <span class="built_in">stdin</span> ) ; </span><br><span class="line">	freopen ( <span class="string">"instance.out"</span> , <span class="string">"w"</span> , <span class="built_in">stdout</span> ) ; </span><br><span class="line">	n = read ( ) ; m = read ( ) ; </span><br><span class="line">	<span class="built_in">memset</span> ( dis , <span class="number">0x3f</span> , <span class="keyword">sizeof</span> ( dis ) ) ; </span><br><span class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) dis[i][i] = <span class="number">0</span> ; </span><br><span class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; i ++ ) &#123;</span><br><span class="line">		<span class="keyword">int</span> x = read ( ) , y = read ( ) ; </span><br><span class="line">		dis[x][y] = dis[y][x] = read ( ) ; </span><br><span class="line">	&#125;</span><br><span class="line">	k = read ( ) ;</span><br><span class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= k ; i ++ ) &#123;</span><br><span class="line">		misn[i].u = read ( ) ; misn[i].l = read ( ) ; </span><br><span class="line">		misn[i].r = read ( ) ; misn[i].t = read ( ) ; </span><br><span class="line">		misn[i].c = read ( ) ; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> kk = <span class="number">1</span> ; kk &lt;= n ; kk ++ ) &#123;</span><br><span class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">			<span class="keyword">for</span> ( <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= n ; j ++ ) &#123;</span><br><span class="line">				dis[i][j] = min ( dis[i][j] , dis[i][kk] + dis[kk][j] ) ; 	</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> ( ! m ) &#123;</span><br><span class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= k ; i ++ ) &#123;</span><br><span class="line">			vis[i] = <span class="number">1</span> ; </span><br><span class="line">			dfs1 ( dis[<span class="number">1</span>][misn[i].u] , <span class="number">1</span> , i , <span class="number">0</span> ) ; </span><br><span class="line">			vis[i] = <span class="number">0</span> ; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span> ( <span class="string">"%d"</span> , ans ) ; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= k ; i ++ ) &#123;</span><br><span class="line">			vis[i] = <span class="number">1</span> ; </span><br><span class="line">			dfs1 ( dis[<span class="number">1</span>][misn[i].u] , <span class="number">1</span> , i , <span class="number">0</span> ) ; </span><br><span class="line">			vis[i] = <span class="number">0</span> ; </span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span> ( <span class="string">"%d"</span> , ans ) ; </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="100points"><a href="#100points" class="headerlink" title="100points"></a>100points</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n , m ;</span><br><span class="line"><span class="keyword">int</span> dis[<span class="number">205</span>][<span class="number">205</span>] , kk ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">L</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> u , l , r , t , c ;</span><br><span class="line">&#125; misn[<span class="number">210</span>] ;</span><br><span class="line"><span class="keyword">int</span> dp[<span class="number">20</span>][<span class="number">1</span>&lt;&lt;<span class="number">20</span>] ; <span class="keyword">int</span> ans = <span class="number">0</span> ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> ( <span class="string">"%d%d"</span> , &amp; n , &amp; m ) ;</span><br><span class="line">    <span class="built_in">memset</span> ( dp , <span class="number">0x3f</span> , <span class="keyword">sizeof</span> ( dp ) ) ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">0</span> ; i &lt;= n + <span class="number">1</span> ; i ++ )</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> j = <span class="number">0</span> ; j &lt;= n + <span class="number">1</span> ; j ++ )</span><br><span class="line">            dis[i][j] = <span class="number">1000000009</span> ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) dis[i][i] = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; i ++ ) &#123;</span><br><span class="line">        <span class="keyword">int</span> x , y , z ; <span class="built_in">scanf</span> ( <span class="string">"%d%d%d"</span> , &amp; x , &amp; y , &amp; z ) ;</span><br><span class="line">        dis[x][y] = dis[y][x] = min ( dis[x][y] , z ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> k = <span class="number">1</span> ; k &lt;= n ; k ++ )</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ )</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= n ; j ++ )</span><br><span class="line">                dis[i][j] = min ( dis[i][j] , dis[i][k] + dis[k][j] ) ;</span><br><span class="line">    <span class="built_in">scanf</span> ( <span class="string">"%d"</span> , &amp; kk ) ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= kk ; i ++ )</span><br><span class="line">        <span class="built_in">scanf</span> ( <span class="string">"%d%d%d%d%d"</span> , &amp; misn[i].u , &amp; misn[i].l , &amp; misn[i].r , &amp; misn[i].t , &amp; misn[i].c ) ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= kk ; i ++ )</span><br><span class="line">       <span class="keyword">if</span> ( dis[<span class="number">1</span>][misn[i].u] &lt;= misn[i].r )</span><br><span class="line">           dp[i][<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>)] = max ( dis[misn[i].u][<span class="number">1</span>] + misn[i].t, misn[i].l ) ;<span class="comment">//初始化</span></span><br><span class="line">		   <span class="comment">// 这样初始化我们的开始状态直接就是任务了</span></span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= ( ( <span class="number">1</span> &lt;&lt; kk ) - <span class="number">1</span> ) ; i ++ ) &#123;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= kk ; j ++ ) &#123;</span><br><span class="line">            <span class="keyword">if</span> (  ( ( i &gt;&gt; ( j - <span class="number">1</span> ) ) &amp; <span class="number">1</span> ) == <span class="number">0</span> || dp[j][i] &gt; <span class="number">1000000000</span> ) <span class="keyword">continue</span> ;</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> l = <span class="number">1</span> ; l &lt;= kk ; l ++ ) &#123;</span><br><span class="line">                <span class="keyword">if</span> ( ( ( i &gt;&gt; ( l - <span class="number">1</span> ) ) &amp; <span class="number">1</span> ) == <span class="number">1</span> ) <span class="keyword">continue</span> ;</span><br><span class="line">                <span class="keyword">int</span> w = dp[j][i] + dis[misn[l].u][misn[j].u] ;</span><br><span class="line">                w = max ( w , misn[l].l ) ;</span><br><span class="line">                <span class="keyword">if</span> ( w &gt; misn[l].r ) <span class="keyword">continue</span> ;</span><br><span class="line">                dp[l][i|(<span class="number">1</span>&lt;&lt;(l<span class="number">-1</span>))] = min ( dp[l][i|(<span class="number">1</span>&lt;&lt;(l<span class="number">-1</span>))] , w + misn[l].t ) ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= kk ; i ++ ) &#123;</span><br><span class="line">        <span class="keyword">for</span> ( <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= ( ( <span class="number">1</span> &lt;&lt; kk ) - <span class="number">1</span> ) ; j ++ ) &#123;</span><br><span class="line">            <span class="keyword">if</span> ( dp[i][j] &gt; <span class="number">100000000</span> ) <span class="keyword">continue</span> ;</span><br><span class="line">            <span class="keyword">int</span> temp = j ; <span class="keyword">int</span> cur = <span class="number">0</span> ;</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> l = <span class="number">1</span> ; l &lt;= kk ; l ++ ) &#123;</span><br><span class="line">                cur += ( ( temp &gt;&gt; ( l - <span class="number">1</span> ) ) &amp; <span class="number">1</span> ) == <span class="number">1</span> ? misn[l].c : <span class="number">0</span> ;</span><br><span class="line">            &#125;</span><br><span class="line">            ans = max ( ans , cur ) ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span> ( <span class="string">"%d"</span> , ans ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/状压dp/" rel="tag"># 状压dp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/04/sue的小球/" rel="next" title="sue的小球">
+                <i class="fa fa-chevron-left"></i> sue的小球
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg" alt="lishu">
+            
+              <p class="site-author-name" itemprop="name">lishu</p>
+              <p class="site-description motion-element" itemprop="description">ガヴリールが1人 zzz~</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题意"><span class="nav-number">1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析题意"><span class="nav-number">2.</span> <span class="nav-text">分析题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#60-points"><span class="nav-number">4.</span> <span class="nav-text">60 points</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#100points"><span class="nav-number">5.</span> <span class="nav-text">100points</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">©2019 by DS-FLY</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+<div class="bg_content">
+  <canvas id="canvas"></canvas>
+</div>
+</html>
+<script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
