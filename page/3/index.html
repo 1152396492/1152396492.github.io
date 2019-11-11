@@ -322,6 +322,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Kinoman-POI2015/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/12/Kinoman-POI2015/" itemprop="url">Kinoman[POI2015]</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-12T20:23:58+08:00">
+                2019-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>又把线段树写挂了，调了有半个小时<br>老师说这题有O（N）的算法，可惜做不来<br>貌似sort还把时间写多了。。。<br>直接在f【1】时就把last数组处理出来是可行的<br>如果用二分貌似跟我的复杂度差不多<del>就差了个n而已</del></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">10</span> ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">M</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> add , val ;</span><br><span class="line">&#125; t[N&lt;&lt;<span class="number">2</span>] ;</span><br><span class="line"><span class="keyword">int</span> cnt , n , m ; <span class="keyword">int</span> f[N] , w[N] , last[N] ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">L</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> num , mvi ;</span><br><span class="line">&#125; g[N] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar ( ) ; <span class="keyword">int</span> res = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">while</span> ( ch &gt; <span class="string">'9'</span> || ch &lt; <span class="string">'0'</span> ) ch = getchar ( ) ;</span><br><span class="line">    <span class="keyword">while</span> ( ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span> ) res = res * <span class="number">10</span> + ch - <span class="number">48</span>  , ch = getchar ( ) ;</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spread</span> <span class="params">( <span class="keyword">int</span> p )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( t[p].add ) &#123;</span><br><span class="line">        t[p&lt;&lt;<span class="number">1</span>].add += t[p].add ; t[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].add += t[p].add ;</span><br><span class="line">        t[p&lt;&lt;<span class="number">1</span>].val += t[p].add ; t[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].add += t[p].add ; t[p].add = <span class="number">0</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span> <span class="params">( <span class="keyword">int</span> p , <span class="keyword">int</span> l , <span class="keyword">int</span> r , <span class="keyword">int</span> x , <span class="keyword">int</span> y , <span class="keyword">int</span> z )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( x &lt;= l &amp;&amp; y &gt;= r ) &#123; t[p].val += z ; t[p].add += z ; <span class="keyword">return</span> ; &#125;</span><br><span class="line">    spread ( p ) ;</span><br><span class="line">    <span class="keyword">int</span> mid = ( l + r ) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">if</span> ( x &lt;= mid ) change ( p &lt;&lt; <span class="number">1</span> , l , mid , x , y , z ) ;</span><br><span class="line">    <span class="keyword">if</span> ( y &gt; mid ) change ( p &lt;&lt; <span class="number">1</span> | <span class="number">1</span> , mid + <span class="number">1</span> , r , x , y , z ) ;</span><br><span class="line">    t[p].val = max ( t[p&lt;&lt;<span class="number">1</span>].val , t[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val ) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ask</span> <span class="params">( <span class="keyword">int</span> p , <span class="keyword">int</span> l , <span class="keyword">int</span> r , <span class="keyword">int</span> x , <span class="keyword">int</span> y )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( x &lt;= l &amp;&amp; y &gt;= r ) &#123; <span class="keyword">return</span> t[p].val ; &#125; spread ( p ) ;</span><br><span class="line">    <span class="keyword">int</span> mid = ( l + r ) &gt;&gt; <span class="number">1</span> ; <span class="keyword">int</span> ans = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">if</span> ( x &lt;= mid ) ans = max ( ans , ask ( p &lt;&lt; <span class="number">1</span> , l , mid , x , y ) ) ;</span><br><span class="line">    <span class="keyword">if</span> ( y &gt; mid ) ans = max ( ans , ask ( p &lt;&lt; <span class="number">1</span> | <span class="number">1</span> , mid + <span class="number">1</span> , r , x , y ) ) ;</span><br><span class="line">    t[p].val = max ( t[p&lt;&lt;<span class="number">1</span>].val , t[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val ) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span> <span class="params">( L a , L b )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( a.mvi == b.mvi ) <span class="keyword">return</span> a.num &lt; b.num ;</span><br><span class="line">    <span class="keyword">return</span> a.mvi &lt; b.mvi ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span> ;</span><br><span class="line">    n = read ( ) , m = read ( ) ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) f[i] = g[i].mvi = read ( ) , g[i].num = i ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; i ++ ) w[i] = read ( ) ; sort ( g + <span class="number">1</span> , g + n + <span class="number">1</span> , cmp ) ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123; <span class="keyword">while</span> ( g[i].mvi == g[i+<span class="number">1</span>].mvi ) last[g[i+<span class="number">1</span>].num] = g[i].num , i ++ ; &#125;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( last[i] == <span class="number">0</span> ) change ( <span class="number">1</span> , <span class="number">1</span> , n , <span class="number">1</span> , i , w[f[i]] ) ;</span><br><span class="line">        <span class="keyword">if</span> ( last[i]!=<span class="number">0</span> ) &#123; change ( <span class="number">1</span> , <span class="number">1</span> , n , last[i] + <span class="number">1</span> , i , w[f[i]] ) ; change ( <span class="number">1</span> , <span class="number">1</span> , n , last[last[i]] + <span class="number">1</span> , last[i] , -w[f[i]] ) ; &#125;</span><br><span class="line">        ans = max ( ans , ask ( <span class="number">1</span> , <span class="number">1</span> , n , <span class="number">1</span> , n ) ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span> ( <span class="string">"%d"</span> , ans ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/超能粒子炮·改/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1707,175 +1851,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/09/Tarjan算法的原理及使用方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lishu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DS-FLY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/09/Tarjan算法的原理及使用方式/" itemprop="url">Tarjan算法的原理及使用方式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-09T10:16:35+08:00">
-                2019-06-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/代码/" itemprop="url" rel="index">
-                    <span itemprop="name">代码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一-算法简介"><a href="#一-算法简介" class="headerlink" title="一.算法简介"></a>一.算法简介</h3><blockquote>
-<p>Tarjan 算法一种由Robert Tarjan提出的求解有向图强连通分量的算法，它能做到线性时间的复杂度。</p>
-</blockquote>
-<p>我们定义：</p>
-<ul>
-<li>强连通：有向图中，两个顶点至少存在一条路径。</li>
-<li>强连通图：没两个顶点都强连通都有向图。</li>
-<li>强连通分量(strongly connected components)：有向图的极大强连通子图。</li>
-</ul>
-<h3 id="二、什么是强连通分量？"><a href="#二、什么是强连通分量？" class="headerlink" title="二、什么是强连通分量？"></a>二、什么是强连通分量？</h3><p>例如在下图中：<br>一个点，我们视为一个强连通分量，例如4这个点是强连通分量，2，3，4这三个点是强连通分量。但由于4可以添加2，3进去，所以4不是极大的强连通子图，2、3、4是极大的强连通子图，因为它们没办法扩展。所以在下图中：1是一个强连通分量，2、3、4是一个强连通分量。<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3uot52z3qj305306q3ye.jpg" alt><br>强连通意味着两两可达，当我们遇到有环的问题，可将这些环缩成一个点，也就是把一个有环图的问题转化成一个树或森林的问题，求强连通分量后，如果在这些被缩成一个点的点中的数据，和有用就求和，最大值有用就求最大值，从而解决实际问题。</p>
-<p>那么我们缩图要缩成什么样子呢？下图：<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3uotm2895j30530aoweo.jpg" alt><br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3uotnsojuj305307cmx8.jpg" alt><br>1、2、3、4是两两可达的，6，7，8是两两可达的，5自身可看作能到达自己。于是我们可以将1、2、3、4缩成一个假设为scc1的点，6、7、8缩成一个scc2 的点，5单独为一个scc3的点。不难发现缩成点后，每一个点内的边都不存在了，而且，每一个点的出边是强连通分量的出边，每个点的入边是强连通分量的入边。</p>
-<h3 id="三、那么具体要怎么缩点呢？"><a href="#三、那么具体要怎么缩点呢？" class="headerlink" title="三、那么具体要怎么缩点呢？"></a>三、那么具体要怎么缩点呢？</h3><p>有两种方式：1、Kosaraju算法和tarjan算法。虽然Kosaraju算法比Tarjan要好理解的多，但实现时与实际应用范围也更小。</p>
-<p>这里我们讲Tarjan。<br>使用搜索从任意节点遍历有向图时，可以得到搜索树。</p>
-<h4 id="每一条边和搜索树的关系可以分为下面四种："><a href="#每一条边和搜索树的关系可以分为下面四种：" class="headerlink" title="每一条边和搜索树的关系可以分为下面四种："></a>每一条边和搜索树的关系可以分为下面四种：</h4><ol>
-<li>树枝边：搜索树上的边，即未访问过节点的边</li>
-<li>前向边：指向搜索树中子树中节点的边。</li>
-<li>后向边：指向搜索树中父亲（也就是从根节点到这条边的路径中，在它之前被遍历的点）的边。</li>
-<li>横叉边：其他边，即指向搜索树中非子树的边。</li>
-</ol>
-<h4 id="下面考虑如何判断这四种边。"><a href="#下面考虑如何判断这四种边。" class="headerlink" title="下面考虑如何判断这四种边。"></a>下面考虑如何判断这四种边。</h4><p>我们来看下面这张图：<br>红色标记的为搜索树，我们走到了8，可以回溯，也就是返回到4，再搜索9<br>记录搜索的顺序用dfn来表示，例如dfn[1]就代表1节点的搜索的顺序。</p>
-<h4 id="我们来定义4种边的类型。"><a href="#我们来定义4种边的类型。" class="headerlink" title="我们来定义4种边的类型。"></a>我们来定义4种边的类型。</h4><p>A边终点未访问过，为树枝边。<br>B边终点已经被访问过，且dfn[v(目标点)]&gt;dfn[u(起始点)]。说明在子树中，所以为前向边。C边终点已被访问过且不在子树中，终点在栈中则为后向边。<br>D边终点已被访问过且不在子树中且已经出栈，为横叉边。<br>其中，无向图中不存在前向边和横叉边。<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3uovkd5xmj309a097jrl.jpg" alt><br>在一个有向有环图上搜索时，考虑每一个强连通分量高度最低（距离最开始搜索的点最近）的那个点。这些点将搜索树分割成了许多个子树，每个子树中的点组成了一个强连通分量。分割的方法是在搜索的同时另外维护一个栈存放节点，离开分割点时把分割点向下的部分全部取出来就是一个强连通分量。</p>
-<p>Tarjan的流程：先搜索1，3，4，6，7，8当再次搜索至6时，栈中的元素，从下到上依次为1，3，4，6，7，8。6已经被找过了，所以6是后向边，所以弹出元素8，7，6，把它们缩成一个点；栈中元素从下往上为1，3，4.然后从4搜索至1，但此时1还没有搜索完它所有的节点，所以返回，再从1搜索2，把2加入栈中，再搜索5，搜索5后没有多余节点，弹出5为一个节点。再把1，2，3，4从栈中弹出，这就是Tarjan的算法流程。<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3uovw1492j305c0b7wei.jpg" alt></p>
-<h3 id="那么我们具体怎么实现呢？"><a href="#那么我们具体怎么实现呢？" class="headerlink" title="那么我们具体怎么实现呢？"></a>那么我们具体怎么实现呢？</h3><p>我们维护一个数组low，low[u]代表点u所能到达的深度最小的点的dfs（搜索）序编号；初始化low[u]为u节点的搜索的顺序编号dfn[u]。<br>对于一条边（u，v）（从u出发，v为终点的一条边）</p>
-<p>—若为树枝边，因为等到递归再次通过v搜索至其它的点的时候，可能v可以搜索至其它深度更小的点，只要有树枝边，那么必然它的low值被改变的更小，因为low[u]是要求出最小的深度的点，所以用low更新，比用dfn搜索序更新所带来的方案要更优些。则用low[v]更新。<br>—若为后向边，则用dfn[v]更新。因为low[u]保存的是u节点能够到达的最小深度的点。<br>—若为前向边，因为指向的点的信息已经通过其他的枝边传递过来，所以无需更新。<br>—若为横叉边，假设我们出发的这个点是在目标点的强连通分量中，那么我们的出发点就会早已被目标点中的强连通分量中的点更新，所以必然指向的是另一个强连通分量，无需更新。<br>当我们搜索完成后，low[u] = dfn[u]时，说明u这个点已经完全不能往上走了，所以它就是一个分割点。</p>
-<p>搜索时任选一个结点开始搜索，若搜索结束后仍有未访问的点，则再从中任选一个点进行。搜索中对已经访问的点不再访问。</p>
-<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span> <span class="params">( <span class="keyword">int</span> x )</span> </span>&#123;</span><br><span class="line">    low[x] = dfn[x] = ++ dfs ;</span><br><span class="line">    <span class="built_in">stack</span>[ ++ top ] = x ; vis[x] = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = head[x] ; i ; i = nex[i] ) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( ! dfn[to[i] ] ) &#123;<span class="comment">//处理树枝边</span></span><br><span class="line">            Tarjan ( to[i] ) ;</span><br><span class="line">            low[x] = min ( low[x] , low[to[i]] ) ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ( vis[to[i]] )<span class="comment">//处理后向边</span></span><br><span class="line">            low = min ( low[x] , dfn[to[i]] ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//这个点所有的分支都被处理了，走完了所有相连的点</span></span><br><span class="line">    <span class="keyword">if</span> ( dfn[x] == low[x] ) &#123;</span><br><span class="line">        col ++ ;vis[x] = <span class="number">0</span> ;color[x] = col ;</span><br><span class="line">        <span class="keyword">while</span> ( <span class="built_in">stack</span>[top] != u ) &#123;</span><br><span class="line">            color[ <span class="built_in">stack</span>[top] ] = col ;</span><br><span class="line">            vis[ <span class="built_in">stack</span>[top --] ] = <span class="number">0</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        top -- ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以发现，在使用Tarjan的过程中，每个节点只被访问了一次，所以时间复杂度为O（n+e）。（n为点数，e为边数）。<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3uoxkak9dj31hc0u0e19.jpg" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1928,7 +1903,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

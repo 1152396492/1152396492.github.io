@@ -322,6 +322,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/18/NOIP2014T21/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/18/NOIP2014T21/" itemprop="url">NOIP2014T21</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-18T16:55:10+08:00">
+                2019-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>有数字1,1,2,4,8,8所组成的不同的四位数的个数是 _ _ _ _ _ .</p>
+<p>网上很多解答不是打胡乱说，就是看不懂。自己问了老师，私下琢磨了下终于看懂了，尽量清晰的说一下 </p>
+<p>首先要理解一个公式<br>不全相异的元素的排列<br>如果在n个元素中，有n1个元素彼此相同，有n2个元素彼此相同。。。。有nm个元素彼此相同，并且n1+n2+。。。+nm=n，则这n个元素的权排列叫做不全相异元素的全排列。<br>其公式为：n!/(n1! * n2! * … * nm! ) </p>
+<p>那么针对这道题中1，1，2，4的排列数是多少呢<br>4!/2!=12<br>那么1、1、2、8；1、1、4、8；1、2、8、8；1、4、8、8；2、4、8、8都与1、1、2、4的排列数相同<br>一共有12 * 6 = 72种</p>
+<p>1、1、8、8这种情况4!/(2! * 2!) = 6 ;</p>
+<p>现在有相同元素的弄完了剩下的都很好算了</p>
+<p>A(P)(n,m) = n!/(n-m)!(n个不同元素取m个排成一列<br>C(n,m)=A(m,n)/(A(m,m))=n!/(m!(n-m)!)(从n个不同元素取m个的组合个数</p>
+<p>1、2、4、8这种情况直接A(4,4)=24</p>
+<p>累加起来72+6+24=102<br>这道题就解决了</p>
+<p>补充一个没有提到的：<br>循环排列（circular permutation）亦称圆排列、环排列等。是排列的一种，指从n个不同元素中取出m（1≤m≤n）个不同的元素排列成一个环形，既无头也无尾。两个循环排列相同当且仅当所取元素的个数相同并且元素取法一直，在环上的排列顺序一致。 ——百度百科<br>方案数为A(n,m)/m=n!/(m(n-m)!)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/15/运输计划/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -565,6 +716,7 @@ b^-1b=-b-1<em>a</em>x
 <p>(可以手绘一下这个过程,应该不是很难理解.)</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">	<span class="keyword">for</span> ( <span class="keyword">int</span> j = V ; j &gt;= c[i] ; j -- ) &#123;</span><br><span class="line">		f[j] = max ( f[j] , f[j-c[i]] + w[i] ) ;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>我们看到的求最优解的背包问题题目中，事实上有两种不太相同的问法。有的题目要求“恰好装满背包”时的最优解，有的题目则并没有要求必须把背包装满。一种区别这两种问法的实现方法是在初始化的时候有所不同。<br>如果是第一种问法，要求恰好装满背包，那么在初始化时除了f[0]为0其它f[1..V]均设为-∞，这样就可以保证最终得到的f[N]是一种恰好装满背包的最优解。<br>如果并没有要求必须把背包装满，而是只希望价格尽量大，初始化时应该将f[0..V]全部设为0。<br>为什么呢？可以这样理解：初始化的f数组事实上就是在没有任何物品可以放入背包时的合法状态。如果要求背包恰好装满，那么此时只有容量为0的背包可能被价值为0的nothing“恰好装满”，其它容量的背包均没有合法的解，属于未定义的状态，它们的值就都应该是-∞了。如果背包并非必须被装满，那么任何容量的背包都有一个合法解“什么都不装”，这个解的价值为0，所以初始时状态的值也就全部为0了。<br>这个小技巧完全可以推广到其它类型的背包问题，后面也就不再对进行状态转移之前的初始化进行讲解。</p>
 <h2 id="完全背包"><a href="#完全背包" class="headerlink" title="完全背包"></a>完全背包</h2><p>此类背包问题中,我们的每种物品有无限多个,可重复选取.</p>
 <p>　类似于01背包,我们依旧需要考虑前i-1件物品的影响.</p>
 <p>此时我们依旧可以设得二维状态</p>
@@ -1887,150 +2039,6 @@ input:<br>第一行，4 个整数 n,s1,s2,MOD。<br>之后的输入由 myrand()�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Kinoman-POI2015/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lishu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DS-FLY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/12/Kinoman-POI2015/" itemprop="url">Kinoman[POI2015]</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-12T20:23:58+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/代码/" itemprop="url" rel="index">
-                    <span itemprop="name">代码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>又把线段树写挂了，调了有半个小时<br>老师说这题有O（N）的算法，可惜做不来<br>貌似sort还把时间写多了。。。<br>直接在f【1】时就把last数组处理出来是可行的<br>如果用二分貌似跟我的复杂度差不多<del>就差了个n而已</del></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">10</span> ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">M</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> add , val ;</span><br><span class="line">&#125; t[N&lt;&lt;<span class="number">2</span>] ;</span><br><span class="line"><span class="keyword">int</span> cnt , n , m ; <span class="keyword">int</span> f[N] , w[N] , last[N] ;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">L</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> num , mvi ;</span><br><span class="line">&#125; g[N] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar ( ) ; <span class="keyword">int</span> res = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">while</span> ( ch &gt; <span class="string">'9'</span> || ch &lt; <span class="string">'0'</span> ) ch = getchar ( ) ;</span><br><span class="line">    <span class="keyword">while</span> ( ch &gt;= <span class="string">'0'</span> &amp;&amp; ch &lt;= <span class="string">'9'</span> ) res = res * <span class="number">10</span> + ch - <span class="number">48</span>  , ch = getchar ( ) ;</span><br><span class="line">    <span class="keyword">return</span> res ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">spread</span> <span class="params">( <span class="keyword">int</span> p )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( t[p].add ) &#123;</span><br><span class="line">        t[p&lt;&lt;<span class="number">1</span>].add += t[p].add ; t[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].add += t[p].add ;</span><br><span class="line">        t[p&lt;&lt;<span class="number">1</span>].val += t[p].add ; t[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].add += t[p].add ; t[p].add = <span class="number">0</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span> <span class="params">( <span class="keyword">int</span> p , <span class="keyword">int</span> l , <span class="keyword">int</span> r , <span class="keyword">int</span> x , <span class="keyword">int</span> y , <span class="keyword">int</span> z )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( x &lt;= l &amp;&amp; y &gt;= r ) &#123; t[p].val += z ; t[p].add += z ; <span class="keyword">return</span> ; &#125;</span><br><span class="line">    spread ( p ) ;</span><br><span class="line">    <span class="keyword">int</span> mid = ( l + r ) &gt;&gt; <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">if</span> ( x &lt;= mid ) change ( p &lt;&lt; <span class="number">1</span> , l , mid , x , y , z ) ;</span><br><span class="line">    <span class="keyword">if</span> ( y &gt; mid ) change ( p &lt;&lt; <span class="number">1</span> | <span class="number">1</span> , mid + <span class="number">1</span> , r , x , y , z ) ;</span><br><span class="line">    t[p].val = max ( t[p&lt;&lt;<span class="number">1</span>].val , t[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val ) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">ask</span> <span class="params">( <span class="keyword">int</span> p , <span class="keyword">int</span> l , <span class="keyword">int</span> r , <span class="keyword">int</span> x , <span class="keyword">int</span> y )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( x &lt;= l &amp;&amp; y &gt;= r ) &#123; <span class="keyword">return</span> t[p].val ; &#125; spread ( p ) ;</span><br><span class="line">    <span class="keyword">int</span> mid = ( l + r ) &gt;&gt; <span class="number">1</span> ; <span class="keyword">int</span> ans = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">if</span> ( x &lt;= mid ) ans = max ( ans , ask ( p &lt;&lt; <span class="number">1</span> , l , mid , x , y ) ) ;</span><br><span class="line">    <span class="keyword">if</span> ( y &gt; mid ) ans = max ( ans , ask ( p &lt;&lt; <span class="number">1</span> | <span class="number">1</span> , mid + <span class="number">1</span> , r , x , y ) ) ;</span><br><span class="line">    t[p].val = max ( t[p&lt;&lt;<span class="number">1</span>].val , t[p&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].val ) ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span> <span class="params">( L a , L b )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( a.mvi == b.mvi ) <span class="keyword">return</span> a.num &lt; b.num ;</span><br><span class="line">    <span class="keyword">return</span> a.mvi &lt; b.mvi ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span> ;</span><br><span class="line">    n = read ( ) , m = read ( ) ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) f[i] = g[i].mvi = read ( ) , g[i].num = i ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= m ; i ++ ) w[i] = read ( ) ; sort ( g + <span class="number">1</span> , g + n + <span class="number">1</span> , cmp ) ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123; <span class="keyword">while</span> ( g[i].mvi == g[i+<span class="number">1</span>].mvi ) last[g[i+<span class="number">1</span>].num] = g[i].num , i ++ ; &#125;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( last[i] == <span class="number">0</span> ) change ( <span class="number">1</span> , <span class="number">1</span> , n , <span class="number">1</span> , i , w[f[i]] ) ;</span><br><span class="line">        <span class="keyword">if</span> ( last[i]!=<span class="number">0</span> ) &#123; change ( <span class="number">1</span> , <span class="number">1</span> , n , last[i] + <span class="number">1</span> , i , w[f[i]] ) ; change ( <span class="number">1</span> , <span class="number">1</span> , n , last[last[i]] + <span class="number">1</span> , last[i] , -w[f[i]] ) ; &#125;</span><br><span class="line">        ans = max ( ans , ask ( <span class="number">1</span> , <span class="number">1</span> , n , <span class="number">1</span> , n ) ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span> ( <span class="string">"%d"</span> , ans ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2083,7 +2091,7 @@ input:<br>第一行，4 个整数 n,s1,s2,MOD。<br>之后的输入由 myrand()�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
