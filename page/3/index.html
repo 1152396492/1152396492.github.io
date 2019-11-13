@@ -322,6 +322,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/互不侵犯/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/08/互不侵犯/" itemprop="url">互不侵犯</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T17:31:36+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>f[i][j][k]表示在j的这个状态下。第i层有k个国王<br>预处理每种状态下的国王数和国王状态<br>递推处理</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1</span> &lt;&lt; <span class="number">11</span> ;</span><br><span class="line"><span class="keyword">int</span> n , kkk, tot[N] , sta[N] , cnt = <span class="number">0</span> ;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> f[<span class="number">10</span>][N][<span class="number">100</span>] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span> <span class="params">( <span class="keyword">int</span> state , <span class="keyword">int</span> num , <span class="keyword">int</span> len )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( len &gt;= n ) &#123;</span><br><span class="line">        sta[++cnt] = state ; tot[cnt] = num ; <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs ( state , num , len + <span class="number">1</span> ) ;</span><br><span class="line">    dfs ( state + ( <span class="number">1</span> &lt;&lt; len ) , num + <span class="number">1</span> , len + <span class="number">2</span> ) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> ( <span class="string">"%d%d"</span> , &amp; n , &amp; kkk ) ;</span><br><span class="line">    dfs ( <span class="number">0</span> , <span class="number">0</span> , <span class="number">0</span> ) ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= cnt ; i ++ ) f[<span class="number">1</span>][i][tot[i]] = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">2</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= cnt ; j ++ ) &#123;</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> k = <span class="number">1</span> ; k &lt;= cnt ; k ++ ) &#123;</span><br><span class="line">                <span class="keyword">if</span> ( ( sta[j] &amp; sta[k] ) || ( ( sta[j] &lt;&lt; <span class="number">1</span> ) &amp; sta[k] ) || ( ( sta[j] &gt;&gt; <span class="number">1</span> ) &amp; sta[k] ) ) <span class="keyword">continue</span> ;</span><br><span class="line">                <span class="keyword">for</span> ( <span class="keyword">int</span> s = kkk ; s &gt;= tot[j] ; s -- ) f[i][j][s] += f[i<span class="number">-1</span>][k][s-tot[j]] ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= cnt ; i ++ ) ans += f[n][i][kkk] ;</span><br><span class="line">    <span class="built_in">printf</span> ( <span class="string">"%lld"</span> , ans ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Kinoman-POI2015/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1661,196 +1805,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/数论学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lishu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DS-FLY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/13/数论学习/" itemprop="url">数论学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T13:08:58+08:00">
-                2019-06-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/代码/" itemprop="url" rel="index">
-                    <span itemprop="name">代码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、同余的概述"><a href="#一、同余的概述" class="headerlink" title="一、同余的概述"></a>一、同余的概述</h3><p>定义1:给定正整数m，若用m除以两个整数a和b所得余数相同，称a和b对模m同余，记作a≡b（mod m）<br>，并称该式子为同余式；否则称a和b对模m不同余。<br>定义2：整数对集合被分为m个不同的集合，这些集合被称为模m剩余类（同余类）。每个同类中的任意两个整数都是模m同余的。<br>定理1：a≡b（mod m），当且仅当m|（a-b）。<br>定理2：a≡b（mod m），当且仅当存在整数k，使得a=b+km。<br>费马小定理：若p是质数，则对于任意整数a，有<img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zfeaixs2j301b00dgle.jpg" alt>（mod p）。在后文中与欧拉函数一起讲。</p>
-<h3 id="二、同余的性质"><a href="#二、同余的性质" class="headerlink" title="二、同余的性质"></a>二、同余的性质</h3><p>自反性，对称性，传递性，同加性，同乘性，同幂性。</p>
-<h3 id="同余的几个基本的定理"><a href="#同余的几个基本的定理" class="headerlink" title="同余的几个基本的定理"></a>同余的几个基本的定理</h3><h4 id="欧拉定理证明："><a href="#欧拉定理证明：" class="headerlink" title="欧拉定理证明："></a>欧拉定理证明：</h4><p>欧拉定理：设a,m∈N，(a,m)=1，则<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zff13zwoj302v00oq2x.jpg" alt>(mod m)<br>(注：φ(m)指模m的简系个数， φ(m)=m-1，如果m是素数；<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zffmj1vjj308300u74y.jpg" alt></p>
-<p>若正整数a , n互质，则aφ(n)≡1(mod n)其中φ(n)是欧拉函数（1~n)与n互质的数。</p>
-<p>证明如下：<br>不妨设X1，X2…… Xφn是1~n与n互质的数。</p>
-<p>　　首先我们先来考虑一些数：aX1，aX2…… aXφn<br>　　这些数有如下两个性质：( |是整除的意思）</p>
-<p>　
-　<br>　（1）任意两个数模n余数一定不同：（反证）若存在aX1≡aX2（mod n），则n |（ aX1-aX2），而a，n互质且（X1- X2）&lt; n，所以n不可能整除（ aX1-aX2），也就是说<br>不存在aX1≡aX2（mod n）。</p>
-<p>归纳法：对于任意的与n互质的Xi均成立。故得证。</p>
-<p>　　那么因为有φn个这样的数，Ximod n（i=1<del>φn） 所以就有φn个不同的余数，并且都是模数自然是（0</del>n-1）。</p>
-<p>　（2）对于任意的aXi（mod n）都与n互质。这不难想，因为a与n互质这是欧拉函数的条件，Xi是（1~n）与n互质的数的集合中的元素。所以如果a * Xi做为分子，n做为分母，那么<br>他们构成的显然就是一个最简分数，也就是aXi和n互质。接下来就可以用欧几里得算法：因为：gcd（aXi，n）==1所以：gcd（aXi，n）== gcd（n，aXi%n）== 1</p>
-<pre><code>这样，我们把上面两个性质结合一下来说，aX1（mod n），aX2（mod n）...... aXφn（mod n）构成了一个集合（性质1证明了所有元素的互异性），并且这些数是1~n与n互</code></pre><p>质的所有数构成的集合（性质1已说明）。这样，我们巧妙的发现了.. aXφn（mod n）}经过一定的排序后和集合{X1，X2…… Xφn}<br>完全一一对应。那么：aX1（mod n)<em>aX2（mod n）</em> …… * aXφn（mod n）= X1 * X2* …… * Xφn</p>
-<p>因此：我们可以写出以下式子：<br>aX1* aX2 *  …… * aXφn ≡  X1 * X2 * …… * Xφn  （mod n），即：（aφn -1）X1 * X2 * …… * Xφn ≡ 0 （mod n）<br>　　又因为X1<em>X2</em> ……* Xφn与n互质，所以， （aφn -1）| n，那么aφn ≡ 1（mod n）。欧拉定理得证。</p>
-<h4 id="费马小定理证明-："><a href="#费马小定理证明-：" class="headerlink" title="费马小定理证明 ："></a>费马小定理证明 ：</h4><p>费马小定理：</p>
-<p>　　对于质数p，任意整数a，均满足：<img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3zfl8e68wj301y00i0sl.jpg" alt>（mod p）</p>
-<p>证明如下：<br>　　这个可以用欧拉定理来说明：首先，我们把这个式子做一个简单变换得：<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zflk1bswj303o00nwej.jpg" alt>（mod p） 因为a ≡ a（mod p）恒成立，所以<img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zflv377cj301c00ndfo.jpg" alt>mod p == 1时费马小定理才成立，又因为p<br>是质数，所以 φn == n-1 ,所以根据欧拉定理：若a，p互质则<img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3zfm9vtx4j301c00ndfo.jpg" alt>mod p == 1成立。那么对于a，p不互质，因为p是质数，所以，a一定是倍数≡ a ≡ 0（mod p）。综上所述，费马小定理<br>成立，其实它算是欧拉定理的一个特例。</p>
-<h4 id="欧拉定理的推论："><a href="#欧拉定理的推论：" class="headerlink" title="欧拉定理的推论："></a>欧拉定理的推论：</h4><p>若正整数a，n互质，则对于任意正整数b，有<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfnf8hplj304a00ojri.jpg" alt>(mod n)<br>证明：设,其中0&lt;=r&lt; <img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfnstpt9j300m00c3y9.jpg" alt>。于是<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfo0zxbgj30bj00l74y.jpg" alt>mod(n)</p>
-<h5 id="eg"><a href="#eg" class="headerlink" title="eg"></a>eg</h5><p>给定a，n求出 S=((((aa)a)a)a⋅⋅⋅⋅)a （mod 998244353）共n个a。<br>思路：</p>
-<p>先求出指数，即a^n-1（快速幂求解），并将指数对mod-1（因为mod是质数，那么φ（mod）= mod-1），再用更新后的指数做为新的指数用快速幂求解即可。</p>
-<p>大部分引用自<a href="https://www.cnblogs.com/zylAK/p/9569668.html" target="_blank" rel="noopener">zylAK</a></p>
-<h3 id="三、扩展欧几里得算法"><a href="#三、扩展欧几里得算法" class="headerlink" title="三、扩展欧几里得算法"></a>三、扩展欧几里得算法</h3><p>概述</p>
-<p>欧几里德算法又称辗转相除法，用于计算两个整数a,b的最大公约数。其计算原理依赖于下面的定理：</p>
-<p>gcd函数就是用来求(a,b)的最大公约数的。</p>
-<p>gcd函数的基本性质：</p>
-<p>gcd(a,b)=gcd(b,a)=gcd(-a,b)=gcd(|a|,|b|)</p>
-<p>公式表述</p>
-<p>gcd(a,b)=gcd(b,a mod b)</p>
-<p>证明：a可以表示成a = kb + r，则r = a mod b</p>
-<p>假设d是a,b的一个公约数，则有</p>
-<p>d|a, d|b，而r = a - kb，因此d|r</p>
-<p>因此d是(b,a mod b)的公约数</p>
-<p>假设d 是(b,a mod b)的公约数，则</p>
-<p>d | b , d |r ，但是a = kb +r</p>
-<p>因此d也是(a,b)的公约数</p>
-<p>因此(a,b)和(b,a mod</p>
-<p>b)的公约数是一样的，其最大公约数也必然相等，得证</p>
-<p>求解gcd代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span> <span class="params">( <span class="keyword">int</span> a , <span class="keyword">int</span> b )</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> b?gcd ( b , a % b ) : a ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>因为gcd(a,b)=gcd(b,a mod b )</p>
-<p>证明：设gcd(a,b)=c,</p>
-<p>a = k1 * c , b = k2 * c .</p>
-<p>a%b=(k1-k2) * c|c</p>
-<p>故gcd(a,b)=gcd(b,a mod b )</p>
-<p>求解方程：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> b,<span class="keyword">long</span> <span class="keyword">long</span> &amp;x, <span class="keyword">long</span> <span class="keyword">long</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=<span class="number">1</span>;</span><br><span class="line">        y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    r=exgcd(b,a%b,x,y);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> cnt=x;</span><br><span class="line">    x=y;</span><br><span class="line">    y=cnt-a/b*y;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="贝祖定理-："><a href="#贝祖定理-：" class="headerlink" title="贝祖定理 ："></a>贝祖定理 ：</h4><p>  即如果a、b是整数，那么一定存在整数x、y使得ax+by=gcd(a,b)。<br>换句话说，如果ax+by=m有解，那么m一定是gcd(a,b)的若干倍。（可以来判断一个这样的式子有没有解）<br><em>有一个直接的应用就是 如果ax+by=1有解，那么gcd(a,b)=1；</em><br>故对于不定方程ax+by=c当且仅当gcd(a,b)|c时方程有解</p>
-<p>未完待续···<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zfsiorccj31hc0u0e7o.jpg" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1903,7 +1857,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
