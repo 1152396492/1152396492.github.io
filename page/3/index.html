@@ -322,6 +322,563 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/28/初赛资料/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/28/初赛资料/" itemprop="url">初赛资料</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-28T20:32:54+08:00">
+                2019-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="按位与、或、非、异或总结"><a href="#按位与、或、非、异或总结" class="headerlink" title="按位与、或、非、异或总结"></a>按位与、或、非、异或总结</h2><pre><code>1. 按位与操作 0&amp;0=0; 0&amp;1=0; 1&amp;0=0; 1&amp;1=1</code></pre><p>即只有1&amp;1为1<br>与运算”的特殊用途：<br>（1）清零。如果想将一个单元清零，即使其全部二进制位为0，只要与一个各位都为零的数值相与，结果为零。<br>（2）取一个数中指定位<br>方法：找一个数，对应X要取的位，该数的对应位为1，其余位为零，此数与X进行“与运算”可以得到X中的指定位。<br>    2. 按位或运算符（|）</p>
+<p>参加运算的两个对象，按二进制位进行“或”运算。</p>
+<p>运算规则：0|0=0； 0|1=1； 1|0=1； 1|1=1；</p>
+<p>即 ：参加运算的两个对象只要有一个为1，其值为1。<br>    3. 异或运算符（^）</p>
+<p>参加运算的两个数据，按二进制位进行“异或”运算。</p>
+<p>运算规则：0^0=0； 0^1=1； 1^0=1； 1^1=0；</p>
+<p>即：参加运算的两个对象，如果两个相应位为“异”（值不同），则该位结果为1，否则为0。</p>
+<h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><p>CPU的组成<br>CPU内部结构大概可以分为控制单元、运算单元、存储单元和时钟等几个主要部分。<br>运算器是计算机对数据进行加工处理的中心，它主要由算术逻辑部件（ALU：Arithmetic and Logic Unit）、寄存器组和状态寄存器组成。</p>
+<h2 id="欧拉图"><a href="#欧拉图" class="headerlink" title="欧拉图"></a>欧拉图</h2><p>Euler通路 (欧拉迹)=通过图中每条边一次且仅一次,并且过每一顶点的通路.<br>Euler回路 (欧拉闭迹)=通过图中每条边一次且仅一次,并且过每一顶点的回路.<br>Euler图必要条件：<br>有Euler回路：(为欧拉图)连通,点均为偶度顶点.<br>有Euler通路：图连通,只有两个奇度顶点(它们分别是欧拉通路的两个端点).<br>Hamilton通路(回路)与Hamilton图 通过图的每个结点一次,且仅一次的通路(回路),就是哈密顿通路(回路).存在哈密顿回路的图就是哈密顿图.</p>
+<h2 id="CPU的组成"><a href="#CPU的组成" class="headerlink" title="CPU的组成"></a>CPU的组成</h2><p>CPU内部结构大概可以分为控制单元、运算单元、存储单元和时钟等几个主要部分。<br>运算器是计算机对数据进行加工处理的中心，它主要由算术逻辑部件（ALU：Arithmetic and Logic Unit）、寄存器组和状态寄存器组成。</p>
+<h2 id="∧-∨"><a href="#∧-∨" class="headerlink" title="∧ ∨"></a>∧ ∨</h2><p>∧，称为合取，就是逻辑与，例如：P∧Q 当且仅当P与Q同时为真(T)时，结果为真，其余全为假（F）<br>∨，称为析取，就是逻辑或,例如： P∨Q,当且仅当P与Q同时为F时，结果为假，其余全为真。 ┐ 为逻辑非 </p>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>数据库有层次型数据库 关系型数据库 网状数据库层次是树，关系是二维表，网状是链接指针</p>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><h3 id="中根遍历"><a href="#中根遍历" class="headerlink" title="中根遍历"></a>中根遍历</h3><p>左-根-右</p>
+<h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><p>根-左-右</p>
+<h3 id="后根遍历"><a href="#后根遍历" class="headerlink" title="后根遍历"></a>后根遍历</h3><p>左-右-根</p>
+<p>从（2022 ）年开始，NOIP 竞赛将不再支持 Pascal 语言。</p>
+<h2 id="内存换算"><a href="#内存换算" class="headerlink" title="内存换算"></a>内存换算</h2><p>1T = 1024GB<br>1GB = 1024MB<br>1MB = 1024KB<br>1KB = 1024B<br><strong>1B = 8字节</strong></p>
+<p>1TB代表的字节数量是( ).</p>
+<p> A. 2的10次方<br> B. 2的20次方<br> C. 2的30次方<br> D. 2的40次方<br>正确答案： D</p>
+<h2 id="后缀，中缀，前缀转换"><a href="#后缀，中缀，前缀转换" class="headerlink" title="后缀，中缀，前缀转换"></a>后缀，中缀，前缀转换</h2><p>一个中缀式到其他式子的转换方法<del>~
+这里我给出一个中缀表达式</del><br>a+b * c-(d+e)<br>第一步：按照运算符的优先级对所有的运算单位加括号~
+        式子变成拉：((a+(b * c))-(d+e))<br>第二步：转换前缀与后缀表达式<br>        前缀：把运算符号移动到对应的括号前面<br>              则变成拉：-( +(a * (bc)) +(de))<br>              把括号去掉：-+a * bc+de  前缀式子出现<br>        后缀：把运算符号移动到对应的括号后面<br>              则变成拉：((a(bc) * )+ (de)+ )-<br>              把括号去掉：abc * +de+-  后缀式子出现<br>发现没有，前缀式，后缀式是不需要用括号来进行优先级的确定的。</p>
+<h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>中国计算机学会于1984年创办全国青少年计算机程序设计竞赛(简称:NOI)<br>IOI:1987年，保加利亚的Sendov教授在联合国教科文组织第24届全体会议上，倡议举行国际信息学奥林匹克，定名为International Olympiad in Informatics，简称IOI。开始于1989</p>
+<p>APIO：:IOI2006期间，部分亚洲与太平洋地区参赛团领队在多次领队会协商的基础上，经IOI主席、IOI国际委员会与科学委员会批准决定从2007年开始举办该项赛事。</p>
+<h2 id="2018-T17"><a href="#2018-T17" class="headerlink" title="2018 T17"></a>2018 T17</h2><p>方程 a * b = (a or b) * (a and b)，在 a, b 都取 [0, 31] 中的整数时，共有__ 组解。（ * 表示乘法；or 表示按位或运算；and 表示按位与运算）</p>
+<p>0~31就是5位二进制数<br>然后，满足这个等式的a,b两数满足如下关系：一个数中是1的位，在另一个数中也都是1<br>举例：3和7，分别是00011和00111，3的两位1在7中也是1；3和5，分别是00011和00101，就不满足这个关系<br>然后，我们只要根据其中一个数中1的位数进行分类，用组合数求出每一类的个数，然后乘以每一类对应的满足关系的数字个数，就可以得到结果<br>比如：有1位1的数，有C(5,1)=5个，对应的满足关系的数有两种情况：这一位是1，另外4位任意，有2^4=16个；另外4位是0，这一位任意，有2^1=2个；再减去重复计算的两数相等的1种情况；最终得到这类数字对应的满足等式的数字对有C(5,1) * (16+2-1)=85个<br>以下是完整的计算式：<br>C(5,0) * (32+1-1)+C(5,1) * (16+2-1)+C(5,2) * (8+4-1)+C(5,3) * (4+8-1)+C(5,4) * (2+16-1)+C(5,5) * (1+32-1)</p>
+<ol start="8">
+<li>由四个不同的点构成的简单无向连通图的个数是( )。</li>
+</ol>
+<p>A. 32 B. 35 C. 38D. 41</p>
+<p>C</p>
+<p>4个不同点构成简单无向连通图，最多有4 * （4-1）/2=6 条边（强联通图），最少有4-1=3 条边（树），但注意，不是所有的任选3条边都满足条件，有一种情况是三个点形成一个三角形而孤立一个点，这种情况共有4种</p>
+<p>所以 ans=C（6，3）-4+C（6，4）+C（6，5）+C（6，6）=38</p>
+<h2 id="隔板法"><a href="#隔板法" class="headerlink" title="隔板法"></a>隔板法</h2><p>在n个元素间的n-1个空插入k个板，把元素分成k+1组<br>每个组至少分得一个元素，元素一样组别相异</p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>插入排序：<br>average：n^2<br>good:n<br>bad:n^2</p>
+<p>希尔排序：<br>average: n^1.3<br>bad:n^2</p>
+<p>选择排序：<br>average = good = bad = n^2</p>
+<p>冒泡排序：<br>good:n<br>bad:n^2<br>average：n^2<br>快速排序是由东尼·霍尔所发展的一种排序算法。在平均状况下，排序 n 个项目要Ο(n log n)次比较。在最坏状况下则需要Ο(n2)次比较，但这种状况并不常见。事实上，快速排序通常明显比其他Ο(n log n) 算法更快，因为它的内部循环（inner loop）可以在大部分的架构上很有效率地被实现出来。</p>
+<h2 id="汉字"><a href="#汉字" class="headerlink" title="汉字"></a>汉字</h2><p>一个汉字占2字节<br>一个字母占1字节<br>一个数字占8字节</p>
+<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>尾指针==头指针为空</p>
+<h2 id="最短路"><a href="#最短路" class="headerlink" title="最短路"></a>最短路</h2><h3 id="floyed："><a href="#floyed：" class="headerlink" title="floyed："></a>floyed：</h3><p>珂以计算图中任意两点间的最短路径，适用于出现负边权的情况<br>n^3</p>
+<h3 id="dijkstra"><a href="#dijkstra" class="headerlink" title="dijkstra"></a>dijkstra</h3><p>只能计算起点只有一个的情况<br>不能处理负边权的情况<br>B. 当图中不存在负权环但是存在负权边，Dijkstra算法一定不能求最短路，这是错的，可以求部分<br>朴素:n^2<br>优化:((n+m)logm)) </p>
+<h3 id="bellman-ford"><a href="#bellman-ford" class="headerlink" title="bellman-ford"></a>bellman-ford</h3><p>处理负边权，不能处理负权回路<br>负权回路：边权之和为负数的一条回路<br>n * m</p>
+<h3 id="SPFA"><a href="#SPFA" class="headerlink" title="SPFA"></a>SPFA</h3><p>类似于bellman-ford<br>kE &amp; n * m</p>
+<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><p>离散数学中的与或非优先级</p>
+<p>！&gt;  ∧ &gt; v</p>
+<h3 id><a href="#" class="headerlink" title="!"></a>!</h3><p>优先级2<br>逻辑非运算符<br>!纯量类型表达式<br>右到左<br>单目运算符</p>
+<h3 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h3><p>优先级8<br>按位与<br>整型表达式&amp;整型表达式<br>左到右<br>双目运算符</p>
+<h3 id="-1"><a href="#-1" class="headerlink" title="^"></a>^</h3><p>优先级9<br>按位异或<br>整型表达式^整型表达式<br>左到右<br>双目运算符</p>
+<h3 id="-2"><a href="#-2" class="headerlink" title="|"></a>|</h3><p>优先级10<br>按位或<br>整型表达式|整型表达式<br>左到右<br>双目运算符</p>
+<h2 id="汉诺塔"><a href="#汉诺塔" class="headerlink" title="汉诺塔"></a>汉诺塔</h2><pre><code>法国数学家爱德华·卢卡斯曾编写过一个印度的古老传说：在世界中心贝拿勒斯（在印度北部）的圣庙里，一块黄铜板上插着三根宝石针。印度教的主神梵天在创造世界的时候，在其中一根针上从下到上地穿好了由大到小的64片金片，这就是所谓的汉诺塔。不论白天黑夜，总有一个僧侣在按照下面的法则移动这些金片：一次只移动一片，不管在哪根针上，小片必须在大片上面。僧侣们预言，当所有的金片都从梵天穿好的那根针上移到另外一根针上时，世界就将在一声霹雳中消灭，而梵塔、庙宇和众生也都将同归于尽。 [2]
+不管这个传说的可信度有多大，如果考虑一下把64片金片，由一根针上移到另一根针上，并且始终保持上小下大的顺序。这需要多少次移动呢?这里需要递归的方法。假设有n片，移动次数是f(n).显然f(1)=1,f(2)=3,f(3)=7，且f(k+1)=2 * f(k)+1。此后不难证明f(n)=2^n-1。n=64时，</code></pre><p>假如每秒钟一次，共需多长时间呢？一个平年365天有31536000 秒，闰年366天有31622400秒，平均每年31556952秒，计算一下：<br>18446744073709551615秒<br>    这表明移完这些金片需要5845.54亿年以上，而地球存在至今不过45亿年，太阳系的预期寿命据说也就是数百亿年。真的过了5845.54亿年，不说太阳系和银河系，至少地球上的一切生命，连同梵塔、庙宇等，都早已经灰飞烟灭。</p>
+<h2 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h2><pre><code>又称卡塔兰数，英文名Catalan number，是组合数学中一个常出现在各种计数问题中出现的数列。以比利时的数学家欧仁·查理·卡塔兰 (1814–1894)的名字来命名，其前几项为（从第零项开始） : 1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, 208012, 742900, 2674440, 9694845, 35357670, 129644790, 477638700, 1767263190, 6564120420, 24466267020, 91482563640, 343059613650, 1289904147324, 4861946401452, ...</code></pre><p>可解决问题：</p>
+<p>1.n个节点二叉树有多少种形态？</p>
+<p>2.矩阵链乘：P=a1×a2×a3×……×an，依据乘法结合律，不改变其顺序，只用括号表示成对的乘积，有多少种括号化的方案？</p>
+<p>3.一个栈(无穷大)的进栈序列为1,2,3,..n,有多少个不同的出栈序列? </p>
+<p>4.有2n个人排成一行进入剧场。入场费5元。其中只有n个人有一张5元钞票，另外n人只有10元钞票，剧院无其它钞票，问有多少中方法使得只要有10元的人买票，售票处就有5元的钞票找零？(将持5元者到达视作将5元入栈，持10元者到达视作使栈中某5元出栈) </p>
+<p>5.将一个n个顶点的凸多边形区域分成三角形区域的方法数? </p>
+<p>6.在圆上选择2n个点,将这些点成对连接起来，使得所得到的n条线段不相交的方法数。 </p>
+<p>7.一位大城市的律师在她住所以北n个街区和以东n个街区处工作。每天她走2n个街区去上班。如果她从不穿越（但可以碰到）从家到办公室的对角线，那么有多少条可能的道路？</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g8045fc1rdj303u017743.jpg" alt></p>
+<h2 id="非联通无向图"><a href="#非联通无向图" class="headerlink" title="非联通无向图"></a>非联通无向图</h2><p>定义连通：对图中任意顶点u,v,都存在路径使u、v连通。<br>定义无向图：任意一条边都代表u连v以及v连u.<br>所以非连通无向图定义可推。<br>对于一个非连通无向图,共有28条边,则该图至少有多少个顶点?<br>先盖住非联通的条件，8个顶点，加一即可，其它题目也是这样</p>
+<h2 id="内存单元"><a href="#内存单元" class="headerlink" title="内存单元"></a>内存单元</h2><p>某计算机地址总线宽度为32位,这台计算机能够寻址的内存单元是多少?</p>
+<p>2的32次方，是4G。</p>
+<p>地址总线宽度为32位,一次可以发送的一个数据是32位的，则寻址的单元最大就是32位数据的最大值，就是2的32次方。</p>
+<h2 id="主定理：计算时间复杂度"><a href="#主定理：计算时间复杂度" class="headerlink" title="主定理：计算时间复杂度"></a>主定理：计算时间复杂度</h2><p><a href="https://www.cnblogs.com/oier/p/9454539.html" target="_blank" rel="noopener">link</a><br><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80c9w4141j31400fegqa.jpg" alt><br><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g80c9yj0v8j31400l9qaf.jpg" alt><br><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g81ji889naj30ks0abjsh.jpg" alt></p>
+<h2 id="读程序的题"><a href="#读程序的题" class="headerlink" title="读程序的题"></a>读程序的题</h2><p>一句一句读，不要跳，每一句都是关键，不要自以为是<br>揣测程序想干啥<br>填程序注意对称性<br>做递归算情况数的时候就是写一写，导一导，递归<br>例如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fun</span><span class="params">( <span class="keyword">int</span> n, <span class="keyword">int</span> minNum, <span class="keyword">int</span> maxNum )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> tot, i;</span><br><span class="line">	<span class="keyword">if</span> ( n == <span class="number">0</span> )</span><br><span class="line">		<span class="keyword">return</span>(<span class="number">1</span>);</span><br><span class="line">	tot = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> ( i = minNum; i &lt;= maxNum; i++ )</span><br><span class="line">		tot += fun( n - <span class="number">1</span>, i + <span class="number">1</span>, maxNum );</span><br><span class="line">	<span class="keyword">return</span>(tot);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, m;</span><br><span class="line">	<span class="built_in">scanf</span>( <span class="string">"%d%d "</span>, &amp;n, &amp;m );</span><br><span class="line">	<span class="built_in">printf</span>( <span class="string">"%d\n"</span>, fun( m, <span class="number">1</span>, n ) );</span><br><span class="line">	<span class="keyword">return</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Fun(3,1,6)=fun(2,2,6)+fun(2,3,6)+fun(2,4,6)+fun(2,5,6)+fun(2,6,6)+fun(2,7,6)=20</p>
+<p>Fun(2,2,6)=fun(1,3,6)+fun(1,4,6)+fun(1,5,6)+fun(1,6,6)+f(1,7,6)=10</p>
+<p>Fun（2,3,6）=fun(1,4,6)+fun(1,5,6)+fun(1,6,6)+fun(1,7,6)=6</p>
+<p>Fun(2,4,6)=fun(1,5,6)+fun(1,6,6)+fun(1,7,6)=3</p>
+<p>Fun(2,5,6)=fun(1,6,6)+fun(1,7,6)=1</p>
+<p>Fun(2,6,6):=fun(1,7,6)=0</p>
+<p>Fun(1,3,6)=fun(0,4,6)+fun(0,5,6)+fun(0,6,6)+fun(0,7,6)=4</p>
+<p>Fun(1,4,6)=fun(0,5,6)+fun(0,6,6)+fun(0,7,6)=3</p>
+<p>Fun(1,5,6)=fun(0,6,6)+fun(0,6,7)=2</p>
+<p>Fun(1,6,6)=fun(0,7,6)=1</p>
+<p>Fun(1,7,6)=0</p>
+<h2 id="操作系统有哪些》"><a href="#操作系统有哪些》" class="headerlink" title="操作系统有哪些》"></a>操作系统有哪些》</h2><ol>
+<li>Microsoft Windows</li>
+<li>Linux</li>
+<li>Android</li>
+<li>iOS</li>
+<li>Mac OS</li>
+</ol>
+<p>常见的视频格式：视频文件格式有不同的分类，如：</p>
+<p>微软视频 ：wmv、asf、asx</p>
+<p>Real Player ：rm、 rmvb</p>
+<p>MPEG视频 ：mpg、mpeg、mpe</p>
+<p>手机视频 ：3gp</p>
+<p>Apple视频 ：mov</p>
+<p>Sony视频 ：mp4、m4v</p>
+<h2 id="frog"><a href="#frog" class="headerlink" title="frog"></a>frog</h2><p>现有一只青蛙，初始时在n号荷叶上。当它某一时刻在k号荷叶上时，下一时刻将等概率地随机跳到1，2，……，k号荷叶之一上，直到跳到第1号荷叶为止。当n=2时，平均一共跳2次，n=3时，平均一共跳2.5次。当n等于5时，平均一共跳几次。</p>
+<p>1/5的概率跳到1，1=f(1)次<br>1/5的概率跳到2号，花费1+f(2)次<br>1/5的概率跳到3号，花费1+f(3)次<br>。。。<br>1/5的概率跳回5号，将花费1+f(5)次<br>f(5)=(f(1)+1+f(2)+1+f(3)+1+f(4)+1+f(5))/5<br>5f(5)=4+f(1)+f(2)+f(3)+f(4)+f(5)<br>4f(5)=4+f(1)+f(2)+f(3)+f(4)<br>f(5)=1+(f(1)+..f(4))/4<br>f(n)=(f(1)+1+f(2)+…1+f(n))/n<br>nf(n)=f(1)+…f(n)+(n-1)<br>(n-1)f(n)=f(1)+..f(n-1)+(n-1)<br>f(n)=1+(f(1)+..f(n-1))/(n-1)</p>
+<h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>127开头的ip地址是保留回环地址,不可能出现在网络上的。 127开头的IP主要用于测试 如:127.0.0.1 本机地址,主要用于测试。</p>
+<p>A类IP地址的地址范围1.0.0.1到127.255.255.254。</p>
+<p>B类IP地址的地址范围128.0.0.1-191.255.255.254。</p>
+<p>C类IP地址的地址范围192.0.0.1-223.255.255.254。</p>
+<p>D类IP地址的地址范围从224.0.0.0到239.255.255.255</p>
+<p>在RFC1884中，规定的标准语法建议把IPv6地址的128位（16个字节）写成8个16位的无符号整数，每个整数用四个十六进制位表示，这些数之间用冒号（：）分开，例如：3ffe:3201:1401:1280:c8ff:fe4d:db39:1984</p>
+<h2 id="完全图"><a href="#完全图" class="headerlink" title="完全图"></a>完全图</h2><p>若一个图的每一对不同顶点恰有一条边相连，则称为完全图。完全图是每对顶点之间都恰连有一条边的简单图。n个端点的完全图有n个端点及n(n − 1) / 2条边，B显然是不可以的；</p>
+<h2 id="NP-NPC-P问题"><a href="#NP-NPC-P问题" class="headerlink" title="NP/NPC/P问题"></a>NP/NPC/P问题</h2><p>P类问题是NP问题的子集，因为存在多项式时间解法的问题，总能在多项式时间内验证他。</p>
+<p>NPC问题是NP问题的子集。</p>
+<p>NPH问题：我们又叫NP难问题，他不是一个NP问题，然后所有的NPC问题都可以在多项式时间内转化为他的话，我们就叫他NPH（hard）问题。</p>
+<p><img src="https://tva1.sinaimg.cn/large/006y8mN6gy1g82fw2bsadj30dj06fdg4.jpg" alt></p>
+<h2 id="others"><a href="#others" class="headerlink" title="others:"></a>others:</h2><p>4) 华人学者目前仅有2000年图灵奖得主姚期智先生(对)<br>6) ENIAC是世界上第一台通用计算机(对)<br>byte是计算机的基本存储单位<br>计算机中最小的存储单位是bit<br>面向对象语言:C++等。面向过程语言:C/Pascal/Basic 等<br>RAM:Random，随机存储器，断电数据丢失。ROM:Read Only，只读存储器，断电数据保留，硬盘是 ROM<br>目前最快的计算机是“顶点”，它的运算速度在每秒 20 亿亿次的浮点运算速度峰值<br>FTP(File Transfer Protocol，文件传输协议)可以用于电脑之间传输文件。</p>
+<p>世界上第一台通用计算机 ENIAC 诞生于( B )<br>A. 1943年 B. 1946年 C. 1949年 D. 1950年<br>解析:Windows 操作系统下可执行文件的默认扩展名是 exe，如 C++程序编译产生的可执行文件就是.exe。但是 Linux 里面扩展名没有实际意义</p>
+<p>递归过程或函数调用时，处理参数和返回地址，通常使用一种称为( )的数据结构。<br>A. 队列<br>B. 多维数组<br>C. 线性表<br>D. 栈 解析:大家都知道递归是用栈实现的，大家写深搜的时候老师应该有提过非递归实现其实也是借助了栈的，所以先 D。<br>1948 年,( 克劳德·艾尔伍德·香农（Claude Elwood Shannon）)将热力学中的熵引入信息通信领域,标志着信息论研究的开端.</p>
+<ol start="12">
+<li>（ ）是一种通用的字符编码，它为世界上绝大部分语言设定了统一并且唯一的二进  制编码，以满足跨语言、跨平台的文本交换。目前它已经收录了超过十万个不同字符。    </li>
+</ol>
+<p>A. ASCII B. Unicode C. GBK 2312 D. BIG5      </p>
+<p>B</p>
+<p>又到了一年一度拼人品的时候了=w=，不过显然A是不选的</p>
+<p>Unicode（统一码、万国码、单一码）是计算机科学领域里的一项业界标准,包括字符集、编码方案等。Unicode 是为了解决传统的字符编码方案的局限而产生的，它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。1990年开始研发，1994年正式公布。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/operator/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/operator/" itemprop="url">operator</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T09:17:01+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="结构体内的比较函数模版："><a href="#结构体内的比较函数模版：" class="headerlink" title="结构体内的比较函数模版："></a>结构体内的比较函数模版：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> node &amp;a)<span class="keyword">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> r &lt; a.r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;a[maxn];</span><br></pre></td></tr></table></figure>
+
+<p>直接写比较函数是裸的r表示当前的值，如果r&lt;a.r，那么就是从小到大排序，但是优先队列的是相反的。</p>
+<p>sort默认为从小到大排序，优先队列默认为从大到小。</p>
+<h3 id="优先队列的比较函数模版："><a href="#优先队列的比较函数模版：" class="headerlink" title="优先队列的比较函数模版："></a>优先队列的比较函数模版：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(<span class="keyword">const</span> node &amp;a)<span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> r&gt;a.r;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;node&gt; q;</span><br></pre></td></tr></table></figure>
+
+<p>那么这个优先队列是按r小的优先出队。</p>
+<p>结构体内嵌比较函数的使用就是直接sort就可以，sort(a,a+n);</p>
+<h3 id="特殊情况："><a href="#特殊情况：" class="headerlink" title="特殊情况："></a>特殊情况：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> l,r;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> node &amp;x) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(l&lt;=r&amp;&amp;x.l&gt; x.r) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(l&gt; r&amp;&amp;x.l&lt; x.r) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">if</span>(l&lt;=r&amp;&amp;x.l&lt;=x.r) <span class="keyword">return</span> l&lt;x.l;</span><br><span class="line">        <span class="keyword">if</span>(l&gt; r&amp;&amp;x.l&gt; x.r) <span class="keyword">return</span> r&gt;x.r;</span><br><span class="line">        <span class="comment">//return false;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;a[<span class="number">100</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a[i].l,&amp;a[i].r);</span><br><span class="line">    sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;a[i].l&lt;&lt;<span class="string">" "</span>&lt;&lt;a[i].r&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就用上面的代码举栗子吧。</p>
+<p>假设我要比较的数列为:</p>
+<p>(l,r): (1,3) (4,3) (5,6) (8,2) (7,1) 那么我按照以上代码排序，排完序之后的数列是什么样的呢？</p>
+<p>　　(1,3) (5,6) (4,3) (8,2) (7,1)<br>　　<br>　　发现什么了吗？为什么要用两种颜色标记呢？蓝色的都是l&lt;=r的，粉色的都是l&gt;r的，排序的时候，没有参数的l,r比有参数的x.l，x.r的级别高，就相当于是比较的时候的第一个数。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/08/互不侵犯/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lishu">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DS-FLY">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/08/互不侵犯/" itemprop="url">互不侵犯</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-08T17:31:36+08:00">
+                2019-08-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>f[i][j][k]表示在j的这个状态下。第i层有k个国王<br>预处理每种状态下的国王数和国王状态<br>递推处理</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1</span> &lt;&lt; <span class="number">11</span> ;</span><br><span class="line"><span class="keyword">int</span> n , kkk, tot[N] , sta[N] , cnt = <span class="number">0</span> ;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> f[<span class="number">10</span>][N][<span class="number">100</span>] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span> <span class="params">( <span class="keyword">int</span> state , <span class="keyword">int</span> num , <span class="keyword">int</span> len )</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( len &gt;= n ) &#123;</span><br><span class="line">        sta[++cnt] = state ; tot[cnt] = num ; <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    dfs ( state , num , len + <span class="number">1</span> ) ;</span><br><span class="line">    dfs ( state + ( <span class="number">1</span> &lt;&lt; len ) , num + <span class="number">1</span> , len + <span class="number">2</span> ) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span> <span class="params">( )</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span> ( <span class="string">"%d%d"</span> , &amp; n , &amp; kkk ) ;</span><br><span class="line">    dfs ( <span class="number">0</span> , <span class="number">0</span> , <span class="number">0</span> ) ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= cnt ; i ++ ) f[<span class="number">1</span>][i][tot[i]] = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">2</span> ; i &lt;= n ; i ++ ) &#123;</span><br><span class="line">        <span class="keyword">for</span>( <span class="keyword">int</span> j = <span class="number">1</span> ; j &lt;= cnt ; j ++ ) &#123;</span><br><span class="line">            <span class="keyword">for</span> ( <span class="keyword">int</span> k = <span class="number">1</span> ; k &lt;= cnt ; k ++ ) &#123;</span><br><span class="line">                <span class="keyword">if</span> ( ( sta[j] &amp; sta[k] ) || ( ( sta[j] &lt;&lt; <span class="number">1</span> ) &amp; sta[k] ) || ( ( sta[j] &gt;&gt; <span class="number">1</span> ) &amp; sta[k] ) ) <span class="keyword">continue</span> ;</span><br><span class="line">                <span class="keyword">for</span> ( <span class="keyword">int</span> s = kkk ; s &gt;= tot[j] ; s -- ) f[i][j][s] += f[i<span class="number">-1</span>][k][s-tot[j]] ;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= cnt ; i ++ ) ans += f[n][i][kkk] ;</span><br><span class="line">    <span class="built_in">printf</span> ( <span class="string">"%lld"</span> , ans ) ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Kinoman-POI2015/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1361,515 +1918,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/数论学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lishu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DS-FLY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/13/数论学习/" itemprop="url">数论学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T13:08:58+08:00">
-                2019-06-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/代码/" itemprop="url" rel="index">
-                    <span itemprop="name">代码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、同余的概述"><a href="#一、同余的概述" class="headerlink" title="一、同余的概述"></a>一、同余的概述</h3><p>定义1:给定正整数m，若用m除以两个整数a和b所得余数相同，称a和b对模m同余，记作a≡b（mod m）<br>，并称该式子为同余式；否则称a和b对模m不同余。<br>定义2：整数对集合被分为m个不同的集合，这些集合被称为模m剩余类（同余类）。每个同类中的任意两个整数都是模m同余的。<br>定理1：a≡b（mod m），当且仅当m|（a-b）。<br>定理2：a≡b（mod m），当且仅当存在整数k，使得a=b+km。<br>费马小定理：若p是质数，则对于任意整数a，有<img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zfeaixs2j301b00dgle.jpg" alt>（mod p）。在后文中与欧拉函数一起讲。</p>
-<h3 id="二、同余的性质"><a href="#二、同余的性质" class="headerlink" title="二、同余的性质"></a>二、同余的性质</h3><p>自反性，对称性，传递性，同加性，同乘性，同幂性。</p>
-<h3 id="同余的几个基本的定理"><a href="#同余的几个基本的定理" class="headerlink" title="同余的几个基本的定理"></a>同余的几个基本的定理</h3><h4 id="欧拉定理证明："><a href="#欧拉定理证明：" class="headerlink" title="欧拉定理证明："></a>欧拉定理证明：</h4><p>欧拉定理：设a,m∈N，(a,m)=1，则<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zff13zwoj302v00oq2x.jpg" alt>(mod m)<br>(注：φ(m)指模m的简系个数， φ(m)=m-1，如果m是素数；<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zffmj1vjj308300u74y.jpg" alt></p>
-<p>若正整数a , n互质，则aφ(n)≡1(mod n)其中φ(n)是欧拉函数（1~n)与n互质的数。</p>
-<p>证明如下：<br>不妨设X1，X2…… Xφn是1~n与n互质的数。</p>
-<p>　　首先我们先来考虑一些数：aX1，aX2…… aXφn<br>　　这些数有如下两个性质：( |是整除的意思）</p>
-<p>　
-　<br>　（1）任意两个数模n余数一定不同：（反证）若存在aX1≡aX2（mod n），则n |（ aX1-aX2），而a，n互质且（X1- X2）&lt; n，所以n不可能整除（ aX1-aX2），也就是说<br>不存在aX1≡aX2（mod n）。</p>
-<p>归纳法：对于任意的与n互质的Xi均成立。故得证。</p>
-<p>　　那么因为有φn个这样的数，Ximod n（i=1<del>φn） 所以就有φn个不同的余数，并且都是模数自然是（0</del>n-1）。</p>
-<p>　（2）对于任意的aXi（mod n）都与n互质。这不难想，因为a与n互质这是欧拉函数的条件，Xi是（1~n）与n互质的数的集合中的元素。所以如果a * Xi做为分子，n做为分母，那么<br>他们构成的显然就是一个最简分数，也就是aXi和n互质。接下来就可以用欧几里得算法：因为：gcd（aXi，n）==1所以：gcd（aXi，n）== gcd（n，aXi%n）== 1</p>
-<pre><code>这样，我们把上面两个性质结合一下来说，aX1（mod n），aX2（mod n）...... aXφn（mod n）构成了一个集合（性质1证明了所有元素的互异性），并且这些数是1~n与n互</code></pre><p>质的所有数构成的集合（性质1已说明）。这样，我们巧妙的发现了.. aXφn（mod n）}经过一定的排序后和集合{X1，X2…… Xφn}<br>完全一一对应。那么：aX1（mod n)<em>aX2（mod n）</em> …… * aXφn（mod n）= X1 * X2* …… * Xφn</p>
-<p>因此：我们可以写出以下式子：<br>aX1* aX2 *  …… * aXφn ≡  X1 * X2 * …… * Xφn  （mod n），即：（aφn -1）X1 * X2 * …… * Xφn ≡ 0 （mod n）<br>　　又因为X1<em>X2</em> ……* Xφn与n互质，所以， （aφn -1）| n，那么aφn ≡ 1（mod n）。欧拉定理得证。</p>
-<h4 id="费马小定理证明-："><a href="#费马小定理证明-：" class="headerlink" title="费马小定理证明 ："></a>费马小定理证明 ：</h4><p>费马小定理：</p>
-<p>　　对于质数p，任意整数a，均满足：<img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3zfl8e68wj301y00i0sl.jpg" alt>（mod p）</p>
-<p>证明如下：<br>　　这个可以用欧拉定理来说明：首先，我们把这个式子做一个简单变换得：<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zflk1bswj303o00nwej.jpg" alt>（mod p） 因为a ≡ a（mod p）恒成立，所以<img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zflv377cj301c00ndfo.jpg" alt>mod p == 1时费马小定理才成立，又因为p<br>是质数，所以 φn == n-1 ,所以根据欧拉定理：若a，p互质则<img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3zfm9vtx4j301c00ndfo.jpg" alt>mod p == 1成立。那么对于a，p不互质，因为p是质数，所以，a一定是倍数≡ a ≡ 0（mod p）。综上所述，费马小定理<br>成立，其实它算是欧拉定理的一个特例。</p>
-<h4 id="欧拉定理的推论："><a href="#欧拉定理的推论：" class="headerlink" title="欧拉定理的推论："></a>欧拉定理的推论：</h4><p>若正整数a，n互质，则对于任意正整数b，有<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfnf8hplj304a00ojri.jpg" alt>(mod n)<br>证明：设,其中0&lt;=r&lt; <img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfnstpt9j300m00c3y9.jpg" alt>。于是<img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3zfo0zxbgj30bj00l74y.jpg" alt>mod(n)</p>
-<h5 id="eg"><a href="#eg" class="headerlink" title="eg"></a>eg</h5><p>给定a，n求出 S=((((aa)a)a)a⋅⋅⋅⋅)a （mod 998244353）共n个a。<br>思路：</p>
-<p>先求出指数，即a^n-1（快速幂求解），并将指数对mod-1（因为mod是质数，那么φ（mod）= mod-1），再用更新后的指数做为新的指数用快速幂求解即可。</p>
-<p>大部分引用自<a href="https://www.cnblogs.com/zylAK/p/9569668.html" target="_blank" rel="noopener">zylAK</a></p>
-<h3 id="三、扩展欧几里得算法"><a href="#三、扩展欧几里得算法" class="headerlink" title="三、扩展欧几里得算法"></a>三、扩展欧几里得算法</h3><p>概述</p>
-<p>欧几里德算法又称辗转相除法，用于计算两个整数a,b的最大公约数。其计算原理依赖于下面的定理：</p>
-<p>gcd函数就是用来求(a,b)的最大公约数的。</p>
-<p>gcd函数的基本性质：</p>
-<p>gcd(a,b)=gcd(b,a)=gcd(-a,b)=gcd(|a|,|b|)</p>
-<p>公式表述</p>
-<p>gcd(a,b)=gcd(b,a mod b)</p>
-<p>证明：a可以表示成a = kb + r，则r = a mod b</p>
-<p>假设d是a,b的一个公约数，则有</p>
-<p>d|a, d|b，而r = a - kb，因此d|r</p>
-<p>因此d是(b,a mod b)的公约数</p>
-<p>假设d 是(b,a mod b)的公约数，则</p>
-<p>d | b , d |r ，但是a = kb +r</p>
-<p>因此d也是(a,b)的公约数</p>
-<p>因此(a,b)和(b,a mod</p>
-<p>b)的公约数是一样的，其最大公约数也必然相等，得证</p>
-<p>求解gcd代码：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span> <span class="params">( <span class="keyword">int</span> a , <span class="keyword">int</span> b )</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> b?gcd ( b , a % b ) : a ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>因为gcd(a,b)=gcd(b,a mod b )</p>
-<p>证明：设gcd(a,b)=c,</p>
-<p>a = k1 * c , b = k2 * c .</p>
-<p>a%b=(k1-k2) * c|c</p>
-<p>故gcd(a,b)=gcd(b,a mod b )</p>
-<p>求解方程：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a,<span class="keyword">long</span> <span class="keyword">long</span> b,<span class="keyword">long</span> <span class="keyword">long</span> &amp;x, <span class="keyword">long</span> <span class="keyword">long</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(b==<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        x=<span class="number">1</span>;</span><br><span class="line">        y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    r=exgcd(b,a%b,x,y);</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> cnt=x;</span><br><span class="line">    x=y;</span><br><span class="line">    y=cnt-a/b*y;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="贝祖定理-："><a href="#贝祖定理-：" class="headerlink" title="贝祖定理 ："></a>贝祖定理 ：</h4><p>  即如果a、b是整数，那么一定存在整数x、y使得ax+by=gcd(a,b)。<br>换句话说，如果ax+by=m有解，那么m一定是gcd(a,b)的若干倍。（可以来判断一个这样的式子有没有解）<br><em>有一个直接的应用就是 如果ax+by=1有解，那么gcd(a,b)=1；</em><br>故对于不定方程ax+by=c当且仅当gcd(a,b)|c时方程有解</p>
-<p>未完待续···<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3zfsiorccj31hc0u0e7o.jpg" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/09/Tarjan算法的原理及使用方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lishu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DS-FLY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/09/Tarjan算法的原理及使用方式/" itemprop="url">Tarjan算法的原理及使用方式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-09T10:16:35+08:00">
-                2019-06-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/代码/" itemprop="url" rel="index">
-                    <span itemprop="name">代码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一-算法简介"><a href="#一-算法简介" class="headerlink" title="一.算法简介"></a>一.算法简介</h3><blockquote>
-<p>Tarjan 算法一种由Robert Tarjan提出的求解有向图强连通分量的算法，它能做到线性时间的复杂度。</p>
-</blockquote>
-<p>我们定义：</p>
-<ul>
-<li>强连通：有向图中，两个顶点至少存在一条路径。</li>
-<li>强连通图：没两个顶点都强连通都有向图。</li>
-<li>强连通分量(strongly connected components)：有向图的极大强连通子图。</li>
-</ul>
-<h3 id="二、什么是强连通分量？"><a href="#二、什么是强连通分量？" class="headerlink" title="二、什么是强连通分量？"></a>二、什么是强连通分量？</h3><p>例如在下图中：<br>一个点，我们视为一个强连通分量，例如4这个点是强连通分量，2，3，4这三个点是强连通分量。但由于4可以添加2，3进去，所以4不是极大的强连通子图，2、3、4是极大的强连通子图，因为它们没办法扩展。所以在下图中：1是一个强连通分量，2、3、4是一个强连通分量。<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3uot52z3qj305306q3ye.jpg" alt><br>强连通意味着两两可达，当我们遇到有环的问题，可将这些环缩成一个点，也就是把一个有环图的问题转化成一个树或森林的问题，求强连通分量后，如果在这些被缩成一个点的点中的数据，和有用就求和，最大值有用就求最大值，从而解决实际问题。</p>
-<p>那么我们缩图要缩成什么样子呢？下图：<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3uotm2895j30530aoweo.jpg" alt><br><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g3uotnsojuj305307cmx8.jpg" alt><br>1、2、3、4是两两可达的，6，7，8是两两可达的，5自身可看作能到达自己。于是我们可以将1、2、3、4缩成一个假设为scc1的点，6、7、8缩成一个scc2 的点，5单独为一个scc3的点。不难发现缩成点后，每一个点内的边都不存在了，而且，每一个点的出边是强连通分量的出边，每个点的入边是强连通分量的入边。</p>
-<h3 id="三、那么具体要怎么缩点呢？"><a href="#三、那么具体要怎么缩点呢？" class="headerlink" title="三、那么具体要怎么缩点呢？"></a>三、那么具体要怎么缩点呢？</h3><p>有两种方式：1、Kosaraju算法和tarjan算法。虽然Kosaraju算法比Tarjan要好理解的多，但实现时与实际应用范围也更小。</p>
-<p>这里我们讲Tarjan。<br>使用搜索从任意节点遍历有向图时，可以得到搜索树。</p>
-<h4 id="每一条边和搜索树的关系可以分为下面四种："><a href="#每一条边和搜索树的关系可以分为下面四种：" class="headerlink" title="每一条边和搜索树的关系可以分为下面四种："></a>每一条边和搜索树的关系可以分为下面四种：</h4><ol>
-<li>树枝边：搜索树上的边，即未访问过节点的边</li>
-<li>前向边：指向搜索树中子树中节点的边。</li>
-<li>后向边：指向搜索树中父亲（也就是从根节点到这条边的路径中，在它之前被遍历的点）的边。</li>
-<li>横叉边：其他边，即指向搜索树中非子树的边。</li>
-</ol>
-<h4 id="下面考虑如何判断这四种边。"><a href="#下面考虑如何判断这四种边。" class="headerlink" title="下面考虑如何判断这四种边。"></a>下面考虑如何判断这四种边。</h4><p>我们来看下面这张图：<br>红色标记的为搜索树，我们走到了8，可以回溯，也就是返回到4，再搜索9<br>记录搜索的顺序用dfn来表示，例如dfn[1]就代表1节点的搜索的顺序。</p>
-<h4 id="我们来定义4种边的类型。"><a href="#我们来定义4种边的类型。" class="headerlink" title="我们来定义4种边的类型。"></a>我们来定义4种边的类型。</h4><p>A边终点未访问过，为树枝边。<br>B边终点已经被访问过，且dfn[v(目标点)]&gt;dfn[u(起始点)]。说明在子树中，所以为前向边。C边终点已被访问过且不在子树中，终点在栈中则为后向边。<br>D边终点已被访问过且不在子树中且已经出栈，为横叉边。<br>其中，无向图中不存在前向边和横叉边。<br><img src="http://ww2.sinaimg.cn/large/006tNc79gy1g3uovkd5xmj309a097jrl.jpg" alt><br>在一个有向有环图上搜索时，考虑每一个强连通分量高度最低（距离最开始搜索的点最近）的那个点。这些点将搜索树分割成了许多个子树，每个子树中的点组成了一个强连通分量。分割的方法是在搜索的同时另外维护一个栈存放节点，离开分割点时把分割点向下的部分全部取出来就是一个强连通分量。</p>
-<p>Tarjan的流程：先搜索1，3，4，6，7，8当再次搜索至6时，栈中的元素，从下到上依次为1，3，4，6，7，8。6已经被找过了，所以6是后向边，所以弹出元素8，7，6，把它们缩成一个点；栈中元素从下往上为1，3，4.然后从4搜索至1，但此时1还没有搜索完它所有的节点，所以返回，再从1搜索2，把2加入栈中，再搜索5，搜索5后没有多余节点，弹出5为一个节点。再把1，2，3，4从栈中弹出，这就是Tarjan的算法流程。<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3uovw1492j305c0b7wei.jpg" alt></p>
-<h3 id="那么我们具体怎么实现呢？"><a href="#那么我们具体怎么实现呢？" class="headerlink" title="那么我们具体怎么实现呢？"></a>那么我们具体怎么实现呢？</h3><p>我们维护一个数组low，low[u]代表点u所能到达的深度最小的点的dfs（搜索）序编号；初始化low[u]为u节点的搜索的顺序编号dfn[u]。<br>对于一条边（u，v）（从u出发，v为终点的一条边）</p>
-<p>—若为树枝边，因为等到递归再次通过v搜索至其它的点的时候，可能v可以搜索至其它深度更小的点，只要有树枝边，那么必然它的low值被改变的更小，因为low[u]是要求出最小的深度的点，所以用low更新，比用dfn搜索序更新所带来的方案要更优些。则用low[v]更新。<br>—若为后向边，则用dfn[v]更新。因为low[u]保存的是u节点能够到达的最小深度的点。<br>—若为前向边，因为指向的点的信息已经通过其他的枝边传递过来，所以无需更新。<br>—若为横叉边，假设我们出发的这个点是在目标点的强连通分量中，那么我们的出发点就会早已被目标点中的强连通分量中的点更新，所以必然指向的是另一个强连通分量，无需更新。<br>当我们搜索完成后，low[u] = dfn[u]时，说明u这个点已经完全不能往上走了，所以它就是一个分割点。</p>
-<p>搜索时任选一个结点开始搜索，若搜索结束后仍有未访问的点，则再从中任选一个点进行。搜索中对已经访问的点不再访问。</p>
-<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span> <span class="params">( <span class="keyword">int</span> x )</span> </span>&#123;</span><br><span class="line">    low[x] = dfn[x] = ++ dfs ;</span><br><span class="line">    <span class="built_in">stack</span>[ ++ top ] = x ; vis[x] = <span class="number">1</span> ;</span><br><span class="line">    <span class="keyword">for</span> ( <span class="keyword">int</span> i = head[x] ; i ; i = nex[i] ) &#123;</span><br><span class="line">        <span class="keyword">if</span> ( ! dfn[to[i] ] ) &#123;<span class="comment">//处理树枝边</span></span><br><span class="line">            Tarjan ( to[i] ) ;</span><br><span class="line">            low[x] = min ( low[x] , low[to[i]] ) ;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ( vis[to[i]] )<span class="comment">//处理后向边</span></span><br><span class="line">            low = min ( low[x] , dfn[to[i]] ) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//这个点所有的分支都被处理了，走完了所有相连的点</span></span><br><span class="line">    <span class="keyword">if</span> ( dfn[x] == low[x] ) &#123;</span><br><span class="line">        col ++ ;vis[x] = <span class="number">0</span> ;color[x] = col ;</span><br><span class="line">        <span class="keyword">while</span> ( <span class="built_in">stack</span>[top] != u ) &#123;</span><br><span class="line">            color[ <span class="built_in">stack</span>[top] ] = col ;</span><br><span class="line">            vis[ <span class="built_in">stack</span>[top --] ] = <span class="number">0</span> ;</span><br><span class="line">        &#125;</span><br><span class="line">        top -- ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以发现，在使用Tarjan的过程中，每个节点只被访问了一次，所以时间复杂度为O（n+e）。（n为点数，e为边数）。<br><img src="http://ww4.sinaimg.cn/large/006tNc79gy1g3uoxkak9dj31hc0u0e19.jpg" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/09/USACO08DEC-在农场万圣节/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lishu">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g3tfe0ljqqj30540510uc.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DS-FLY">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/09/USACO08DEC-在农场万圣节/" itemprop="url">[USACO08DEC]在农场万圣节</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-09T10:11:41+08:00">
-                2019-06-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/代码/" itemprop="url" rel="index">
-                    <span itemprop="name">代码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>因为图是单向的，当走到一个环时，必然会把环走一遍然后停止，所以用Tarjan缩点后再跑一遍，每次直走一次或者不走，判断的条件是如果此点在环内就只跑一次，如果只是一个单独的点，就跑两次。</p>
-<h3 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span> ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N ,q[<span class="number">100005</span>] , sum[<span class="number">100005</span>] ;</span><br><span class="line"><span class="keyword">int</span> to[<span class="number">100005</span>] ;</span><br><span class="line"><span class="keyword">int</span> low[<span class="number">100005</span>] , dfn[<span class="number">100005</span>] ;</span><br><span class="line"><span class="keyword">int</span> num , co , col[<span class="number">100005</span>] ;</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">stack</span>[<span class="number">100005</span>] , top = <span class="number">0</span> ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    low[u] = dfn[u] = ++num ;</span><br><span class="line">    <span class="keyword">int</span> v = q[u] ;</span><br><span class="line">    <span class="built_in">stack</span>[++top] = u ;</span><br><span class="line">    <span class="keyword">if</span>(!dfn[v])Tarjan(v) , low[u] = min( low[u], low[v] ) ;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (!col[v]) low[u] = min (low[u] , dfn[v] ) ;</span><br><span class="line">    <span class="keyword">if</span> (dfn[u] == low[u] )&#123;</span><br><span class="line">        co++ ;</span><br><span class="line">        <span class="keyword">int</span> t ;</span><br><span class="line">        <span class="keyword">do</span> &#123;</span><br><span class="line">            t = <span class="built_in">stack</span> [top--] ;</span><br><span class="line">            col[t] = co ;</span><br><span class="line">            sum[co] ++ ;</span><br><span class="line">        &#125;<span class="keyword">while</span> (t != u ) ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> f[<span class="number">1000005</span>] ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sl</span><span class="params">(<span class="keyword">int</span> x , <span class="keyword">int</span> s )</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(col[x] == col[s] ) <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">if</span> (f[x]) <span class="keyword">return</span> f[x] ;</span><br><span class="line">    <span class="keyword">int</span> a = sum[col[x]] , v = q[x] ;</span><br><span class="line">    <span class="keyword">return</span> f[x] = a +sl(v , x) ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;N) ;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;q[i]) ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= N ; i++ )&#123;</span><br><span class="line">        <span class="keyword">if</span> (!dfn[i])Tarjan(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;= N ; i++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,sl(i,<span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>由于懒得想所以就借鉴了题解中的一片代码改了一下；<br>他的关键代码的else if中，他的为<br>low[u] = min ( low[u] , low[v] ) ;<br>在此题中是正确的，但按照标准的写法应该为如下；<br>其中的关键代码为：<br>    if(!dfn[v])Tarjan(v) , low[u] = min( low[u], low[v] ) ;<br>    else if (!col[v]) low[u] = min (low[u] , dfn[v] ) ;<br>题解的写法在求强连通分量时是等价的，但求割点时是错误的，所以严谨来说应该写为<br>low[u] = min (low[u] , dfn[v] ) ;<br><img src="http://ww1.sinaimg.cn/large/006tNc79gy1g3uopehzb4j31hc0u0e65.jpg" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1917,7 +1970,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1939,7 +1992,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

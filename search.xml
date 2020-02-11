@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2020.2.11计划]]></title>
+    <url>%2F2020%2F02%2F11%2F2020-2-11%E8%AE%A1%E5%88%92%2F</url>
+    <content type="text"><![CDATA[计划：1.英语*2页2.生物大题finish3.写写年度总结4.数学写大题*5 完成情况]]></content>
+      <tags>
+        <tag>杂</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[2019总结]]></title>
+    <url>%2F2020%2F02%2F11%2F2019%E6%80%BB%E7%BB%93%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[数学建模]]></title>
+    <url>%2F2020%2F01%2F17%2F%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[CSP2019游记]]></title>
     <url>%2F2019%2F11%2F15%2FCSP2019%E6%B8%B8%E8%AE%B0%2F</url>
     <content type="text"><![CDATA[Day 0上午没有考试，避免了考前爆零于是乎就在机房颓知乎，考前一天不敢打CS，于是就没有玩的太嗨，就看了看笑话，番也囤了很久了，一切都等到考完后在玩吧早上学了学线性求逆元 万一毒瘤出题人考模版呢？看了看斗地主这道题，大致调整一下考场如果考模拟的心态早上主要看了看往届学长等等写的游记，模拟下考前的心理状态感觉很紧张，但可能是看了其他游记，调整了心态，感觉还没有考初赛的时候紧张总结一下自己这几十天的考试，前面考的都不错，但这一周场场考试都不尽人意，其实是很慌的想想，正式考试中有大样例，这可以有效避免我这个不大会静态查错的坏毛病，突然就不是很慌了 其实还是很慌准备下午或者晚上敲一遍树剖模版，锻炼下感觉。下午三点去陴都,电子科大清水河校区，CSP rp++ ；下午：车上比较堵，但好歹到了酒店，还是上次住的酒店，貌似还是上次那个房间。。。熟悉的环境，同寝室还是熟悉的人，不慌，但就是上次来考的高二的学长已经只剩下一个人了。。。晚上追个番就睡了，明天早上八点调整好最好的状态]]></content>
@@ -319,8 +337,8 @@
         <category>代码</category>
       </categories>
       <tags>
-        <tag>中国剩余定理</tag>
         <tag>同余</tag>
+        <tag>中国剩余定理</tag>
         <tag>欧拉定理</tag>
         <tag>扩展欧几里得</tag>
       </tags>
