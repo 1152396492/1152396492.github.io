@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>插值算法 - Amentiraz blog</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="插值算法主要运用于在数学建模竞赛中，现有的数据极少，不足以支撑分析的进行，这时候就需要使用一些数学的方法插值的作用，“模拟产生”一些新的但又比较靠谱的值来满足需求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="插值算法">
+<meta property="og:url" content="http://1152396492.github.io/2021/10/04/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Amentiraz blog">
+<meta property="og:description" content="插值算法主要运用于在数学建模竞赛中，现有的数据极少，不足以支撑分析的进行，这时候就需要使用一些数学的方法插值的作用，“模拟产生”一些新的但又比较靠谱的值来满足需求">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/008i3skNgy1gv3e0n9uf2j60mt09774y02.jpg">
+<meta property="article:published_time" content="2021-10-03T16:21:52.000Z">
+<meta property="article:modified_time" content="2021-12-25T08:27:36.733Z">
+<meta property="article:author" content="Amentiraz">
+<meta property="article:tag" content="数学建模">
+<meta property="article:tag" content="插值算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/008i3skNgy1gv3e0n9uf2j60mt09774y02.jpg">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1696684996923">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1696684996923">
+    <link rel="stylesheet" href="/css/style.css?v=1696684996923">
+     
+    
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://tva1.sinaimg.cn/large/008i3skNly1gu8zexcv19j61hc0u0qbp02.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Amentiraz" class="mdui-btn mdui-btn-icon"><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gu8zhjn8bgj60k00k0mxc02.jpg" alt="Amentiraz"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Amentiraz">
+            <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gu8zhjn8bgj60k00k0mxc02.jpg" alt="Amentiraz" alt="Amentiraz">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>22</div>
+        <div><span>标签</span>28</div>
+        <div><span>分类</span>8</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/362195236" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/1152396492" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/c/">c</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/python/">python</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数学建模/">数学建模</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/杂谈/">杂谈</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/生活/">生活</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/论文/">论文</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/题解/">题解</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/TOPSIS/" style="font-size: 12.5px;">TOPSIS</a> <a href="/tags/Tarjan/" style="font-size: 10px;">Tarjan</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">c语言</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E4%B9%A6%E8%AF%84/" style="font-size: 10px;">书评</a> <a href="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/" style="font-size: 10px;">云计算</a> <a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 12.5px;">动漫</a> <a href="/tags/%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/" style="font-size: 10px;">复习资料</a> <a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 10px;">娱乐</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 12.5px;">学习笔记</a> <a href="/tags/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/" style="font-size: 10px;">层次分析法</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/" style="font-size: 10px;">插值算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 17.5px;">数学建模</a> <a href="/tags/%E6%AF%94%E8%B5%9B/" style="font-size: 10px;">比赛</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 10px;">线段树</a> <a href="/tags/%E7%BB%93%E6%9E%84/" style="font-size: 10px;">结构</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 10px;">题解</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Amentiraz
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+              <img data-src="https://tva1.sinaimg.cn/large/008i3skNly1gwsukb5fpej31hj0u0gvj.jpg" data-sizes="auto" alt="插值算法" class="lazyload">
+              <h1>插值算法</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年10月03日</a>
+</div>
+
+      
+
+      
+    <div id="aplayer-qftvjbcg" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="502455381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
+    ></div>
+
+<p>插值算法主要运用于在数学建模竞赛中，现有的数据极少，不足以支撑分析的进行，这时候就需要使用一些数学的方法<br>插值的作用，“模拟产生”一些新的但又比较靠谱的值来满足需求</p>
+<span id="more"></span>
+<h3 id="一维插值问题"><a href="#一维插值问题" class="headerlink" title="一维插值问题"></a>一维插值问题</h3><h4 id="问题如下："><a href="#问题如下：" class="headerlink" title="问题如下："></a>问题如下：</h4><p>已经有n+1个节点(xi,yi)(i=0,1,…,n),其中xi互不相同，不妨设a &lt;= x0 &lt; x1 &lt; … &lt; xn &lt;= b ,求任一插值点x * （不等于xi）处的插值y *<br>思路：构造y=f(x),使得f(x)过所有节点，即可得到y *</p>
+<h4 id="插值法的概念"><a href="#插值法的概念" class="headerlink" title="插值法的概念"></a>插值法的概念</h4><p>设函数y=f(x)在区间[a,b]上有定义，且已知在点a&lt;= x0 &lt; x1 &lt; … &lt; xn &lt;= b 上的值分别为 y0 , y1 , … , yn<br>若存在一简单函数P(x)使P(xi) = yi ( i = 0 , 1 , 2 , … , n )则称P(x)为f(x)的插值函数，点x0,x1,…,xn称为插值节点，包含插值节点的区间[a,b]称为插值区间<br>求插值函数P(x)的方法称为插值法<br>插值法是不唯一的<br>代数多项式：若P(x)是次数不超过n的代数多项式，即P(x) = a0 + a1x + … + anx^n<br>分段插值：若P(x)为分段多项式，就称为分段插值<br>三角插值：若P(x)为三角多项式，就称为三角插值（不予讨论）（一般要用到傅立叶变换等复杂的数学工具）<br>一般来讲三角插值适用于对周期函数的插值（三角函数嘛）</p>
+<h4 id="插值法原理"><a href="#插值法原理" class="headerlink" title="插值法原理"></a>插值法原理</h4><p>定理：设有n+1个互不相同的节点(xi,yi)(i=0,1,2,…,n)则存在唯一的多项式：<br>Ln(x) = a0 + a1x + … + anx^n   使得Ln(xj) = yj (j=0,1,2,…n)<br>证 构造方程组<br>「a0 + a1x0 + … + anx0^n = y0<br>a0 + a1x1 + … + anx1^n = y1<br>…<br>a0 + a1xn + … + anxn^n = yn  」</p>
+<p>图片：</p>
+<h4 id="拉格朗日插值法"><a href="#拉格朗日插值法" class="headerlink" title="拉格朗日插值法"></a>拉格朗日插值法</h4><p>在数值分析中，拉格朗日插值法是以法国十八世纪数学家约瑟夫·拉格朗日命名的一种多项式插值方法。如对实践中的某个物理量进行观测，在若干个不同的地方得到相应的观测值，拉格朗日插值法可以找到一个多项式，其恰好在各个观测的点取到观测到的值。这样的多项式称为拉格朗日（插值）多项式。<br>对于两个点:(x0,y0) , (x1,y1)<br>f(x) = ( x - x1 ) y0 / ( x0 - x1 ) + ( x - x0 ) y1 / ( x1 - x0 )<br>对于三个点:(x0,y0),(x1,y1),(x2,y2)<br>f(x) = [ ( x - x1 ) ( x - x2 ) y0 ] / [ ( x0 - x1 ) ( x0 - x2 ) ] </p>
+<ul>
+<li>[ ( x - x0 ) ( x - x2 ) y1 ] / [ ( x1 - x0 ) ( x1 - x2 ) ]</li>
+<li>[ ( x - x0 ) ( x - x1 ) y2 ] / [ ( x2 - x0 ) ( x2 - x1 ) ]<br>我们可以归纳发现，这种式子如果取其中的一个xi取得的值必定是yi，因为其它项为0，对应的xi的yi的系数必定为1<br><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gv3e0n9uf2j60mt09774y02.jpg"><br>然而我们实际情况中却不可能用拉格朗日插值法，他有很多问题<h4 id="龙格现象"><a href="#龙格现象" class="headerlink" title="龙格现象"></a>龙格现象</h4>图片1:<br>图片2:<br>这引出了两个问题</li>
+</ul>
+<ol>
+<li>插值多项式次数高，精度未必显著提高</li>
+<li>插值多项式次数越高，摄入误差可能显著增大<br>我们可以得到，对于高次的多项式插值时，如果我们不确定曲线的类型，我们尽量不要使用<br>那么如何提高插值精度呢<br>采用分段线性插值<h3 id="分段插值"><a href="#分段插值" class="headerlink" title="分段插值"></a>分段插值</h3><h4 id="分段线性插值"><a href="#分段线性插值" class="headerlink" title="分段线性插值"></a>分段线性插值</h4>如果我们要在中间找一个值，我们找距离它最近的两点，两点之间连一条线段，直接在这条线段上找x对应的y值即可<br>这种插值是十分简单的，也是不精准的<h4 id="分段二次插值"><a href="#分段二次插值" class="headerlink" title="分段二次插值"></a>分段二次插值</h4>分段二次插值也是非常简单的，我们可以寻找距离这个插入点最近的三个点，三个点可以形成一个二次函数，同理可以直接取二次函数的值<br>分段二次插值又称为分段抛物线插值<h4 id="牛顿插值法·"><a href="#牛顿插值法·" class="headerlink" title="牛顿插值法·"></a>牛顿插值法·</h4></li>
+</ol>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Amentiraz<br>
+        <strong>本文链接：</strong><a href="http://1152396492.github.io/2021/10/04/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/" title="http:&#x2F;&#x2F;1152396492.github.io&#x2F;2021&#x2F;10&#x2F;04&#x2F;%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;1152396492.github.io&#x2F;2021&#x2F;10&#x2F;04&#x2F;%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/" rel="tag">插值算法</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" rel="tag">数学建模</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8be80b65760c84f9f5c0',
+        clientSecret: '1521912d9673b1d6e07a2c517cf0618d8b42c80c',
+        id: window.location.pathname,
+        repo: 'myblog',
+        owner: '1152396492',
+        admin: '1152396492'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E7%BB%B4%E6%8F%92%E5%80%BC%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">一维插值问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">问题如下：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%80%BC%E6%B3%95%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.2.</span> <span class="toc-text">插值法的概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%80%BC%E6%B3%95%E5%8E%9F%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">插值法原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E6%8F%92%E5%80%BC%E6%B3%95"><span class="toc-number">1.4.</span> <span class="toc-text">拉格朗日插值法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BE%99%E6%A0%BC%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.5.</span> <span class="toc-text">龙格现象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E6%8F%92%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text">分段插值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC"><span class="toc-number">2.1.</span> <span class="toc-text">分段线性插值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E6%AE%B5%E4%BA%8C%E6%AC%A1%E6%8F%92%E5%80%BC"><span class="toc-number">2.2.</span> <span class="toc-text">分段二次插值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%9B%E9%A1%BF%E6%8F%92%E5%80%BC%E6%B3%95%C2%B7"><span class="toc-number">2.3.</span> <span class="toc-text">牛顿插值法·</span></a></li></ol></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1696684996924"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>

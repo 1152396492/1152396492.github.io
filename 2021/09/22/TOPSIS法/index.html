@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>TOPSIS法 - Amentiraz blog</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="TOPSIS法(Technique for Order Preference by Similarity to Ideal Solution)可翻译为逼近理想解排序法，也称优劣解距离法TOPSIS法是一种常用的综合评价方法，其能充分利用原始数据的信息，其结果能精确的反映各评价方案之间的差距">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TOPSIS法">
+<meta property="og:url" content="http://1152396492.github.io/2021/09/22/TOPSIS%E6%B3%95/index.html">
+<meta property="og:site_name" content="Amentiraz blog">
+<meta property="og:description" content="TOPSIS法(Technique for Order Preference by Similarity to Ideal Solution)可翻译为逼近理想解排序法，也称优劣解距离法TOPSIS法是一种常用的综合评价方法，其能充分利用原始数据的信息，其结果能精确的反映各评价方案之间的差距">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-22T14:32:59.000Z">
+<meta property="article:modified_time" content="2021-12-25T08:27:11.162Z">
+<meta property="article:author" content="Amentiraz">
+<meta property="article:tag" content="数学建模">
+<meta property="article:tag" content="TOPSIS">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1696684996926">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1696684996926">
+    <link rel="stylesheet" href="/css/style.css?v=1696684996926">
+     
+    
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://tva1.sinaimg.cn/large/008i3skNly1gu8zexcv19j61hc0u0qbp02.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Amentiraz" class="mdui-btn mdui-btn-icon"><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gu8zhjn8bgj60k00k0mxc02.jpg" alt="Amentiraz"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Amentiraz">
+            <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gu8zhjn8bgj60k00k0mxc02.jpg" alt="Amentiraz" alt="Amentiraz">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>22</div>
+        <div><span>标签</span>28</div>
+        <div><span>分类</span>8</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/362195236" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/1152396492" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/c/">c</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/python/">python</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数学建模/">数学建模</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/杂谈/">杂谈</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/生活/">生活</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/论文/">论文</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/题解/">题解</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/TOPSIS/" style="font-size: 12.5px;">TOPSIS</a> <a href="/tags/Tarjan/" style="font-size: 10px;">Tarjan</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">c语言</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E4%B9%A6%E8%AF%84/" style="font-size: 10px;">书评</a> <a href="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/" style="font-size: 10px;">云计算</a> <a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 12.5px;">动漫</a> <a href="/tags/%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/" style="font-size: 10px;">复习资料</a> <a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 10px;">娱乐</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 12.5px;">学习笔记</a> <a href="/tags/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/" style="font-size: 10px;">层次分析法</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/" style="font-size: 10px;">插值算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 17.5px;">数学建模</a> <a href="/tags/%E6%AF%94%E8%B5%9B/" style="font-size: 10px;">比赛</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 10px;">线段树</a> <a href="/tags/%E7%BB%93%E6%9E%84/" style="font-size: 10px;">结构</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 10px;">题解</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Amentiraz
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+              <img data-src="https://tva1.sinaimg.cn/large/008i3skNly1gwsuvddw90j31hc0u0tep.jpg" data-sizes="auto" alt="TOPSIS法" class="lazyload">
+              <h1>TOPSIS法</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年09月22日</a>
+</div>
+
+      
+
+      
+    <div id="aplayer-ATDvtkeq" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="537854742" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
+    ></div>
+
+<p>TOPSIS法(Technique for Order Preference by Similarity to Ideal Solution)<br>可翻译为逼近理想解排序法，也称优劣解距离法<br>TOPSIS法是一种常用的综合评价方法，其能充分利用原始数据的信息，其结果能精确的反映各评价方案之间的差距</p>
+<span id="more"></span>
+<h3 id="层次分析法的局限性"><a href="#层次分析法的局限性" class="headerlink" title="层次分析法的局限性"></a>层次分析法的局限性</h3><p>1） 决策层不能太多，太多n会很大，潘多矩阵和一致矩阵差距大<br>2）对于已知的指标数据，我们如何利用数据使之更加准确</p>
+<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><p>对于如下表格</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>成绩</th>
+<th>排名</th>
+<th>修正后的排名</th>
+<th>评分</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小明</td>
+<td>89</td>
+<td>2</td>
+<td>3</td>
+<td>3/10=0.3</td>
+</tr>
+<tr>
+<td>小王</td>
+<td>60</td>
+<td>4</td>
+<td>1</td>
+<td>1/10=0.1</td>
+</tr>
+<tr>
+<td>小张</td>
+<td>74</td>
+<td>3</td>
+<td>2</td>
+<td>2/10=0.2</td>
+</tr>
+<tr>
+<td>我</td>
+<td>99</td>
+<td>1</td>
+<td>4</td>
+<td>4/10=0.4</td>
+</tr>
+</tbody></table>
+<p>对于这种评价系统我们可以发现，只要保证排名不变，那么评分就不会改变</p>
+<h4 id="优化的想法"><a href="#优化的想法" class="headerlink" title="优化的想法"></a>优化的想法</h4><p>我们可以取最高的成绩max = 99<br>最低的成绩min = 60<br>构造计算评分的公式: ( x - min ) / ( max - min )<br>然后对于每一个数据进行归一化处理即可<br>但同时最高分与最低分的评价是一定的，1&amp;0</p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h4><p>为什么不直接将各自的分数除以100再进行归一化处理，这样对于数据的关联性还更强<br>原因有三点</p>
+<ol>
+<li>比较对象一般远大于两个</li>
+<li>比较的指标往往不是一个方面的</li>
+<li>有很多指标不存在理论上的最大值和最小值，例如衡量经济增长水平的指标：GDP增速<br>故我们最好使用上述优化的想法</li>
+</ol>
+<h4 id="拓展问题：增加指标个数"><a href="#拓展问题：增加指标个数" class="headerlink" title="拓展问题：增加指标个数"></a>拓展问题：增加指标个数</h4><table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>成绩</th>
+<th>与他人争吵的次数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小明</td>
+<td>89</td>
+<td>2</td>
+</tr>
+<tr>
+<td>小王</td>
+<td>60</td>
+<td>0</td>
+</tr>
+<tr>
+<td>小张</td>
+<td>74</td>
+<td>1</td>
+</tr>
+<tr>
+<td>清风</td>
+<td>99</td>
+<td>3</td>
+</tr>
+</tbody></table>
+<p>成绩是越大越好，这样的指标称为极大型指标（效益型指标）<br>与他人争吵的次数越少越好，这样的指标称为极小型指标（成本型指标）</p>
+<p>如果我们直接将这些数据加以利用显然是不合适的，因为指标类型不一样<br>所以我们应当统一指标类型<br>一般我们将所有的指标转化为极大型称为指标正向化（最常用）</p>
+<table>
+<thead>
+<tr>
+<th>姓名</th>
+<th>成绩</th>
+<th>与他人争吵的次数</th>
+<th>正向化后的争吵次数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>小明</td>
+<td>89</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>小王</td>
+<td>60</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>小张</td>
+<td>74</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>清风</td>
+<td>99</td>
+<td>3</td>
+<td>0</td>
+</tr>
+</tbody></table>
+<p>极小型指标转换为极大型指标的公式：max - x</p>
+<h4 id="标准化处理"><a href="#标准化处理" class="headerlink" title="标准化处理"></a>标准化处理</h4><p>显然成绩的大小与争吵次数的大小不是一个量级上的比较<br>为了消去不同指标量纲的影响，需要对已经正向化的矩阵进行标准化处理<br>图像链接：<br>我们得到了标准化处理后的指标，那么我们怎么去联系这些值呢</p>
+<h4 id="如何计算得分"><a href="#如何计算得分" class="headerlink" title="如何计算得分"></a>如何计算得分</h4><p>我们对于最开始的式子：( x - min ) / ( max - min )<br>我们可以将其变形= ( x - min ) / [ ( max - x ) + ( x - min ) ]<br>可以看作是：x与最小值的距离 /  ( x与最大值的距离 + x与最小值的距离 )<br>类比可以得出：<br>图像链接：</p>
+<p>上面的一大串公式可以这样理解，我们对于只有一个指标时，我们将这一列的数据找出它的最大值和最小值，对于多个指标，同理，我们先将每一列的最大值和最小值找出来。<br>对于每一个评价对象，我们要找出它与最小值的距离可以看成一个平面直角坐标系，它的值所对应的点距离原点（最小值）的距离长度，也就是他的我们所要找的值<br>对于最大值的寻找也同理</p>
+<p>计算出未归一化的得分后我们将其进行归一化处理，就可得到他们的排名了</p>
+<p>这下子再回到TOPSIS算法，我们就不难理解它为什么是优劣解距离法了吧</p>
+<h3 id="梳理"><a href="#梳理" class="headerlink" title="梳理"></a>梳理</h3><h4 id="第一步将原始矩阵正向化"><a href="#第一步将原始矩阵正向化" class="headerlink" title="第一步将原始矩阵正向化"></a>第一步将原始矩阵正向化</h4><p>最常见的四种指标</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>名称</th>
+<th>指标特点</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>极大型（效益型）</td>
+<td>指标越大越好</td>
+<td>成绩、GDP增速、企业利润</td>
+<td></td>
+</tr>
+<tr>
+<td>极小型（成本型）</td>
+<td>指标越小越好</td>
+<td>费用、坏品率、污染程度</td>
+<td></td>
+</tr>
+<tr>
+<td>中间型指标</td>
+<td>越接近某个值越好</td>
+<td>水质量评估ph值</td>
+<td></td>
+</tr>
+<tr>
+<td>区间型指标</td>
+<td>落在某个区间最好</td>
+<td>体温、水中植物性营养物量</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>正向化就是将所有指标类型转化为极大型指标</p>
+<p>我们介绍了极小型转化为极大型，那么另外两种指标该如何转换呢</p>
+<h5 id="中间型指标"><a href="#中间型指标" class="headerlink" title="中间型指标"></a>中间型指标</h5><p>{xi}是一组中间型指标序列，且最佳的数值为xbest，那么正向化的公式如下<br>M = max { | xi - xbest | } , xi’ = 1 - | xi - xbest | / M<br>我们可以画图去理解这个公式，也是利用距离去计算，思想大致与极小型相同</p>
+<h5 id="区间型指标"><a href="#区间型指标" class="headerlink" title="区间型指标"></a>区间型指标</h5><p>我们设最佳区间为[a,b]<br>M = max { a - min { xi } , max { xi } - b }<br>xi = 1 - ( a - x ) / M , x &lt; a<br>     1                 , a &lt;= x &lt;= b<br>     1 - ( x - b ) / M , x &gt; b<br>思路与中间型指标也是差不多的，画图也可以理解</p>
+<h4 id="第二步：正向化矩阵标准化"><a href="#第二步：正向化矩阵标准化" class="headerlink" title="第二步：正向化矩阵标准化"></a>第二步：正向化矩阵标准化</h4><h4 id="第三步：归一化处理并排名"><a href="#第三步：归一化处理并排名" class="headerlink" title="第三步：归一化处理并排名"></a>第三步：归一化处理并排名</h4><h3 id="带权重的TOPSIS"><a href="#带权重的TOPSIS" class="headerlink" title="带权重的TOPSIS"></a>带权重的TOPSIS</h3><p>对于之前我们所用到的TOPSIS我们默认了指标之间的权重为1 ，然而实际情况可能更为复杂<br>有n个要评价的对象，m个评价指标的标准化矩阵<br>可以利用层次分析法给这m个评价指标确定权重，每个指标的权重加起来显然是为1的。<br>我们在计算评价对象与最大值之间的距离是可以直接针对每个j（即每个指标）乘以响应的权重wj再进行开方<br>可能有人就要问了，那你这样加起来的距离显然是要小于之前的距离呀，会对得出正确的结论有影响吗<br>其实是没有影响的<br>我们可以理解为对于我们建立的直角坐标系对于某个轴进行了压缩，压缩后虽然大小改变了，但是并不影响我们得出正确的结论</p>
+<p>关于TOPSIS的代码见下一篇博客</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Amentiraz<br>
+        <strong>本文链接：</strong><a href="http://1152396492.github.io/2021/09/22/TOPSIS%E6%B3%95/" title="http:&#x2F;&#x2F;1152396492.github.io&#x2F;2021&#x2F;09&#x2F;22&#x2F;TOPSIS%E6%B3%95&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;1152396492.github.io&#x2F;2021&#x2F;09&#x2F;22&#x2F;TOPSIS%E6%B3%95&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/TOPSIS/" rel="tag">TOPSIS</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" rel="tag">数学建模</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8be80b65760c84f9f5c0',
+        clientSecret: '1521912d9673b1d6e07a2c517cf0618d8b42c80c',
+        id: window.location.pathname,
+        repo: 'myblog',
+        owner: '1152396492',
+        admin: '1152396492'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95%E7%9A%84%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-number">1.</span> <span class="toc-text">层次分析法的局限性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E4%B8%AA%E4%BE%8B%E5%AD%90"><span class="toc-number">2.</span> <span class="toc-text">一个例子</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%9A%84%E6%83%B3%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">优化的想法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">2.2.</span> <span class="toc-text">说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%93%E5%B1%95%E9%97%AE%E9%A2%98%EF%BC%9A%E5%A2%9E%E5%8A%A0%E6%8C%87%E6%A0%87%E4%B8%AA%E6%95%B0"><span class="toc-number">2.3.</span> <span class="toc-text">拓展问题：增加指标个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E5%8C%96%E5%A4%84%E7%90%86"><span class="toc-number">2.4.</span> <span class="toc-text">标准化处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A1%E7%AE%97%E5%BE%97%E5%88%86"><span class="toc-number">2.5.</span> <span class="toc-text">如何计算得分</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A2%B3%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">梳理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E5%B0%86%E5%8E%9F%E5%A7%8B%E7%9F%A9%E9%98%B5%E6%AD%A3%E5%90%91%E5%8C%96"><span class="toc-number">3.1.</span> <span class="toc-text">第一步将原始矩阵正向化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E5%9E%8B%E6%8C%87%E6%A0%87"><span class="toc-number">3.1.1.</span> <span class="toc-text">中间型指标</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8C%BA%E9%97%B4%E5%9E%8B%E6%8C%87%E6%A0%87"><span class="toc-number">3.1.2.</span> <span class="toc-text">区间型指标</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%AD%A3%E5%90%91%E5%8C%96%E7%9F%A9%E9%98%B5%E6%A0%87%E5%87%86%E5%8C%96"><span class="toc-number">3.2.</span> <span class="toc-text">第二步：正向化矩阵标准化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%BD%92%E4%B8%80%E5%8C%96%E5%A4%84%E7%90%86%E5%B9%B6%E6%8E%92%E5%90%8D"><span class="toc-number">3.3.</span> <span class="toc-text">第三步：归一化处理并排名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9D%83%E9%87%8D%E7%9A%84TOPSIS"><span class="toc-number">4.</span> <span class="toc-text">带权重的TOPSIS</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1696684996927"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>

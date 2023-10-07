@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>TOPSIS-MATLAB - Amentiraz blog</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="代码如下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TOPSIS-MATLAB">
+<meta property="og:url" content="http://1152396492.github.io/2021/09/23/TOPSIS-MATLAB/index.html">
+<meta property="og:site_name" content="Amentiraz blog">
+<meta property="og:description" content="代码如下">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-22T18:35:13.000Z">
+<meta property="article:modified_time" content="2021-12-25T08:27:04.124Z">
+<meta property="article:author" content="Amentiraz">
+<meta property="article:tag" content="数学建模">
+<meta property="article:tag" content="TOPSIS">
+<meta property="article:tag" content="Matlab">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1696684996924">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1696684996924">
+    <link rel="stylesheet" href="/css/style.css?v=1696684996924">
+     
+    
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://tva1.sinaimg.cn/large/008i3skNly1gu8zexcv19j61hc0u0qbp02.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Amentiraz" class="mdui-btn mdui-btn-icon"><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gu8zhjn8bgj60k00k0mxc02.jpg" alt="Amentiraz"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Amentiraz">
+            <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gu8zhjn8bgj60k00k0mxc02.jpg" alt="Amentiraz" alt="Amentiraz">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>22</div>
+        <div><span>标签</span>28</div>
+        <div><span>分类</span>8</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/362195236" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/1152396492" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/c/">c</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/python/">python</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数学建模/">数学建模</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/杂谈/">杂谈</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/生活/">生活</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/论文/">论文</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/题解/">题解</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/TOPSIS/" style="font-size: 12.5px;">TOPSIS</a> <a href="/tags/Tarjan/" style="font-size: 10px;">Tarjan</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">c语言</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E4%B9%A6%E8%AF%84/" style="font-size: 10px;">书评</a> <a href="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/" style="font-size: 10px;">云计算</a> <a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 12.5px;">动漫</a> <a href="/tags/%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/" style="font-size: 10px;">复习资料</a> <a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 10px;">娱乐</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 12.5px;">学习笔记</a> <a href="/tags/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/" style="font-size: 10px;">层次分析法</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/" style="font-size: 10px;">插值算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 17.5px;">数学建模</a> <a href="/tags/%E6%AF%94%E8%B5%9B/" style="font-size: 10px;">比赛</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 10px;">线段树</a> <a href="/tags/%E7%BB%93%E6%9E%84/" style="font-size: 10px;">结构</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 10px;">题解</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Amentiraz
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+              <img data-src="https://tva1.sinaimg.cn/large/008i3skNly1gwsuvf4o55j31hb0u0k68.jpg" data-sizes="auto" alt="TOPSIS-MATLAB" class="lazyload">
+              <h1>TOPSIS-MATLAB</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年09月22日</a>
+</div>
+
+      
+
+      
+    <div id="aplayer-KnnzAMyF" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="1401456829" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
+    ></div>
+<p>代码如下</p>
+<span id="more"></span>
+<h3 id="主函数代码"><a href="#主函数代码" class="headerlink" title="主函数代码"></a>主函数代码</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs stata"><span class="hljs-keyword">clear</span>;clc<br>load data_water_quality.<span class="hljs-keyword">mat</span><br><span class="hljs-comment">//正向化</span><br>[<span class="hljs-keyword">n</span>,<span class="hljs-keyword">m</span>] = size ( X ) ;<br><span class="hljs-keyword">disp</span> ( [&#x27;共有&#x27;num2str ( <span class="hljs-keyword">n</span> ) &#x27;个评价对象,&#x27;num2str ( <span class="hljs-keyword">m</span> ) &#x27;个评价指标] ) <br>Judge = <span class="hljs-keyword">input</span> ([&#x27;这&#x27;num2str(<span class="hljs-keyword">m</span>)&#x27;个指标是否需要经过正向化处理，需要输入1，不需要输入0:&#x27;]);<br><span class="hljs-keyword">if</span> Judge == 1 <br>    Position = <span class="hljs-keyword">input</span> (&#x27;请输入需要正向化处理的指标所在的列，例如第2、3、6三列需要处理，那么你需要输入[2,3,6]:&#x27;) ; <br>    <span class="hljs-keyword">disp</span> ( &#x27;请输入需要处理的这些列的指标类型（1:极小型，2:中间型，3:区间型）&#x27;) <br>    <span class="hljs-keyword">Type</span> = <span class="hljs-keyword">input</span> (&#x27;例如2极小，3区间，6中间就输入[1,3,2]:&#x27; ) ;<br>    <span class="hljs-keyword">for</span> i = 1 : size ( Position , 2 ) <br>    X ( : , Position ( i ) ) = Positivization ( X ( : , Position ( i )  ) , <span class="hljs-keyword">Type</span> ( i ) , Position ( i ) ) ;<br>    <span class="hljs-comment">//Positization是我们定义的函数</span><br>    end<br>    <span class="hljs-keyword">disp</span> (&#x27;正向化后的举证X=&#x27; ) <br>    <span class="hljs-keyword">disp</span> ( X ) <br>end<br><span class="hljs-comment">//对正向化对举证进行标准化</span><br>Z = X ./ repmat ( <span class="hljs-keyword">sum</span> ( X .* X ) .^ 0.5 , <span class="hljs-keyword">n</span> , 1 ) ;<br><span class="hljs-keyword">disp</span> ( &#x27;标准化矩阵Z=&#x27; ） <br><span class="hljs-keyword">disp</span> (Z) <br><span class="hljs-comment">//计算最大值与最小值的距离，并算出得分</span><br>D_P = <span class="hljs-keyword">sum</span> ( [Z - repmat ( max ( Z ) , <span class="hljs-keyword">n</span> , 1 ) .^ 2 ] , 2 ) .^ 0.5 ; <br>D_N = <span class="hljs-keyword">sum</span> ( [Z - repmat ( min ( Z ) , <span class="hljs-keyword">n</span> , 1 ) .^ 2 ] , 2 ) .^ 0.5 ;   <br>S = D_N ./ ( D_P + D_N ) ; <br><span class="hljs-keyword">disp</span> ( &#x27;最后的得分为：&#x27; ) <br>stand_S = S / <span class="hljs-keyword">sum</span> ( S ) <br>[sorted_S , index] = <span class="hljs-keyword">sort</span> ( stand_S , &#x27;descend&#x27; ) <br></code></pre></td></tr></table></figure>
+
+<h3 id="Positivization函数"><a href="#Positivization函数" class="headerlink" title="Positivization函数"></a>Positivization函数</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ posit_x ]</span> = <span class="hljs-title">Positivization</span> <span class="hljs-params">( x , type , i )</span> </span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span> == <span class="hljs-number">1</span> <br>    <span class="hljs-built_in">disp</span>([<span class="hljs-string">&#x27;第&#x27;</span>num2str ( <span class="hljs-built_in">i</span> ) <span class="hljs-string">&#x27;列是极小型，正在正向化&#x27;</span>]) <br>    posit_x = Min2Max ( x ) ; <br>    <span class="hljs-built_in">disp</span>([<span class="hljs-string">&#x27;第&#x27;</span>num2str ( <span class="hljs-built_in">i</span> ) <span class="hljs-string">&#x27;列正向化处理完成])</span><br><span class="hljs-string">    disp(&#x27;</span>~~~~~~~~~~~~~~~~~~~~~分界线~~~~~~~~~~~~~~~~~~~~~~~~<span class="hljs-string">&#x27;)</span><br><span class="hljs-string">    else if type == 2 </span><br><span class="hljs-string">    dis ( [&#x27;</span>第<span class="hljs-string">&#x27;num2str ( i ) &#x27;</span>列是中间型<span class="hljs-string">&#x27;])</span><br><span class="hljs-string">    best = input (&#x27;</span>请输入最佳的那一个值:<span class="hljs-string">&#x27;) ; </span><br><span class="hljs-string">    posit_x = Mid2Max ( x , best ) ; </span><br><span class="hljs-string">    disp([&#x27;</span>第<span class="hljs-string">&#x27;num2str ( i ) &#x27;</span>列正向化处理完成]) ;<br>    <span class="hljs-built_in">disp</span>(<span class="hljs-string">&#x27;~~~~~~~~~~~~~~~~~~~~~分界线~~~~~~~~~~~~~~~~~~~~~~~~&#x27;</span>)<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span> == <span class="hljs-number">3</span>                                          <br>    dis ( [<span class="hljs-string">&#x27;第&#x27;</span>num2str ( <span class="hljs-built_in">i</span> ) <span class="hljs-string">&#x27;列是区间型&#x27;</span>])                    <br>    a = input (<span class="hljs-string">&#x27;请输入区间的下界&#x27;</span>) ;                   <br>    b = input (<span class="hljs-string">&#x27;请输入区间的上界&#x27;</span>) ;         <br>    posit_x = Inter2Max ( x , a , b ) ;                           <br>    <span class="hljs-built_in">disp</span>([<span class="hljs-string">&#x27;第&#x27;</span>num2str ( <span class="hljs-built_in">i</span> ) <span class="hljs-string">&#x27;列正向化处理完成]) ;              </span><br><span class="hljs-string">    disp(&#x27;</span>~~~~~~~~~~~~~~~~~~~~~分界线~~~~~~~~~~~~~~~~~~~~~~~~<span class="hljs-string">&#x27;)</span><br><span class="hljs-string">    else </span><br><span class="hljs-string">    disp (&#x27;</span>没有这种类型的指标请检查Type向量中是否有除了<span class="hljs-number">1</span>、<span class="hljs-number">2</span>、<span class="hljs-number">3</span>以外的其他值<span class="hljs-string">&#x27;) </span><br><span class="hljs-string">    end</span><br><span class="hljs-string">end</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Min2Max-x-函数"><a href="#Min2Max-x-函数" class="headerlink" title="Min2Max(x)函数"></a>Min2Max(x)函数</h3><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs llvm">function [ posit_x ] <span class="hljs-operator">=</span> Min<span class="hljs-number">2</span>Max ( <span class="hljs-keyword">x</span> ) <br>    posit_x <span class="hljs-operator">=</span> <span class="hljs-keyword">max</span> ( <span class="hljs-keyword">x</span> ) - <span class="hljs-keyword">x</span> <span class="hljs-comment">; </span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Mid2Max-x-best-函数"><a href="#Mid2Max-x-best-函数" class="headerlink" title="Mid2Max(x,best)函数"></a>Mid2Max(x,best)函数</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">function</span> [ posit_x ] <span class="hljs-operator">=</span> Mid2Max ( x , best )  <br>    M <span class="hljs-operator">=</span> <span class="hljs-built_in">max</span> ( <span class="hljs-built_in">abs</span> ( x <span class="hljs-operator">-</span> best ) ) ; <br>    posit_x <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-operator">-</span> <span class="hljs-built_in">abs</span> ( x <span class="hljs-operator">-</span> best ) <span class="hljs-operator">/</span> M ; <br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Inter2Max-x-a-b-函数"><a href="#Inter2Max-x-a-b-函数" class="headerlink" title="Inter2Max(x,a,b)函数"></a>Inter2Max(x,a,b)函数</h3><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs llvm">function [ posit_x ] <span class="hljs-operator">=</span> Inter<span class="hljs-number">2</span>Max ( <span class="hljs-keyword">x</span> <span class="hljs-punctuation">,</span> a <span class="hljs-punctuation">,</span> b ) <span class="hljs-comment">; </span><br>    M <span class="hljs-operator">=</span> <span class="hljs-keyword">max</span> ([ a - <span class="hljs-keyword">min</span> ( <span class="hljs-keyword">x</span> ) <span class="hljs-punctuation">,</span> <span class="hljs-keyword">max</span> ( <span class="hljs-keyword">x</span> ) - b ] ) <span class="hljs-comment">; </span><br>    r_x <span class="hljs-operator">=</span> size ( <span class="hljs-keyword">x</span> <span class="hljs-punctuation">,</span> <span class="hljs-number">1</span> ) <span class="hljs-comment">; </span><br>    posit_x <span class="hljs-operator">=</span> zeros ( r_x <span class="hljs-punctuation">,</span> <span class="hljs-number">1</span> ) <span class="hljs-comment">; </span><br>    for i <span class="hljs-operator">=</span> <span class="hljs-number">1</span> : r_x<br>        if <span class="hljs-keyword">x</span>(i) &lt; a <br>            posit_x(i) <span class="hljs-operator">=</span> <span class="hljs-number">1</span> - ( a - <span class="hljs-keyword">x</span>(i) ) / M <span class="hljs-comment">;</span><br>        else if <span class="hljs-keyword">x</span>(i) &gt; b <br>            posit_x(i) <span class="hljs-operator">=</span> <span class="hljs-number">1</span> - ( <span class="hljs-keyword">x</span>(i) - b ) / M <span class="hljs-comment">; </span><br>        else posit_x(i) <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-comment">; </span><br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="原始矩阵正向化"><a href="#原始矩阵正向化" class="headerlink" title="原始矩阵正向化"></a>原始矩阵正向化</h3><p>将Excel内的数据直接粘贴进matlab里，赋值给变量<br>将此变量另存为至与代码相同的目录下<br>调用直接用load xxx.mat</p>
+<h3 id="sort函数"><a href="#sort函数" class="headerlink" title="sort函数"></a>sort函数</h3><p>sort(A)若A是向量不管是列还是行向量，默认都是对A进行升序排序，sort(A)是默认的升序，而sort(A,’descend’)是降序<br>若A是矩阵，默认对A的割裂进行升序排列<br>sort ( A , dim ) ;<br>dim = 1 时 等效于sort ( A ) ;<br>dim = 2 时 表示对A的各列进行升序排列<br>若欲爆裂排列前的索引，则可用[sA,index] = sort ( A , ‘decend’ ) ;<br>A = [ 2 , 1 , 3 , 8 ]<br>sA = [ 8 , 3 , 2 , 1 ]<br>index = [ 4 , 3 , 1 , 2 ] </p>
+<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><p>function [输出变量] = 函数名称（输入变量）<br>函数的中间部分都是函数体<br>函数的最后要用end结尾<br>输出变量和输入变量可以有多个，用逗号隔开<br>例如：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ a , b , c ]</span> = <span class="hljs-title">test</span> <span class="hljs-params">( d , e , f )</span> </span><br>a = d + e ;<br>b = e + f ; <br>c = f + d ; <br><span class="hljs-keyword">end</span> <br></code></pre></td></tr></table></figure>
+
+<h3 id="zeros-ones函数"><a href="#zeros-ones函数" class="headerlink" title="zeros, ones函数"></a>zeros, ones函数</h3><p>zeros ( 3 ) ; </p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ans</span> = <br><span class="hljs-attribute">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <br><span class="hljs-attribute">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <br><span class="hljs-attribute">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <br></code></pre></td></tr></table></figure>
+<p>zeros ( 3 , 1 ) ; </p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">ans</span> = <br><span class="hljs-number">0</span> <br><span class="hljs-number">0</span><br><span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<p>ones同理</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Amentiraz<br>
+        <strong>本文链接：</strong><a href="http://1152396492.github.io/2021/09/23/TOPSIS-MATLAB/" title="http:&#x2F;&#x2F;1152396492.github.io&#x2F;2021&#x2F;09&#x2F;23&#x2F;TOPSIS-MATLAB&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;1152396492.github.io&#x2F;2021&#x2F;09&#x2F;23&#x2F;TOPSIS-MATLAB&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/">数学建模</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Matlab/" rel="tag">Matlab</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/TOPSIS/" rel="tag">TOPSIS</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" rel="tag">数学建模</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8be80b65760c84f9f5c0',
+        clientSecret: '1521912d9673b1d6e07a2c517cf0618d8b42c80c',
+        id: window.location.pathname,
+        repo: 'myblog',
+        owner: '1152396492',
+        admin: '1152396492'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E4%BB%A3%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">主函数代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Positivization%E5%87%BD%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">Positivization函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Min2Max-x-%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">Min2Max(x)函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mid2Max-x-best-%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">Mid2Max(x,best)函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inter2Max-x-a-b-%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">Inter2Max(x,a,b)函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E7%9F%A9%E9%98%B5%E6%AD%A3%E5%90%91%E5%8C%96"><span class="toc-number">6.</span> <span class="toc-text">原始矩阵正向化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sort%E5%87%BD%E6%95%B0"><span class="toc-number">7.</span> <span class="toc-text">sort函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text">定义函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zeros-ones%E5%87%BD%E6%95%B0"><span class="toc-number">9.</span> <span class="toc-text">zeros, ones函数</span></a></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1696684996926"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>

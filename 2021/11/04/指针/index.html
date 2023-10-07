@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    
+    <title>指针 - Amentiraz blog</title>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    
+    
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="description" content="指针是一种保存变量地址的变量。在存储时，内存被分为一块一块的。每一块都有一个特有的编号。而这个编号可以暂时理解为指针，就像酒店的门牌号一样。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="指针">
+<meta property="og:url" content="http://1152396492.github.io/2021/11/04/%E6%8C%87%E9%92%88/index.html">
+<meta property="og:site_name" content="Amentiraz blog">
+<meta property="og:description" content="指针是一种保存变量地址的变量。在存储时，内存被分为一块一块的。每一块都有一个特有的编号。而这个编号可以暂时理解为指针，就像酒店的门牌号一样。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-04T08:48:35.000Z">
+<meta property="article:modified_time" content="2021-12-25T08:27:24.173Z">
+<meta property="article:author" content="Amentiraz">
+<meta property="article:tag" content="指针">
+<meta property="article:tag" content="c语言">
+<meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
+    
+    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1696684996915">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1696684996915">
+    <link rel="stylesheet" href="/css/style.css?v=1696684996915">
+     
+    
+<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
+<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
+<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
+</head>
+
+<body class="mdui-drawer-body-left">
+    
+    <div id="nexmoe-background">
+        <div class="nexmoe-bg" style="background-image: url(https://tva1.sinaimg.cn/large/008i3skNly1gu8zexcv19j61hc0u0qbp02.jpg)"></div>
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+                <div class="mdui-toolbar-spacer"></div>
+                <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+                <a href="/" title="Amentiraz" class="mdui-btn mdui-btn-icon"><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gu8zhjn8bgj60k00k0mxc02.jpg" alt="Amentiraz"></a>
+            </div>
+        </div>
+    </div>
+    <div id="nexmoe-header">
+        <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="Amentiraz">
+            <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gu8zhjn8bgj60k00k0mxc02.jpg" alt="Amentiraz" alt="Amentiraz">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>22</div>
+        <div><span>标签</span>28</div>
+        <div><span>分类</span>8</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+         
+            <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+                <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+            </form>
+         
+    </div>
+</div>
+    
+    <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/362195236" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/1152396492" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/c/">c</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/python/">python</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/数学建模/">数学建模</a>
+          <span class="category-list-count">4</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/杂谈/">杂谈</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/生活/">生活</a>
+          <span class="category-list-count">3</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/算法/">算法</a>
+          <span class="category-list-count">6</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/论文/">论文</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/题解/">题解</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+    
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/TOPSIS/" style="font-size: 12.5px;">TOPSIS</a> <a href="/tags/Tarjan/" style="font-size: 10px;">Tarjan</a> <a href="/tags/c/" style="font-size: 15px;">c</a> <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">c语言</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E4%B9%A6%E8%AF%84/" style="font-size: 10px;">书评</a> <a href="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/" style="font-size: 10px;">云计算</a> <a href="/tags/%E5%8A%A8%E6%BC%AB/" style="font-size: 12.5px;">动漫</a> <a href="/tags/%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/" style="font-size: 10px;">复习资料</a> <a href="/tags/%E5%A8%B1%E4%B9%90/" style="font-size: 10px;">娱乐</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 12.5px;">学习笔记</a> <a href="/tags/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/" style="font-size: 10px;">层次分析法</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/" style="font-size: 10px;">插值算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 17.5px;">数学建模</a> <a href="/tags/%E6%AF%94%E8%B5%9B/" style="font-size: 10px;">比赛</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 10px;">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 10px;">线段树</a> <a href="/tags/%E7%BB%93%E6%9E%84/" style="font-size: 10px;">结构</a> <a href="/tags/%E8%AE%BA%E6%96%87/" style="font-size: 10px;">论文</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 10px;">题解</a>
+    </div>
+    
+  </div>
+
+    
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2023 Amentiraz
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        <br><a target="_blank" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"><img src="https://i.dawnlab.me/c0268c1e6cfd0863d6ba35be1575941a.png" width="150px"></a><script data-ad-client="ca-pub-2058306854838448" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </div>
+</div><!-- .nexmoe-drawer -->
+    </div>
+    <div id="nexmoe-content">
+        <div class="nexmoe-primary">
+            <div class="nexmoe-post">
+
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
+              <img data-src="https://tva1.sinaimg.cn/large/008i3skNly1gwsee3lulpj31hc0u0dla.jpg" data-sizes="auto" alt="指针" class="lazyload">
+              <h1>指针</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年11月04日</a>
+</div>
+
+      
+
+      
+    <div id="aplayer-mxKLqmjC" class="aplayer aplayer-tag-marker meting-tag-marker"
+         data-id="447578836" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
+    ></div>
+<p>指针是一种保存变量地址的变量。在存储时，内存被分为一块一块的。每一块都有一个特有的编号。而这个编号可以暂时理解为指针，就像酒店的门牌号一样。</p>
+<span id="more"></span>
+<h3 id="指针与地址"><a href="#指针与地址" class="headerlink" title="指针与地址"></a>指针与地址</h3><p>一元运算符&amp;可用于取一个对象的地址</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">p</span> = &amp; c <span class="hljs-comment">; </span><br></code></pre></td></tr></table></figure>
+<p>将把 c 的地址赋值给变量 p，我们称 p 为“指向”c 的指针。地址运算符&amp;只能应用于内存中 的对象，即变量与数组元素。它不能作用于表达式、常量或 register 类型的变量。<br>一元运算符*是间接寻址或间接引用运算符。当它作用于指针时，将访问指针所指向的对象。下列程序介绍了&amp;与 * 的使用方法</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs nix">int <span class="hljs-attr">x</span> = <span class="hljs-number">1</span> , <span class="hljs-attr">y</span> = <span class="hljs-number">2</span> , z[<span class="hljs-number">10</span>] ; <br><span class="hljs-attr">ip</span> = &amp; x ; //表明表达式*ip 的结果是 int 类型。<br><span class="hljs-attr">y</span> = * ip ; <br>* <span class="hljs-attr">ip</span> = <span class="hljs-number">0</span> ; <br><span class="hljs-attr">ip</span> = &amp; z[<span class="hljs-number">0</span>] ; <br></code></pre></td></tr></table></figure>
+<p>对函数的声明也可以采用这种方式。<br>例如，声明</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">double</span> *dp，<span class="hljs-built_in">atof</span>(<span class="hljs-keyword">char</span> *); <br></code></pre></td></tr></table></figure>
+<p>表明，在表达式中，*dp 和 atof(s)的值都是 double 类型，且 atof 的参数是一个指向 char类型的指针。<br>指针只能指向某种特定类型的对象，也就是说，每个指针都必须指向某种特定的数据类型。（一个例外情况是指向void类型的指针可以存放指向任何类型的指针，但它不能间接引用其自身。)<br>如果指针 ip 指向整型变量，那么在 x 可以出现的任何上下文中都可以使用 * ip，因此， 语句</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">*<span class="hljs-built_in">ip</span> = *<span class="hljs-built_in">ip</span> + <span class="hljs-number">10</span><span class="hljs-comment">; </span><br></code></pre></td></tr></table></figure>
+<p>将把<em>ip 的值增加 10。 一元运算符</em>和&amp;的优先级比算术运算符的优先级高，因此，赋值语句</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">y</span> = *ip + <span class="hljs-number">1</span> <br></code></pre></td></tr></table></figure>
+<p>将把*ip 指向的对象的值取出并加 1，然后再将结果赋值给 y，而下列赋值语句：</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">*<span class="hljs-built_in">ip</span> += <span class="hljs-number">1</span> <br></code></pre></td></tr></table></figure>
+<p>则将 ip 指向的对象的值加 1，它等同于</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">++*<span class="hljs-built_in">ip</span> <br></code></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">(*<span class="hljs-built_in">ip</span>)++ <br></code></pre></td></tr></table></figure>
+<p>语句的执行结果。语句( * ip)++中的圆括号是必需的，否则，该表达式将对 ip 进行加 1 运算，<br>而不是对 ip 指向的对象进行加 1 运算，这是因为，类似于*和++这样的一元运算符遵循从右 至左的结合顺序。<br>最后说明一点，由于指针也是变量，所以在程序中可以直接使用，而不必通过间接引用<br>的方法使用。例如，如果 iq 是另一个指向整型的指针，那么语句</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">iq</span> = ip <br></code></pre></td></tr></table></figure>
+<p>将把 ip 中的值拷贝到 iq 中，这样，指针 iq 也将指向 ip 指向的对象。</p>
+<h3 id="指针与指针参数"><a href="#指针与指针参数" class="headerlink" title="指针与指针参数"></a>指针与指针参数</h3><p>为了使被调用函数直接修改主调函数中的变量值，我们可以使主调程序将指向所要交换的变量的指针传递给被调用函数，即：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">swap ( &amp; <span class="hljs-selector-tag">a</span> , &amp; <span class="hljs-selector-tag">b</span> ) ; <br></code></pre></td></tr></table></figure>
+<p>由于一元运算符&amp;用来取变量的地址，这样&amp;a就是一个指向变量a的指针。swap函数的所有参数都声明为指针，并且通过这些指针来间接访问它们所指向的操作数。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-type">void</span> swap ( <span class="hljs-type">int</span> * px , <span class="hljs-type">int</span> * py ) &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-keyword">temp</span> ; <br>    <span class="hljs-keyword">temp</span> = * px ; <br>    * px = * py ; <br>    * py = <span class="hljs-keyword">temp</span> ; <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>指针参数使得被调用函数能够访问和修改主调函数中对象的值。<br>我们来看一个可以接受自由格式输入，并执行转换，并同时返回得到的整数和文件结束标志（EOF）的函数。<br>如果你觉得你已经了解了可以不用看下面的代码，直接进入下一节。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs r">int getch ( void ) &#123; <span class="hljs-built_in">return</span> ( bufp &gt; <span class="hljs-number">0</span> ) ? buf[--bufp] : getchar ( ) ; &#125;<br><br>void ungetch ( int <span class="hljs-built_in">c</span> ) &#123; <br>    <span class="hljs-keyword">if</span> ( bufp &gt;= BUFSIZE ) printf ( <span class="hljs-string">&quot;ungetch:too many characters\n&quot;</span> ) ; <br>    <span class="hljs-keyword">else</span> buf[bufp++] = <span class="hljs-built_in">c</span> ; <br>&#125;<br><br>int getint ( int * pn ) &#123;<br>    int <span class="hljs-built_in">c</span> , <span class="hljs-built_in">sign</span> ; <br>    <span class="hljs-keyword">while</span> ( isspace ( <span class="hljs-built_in">c</span> = getch ( ) ) ) ;<br>    <span class="hljs-keyword">if</span> ( ! isdigit ( <span class="hljs-built_in">c</span> ) &amp;&amp; <span class="hljs-built_in">c</span> != EOF &amp;&amp; <span class="hljs-built_in">c</span> != <span class="hljs-string">&#x27;+&#x27;</span> &amp;&amp; <span class="hljs-built_in">c</span> != <span class="hljs-string">&#x27;-&#x27;</span> ) &#123;<br>        ungetch ( <span class="hljs-built_in">c</span> ) ; <span class="hljs-built_in">return</span> <span class="hljs-number">0</span> ;     <br>    &#125;<br>    <span class="hljs-built_in">sign</span> = ( <span class="hljs-built_in">c</span> == <span class="hljs-string">&#x27;-&#x27;</span> ) ? -<span class="hljs-number">1</span> : <span class="hljs-number">1</span> ; <br>    <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">c</span> == <span class="hljs-string">&#x27;+&#x27;</span> || <span class="hljs-built_in">c</span> == <span class="hljs-string">&#x27;-&#x27;</span> ) <span class="hljs-built_in">c</span> = getch ( ) ; <br>    <span class="hljs-keyword">for</span> ( * pn = <span class="hljs-number">0</span> ; isdigit ( <span class="hljs-built_in">c</span> ) ; <span class="hljs-built_in">c</span> = getch ( ) ) <br>        * pn = <span class="hljs-number">10</span> * * pn + <span class="hljs-built_in">c</span> - <span class="hljs-string">&#x27;0&#x27;</span> ; <br>    * pn *= <span class="hljs-built_in">sign</span> ; <br>    <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">c</span> != EOF ) ungetch ( <span class="hljs-built_in">c</span> ) ; <br>    <span class="hljs-built_in">return</span> <span class="hljs-built_in">c</span> ; <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在getint函数中，*pn始终作为一个普通的整形变量使用。</p>
+<h3 id="指针与数组"><a href="#指针与数组" class="headerlink" title="指针与数组"></a>指针与数组</h3><p>一般来说，用指针编写的程序比用数组下标编写的程序执行速度快，但另一方面，用指针实现的程序理解 起来稍微困难一些。<br>声明</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">int <span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[10]</span>; <br></code></pre></td></tr></table></figure>
+<p>定义了一个长度为 10 的数组 a。换句话说，它定义了一个由 10 个对象组成的集合，这 10 个<br>对象存储在相邻的内存区域中，名字分别为 a[0]、a[1]、…、a[9]<br>如果 pa 指向数组中的某个特定元素，那么，根据指针运算的定义，pa+1 将指向下一个元素，pa+i 将指向 pa所指向数组元素之后的第i个元素，而pa-i将指向pa所指向数组元素之前的第 i 个元素。因此，如果指针 pa 指向 a[0]，那么* (pa+1)引用的是数组元素a[1]的内容，pa+i 是数组元素 a[i]的地址，* (pa+i)引用的是数组元素 a[i]的内容<br>无论数组 a 中元素的类型或数组长度是什么，上面的结论都成立。“指针加 1”就意味着，pa+1 指向 pa 所指向的对象的<strong>下一个对象</strong>。相应地，pa+i 指向 pa 所指向的对象之后的第 i 个对象。<br>对数组元素 a[i]的引用也可以写成*(a+i)这种形式。对第一次接触这种写法的人来说， 可能会觉得很奇怪。在计算数组元素 a[i]的值时，C 语言实际上先将其转换为*(a+i)的形<br>式，然后再进行求值，因此在程序中这两种形式是等价的。如果对这两种等价的表示形式分 别施加地址运算符&amp;，便可以得出这样的结论：&amp;a[i]和 a+i 的含义也是相同的。a+i 是 a<br>之后第 i 个元素的地址。相应地，如果 pa 是个指针，那么，在表达式中也可以在它的后面加 下标。pa[i]与*(pa+i)是等价的。简而言之，一个通过数组和下标实现的表达式可等价地 通过指针和偏移量实现。<br>但是，我们必须记住，数组名和指针之间有一个不同之处，指针是一个变量，因此，在 C语言中，语句 pa=a 和 pa++都是合法的。但数组名不是变量，因此，类似于 a=pa 和 a++形式的语句是非法的。<br>当把数组名传递给一个函数时，实际上传递的是该数组第一个元索的地址。在被调用函数中，该参数是一个局部变量，因此，数组名参数必须是一个指针，也就是一个存储地址值 的变量。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-comment">/*return length of s */</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strlen</span> <span class="hljs-params">( <span class="hljs-keyword">char</span> * s )</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> n ; <br>    <span class="hljs-keyword">for</span> ( n = <span class="hljs-number">0</span> ; * s != <span class="hljs-string">&#x27;\0&#x27;</span> ; s ++ ) n ++ ; <br>    <span class="hljs-keyword">return</span> n ; <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>执行 s++运算不会影响到 strlen 函数的调用者中的字符串，它仅对该指针在 strlen 函数中的私有副本进行自增运算。<br>以下的函数调用均正确：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs smali">strlen ( <span class="hljs-string">&quot;hello world&quot;</span> ) ;<br>char array[100] ; <br>strlen (<span class="hljs-built_in"> array </span>) ; <br>char * ptr ; <br>strlen ( ptr ) ; <br></code></pre></td></tr></table></figure>
+<p>在函数定义中，形式参数</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scss">char s<span class="hljs-selector-attr">[]</span>; <br></code></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">char *s<span class="hljs-comment">; </span><br></code></pre></td></tr></table></figure>
+<p>是等价的。我们通常更习惯于使用后一种形式，因为它比前者更直观地表明了该参数是一个指针。如果将数组名传递给函数，函数可以根据情况判定是按照数组处理还是按照指针处理，随后根据相应的方式操作该参数。为了直观且恰当地描述函数，在函数中甚至可以同时使用数组和指针这两种表示方法。<br>也可以将指向子数组起始位置的指针传递给函数，这样，就将数组的一部分传递给了函<br>数。例如，如果 a 是一个数组，那么下面两个函数调用</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(&amp;a[<span class="hljs-number">2</span>])</span></span> <br></code></pre></td></tr></table></figure>
+<p>与</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(a+<span class="hljs-number">2</span>)</span></span> <br></code></pre></td></tr></table></figure>
+<p>都将把起始于 a[2]的子数组的地址传递给函数 f。在函数 f 中，参数的声明形式可以为</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(int arr[])</span></span> &#123; ... &#125; <br></code></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(int *arr)</span></span> &#123; ... &#125; <br></code></pre></td></tr></table></figure>
+<p>对于函数 f 来说，它并不关心所引用的是否只是一个更大数组的部分元素。 如果确信相应的元素存在，也可以通过下标访问数组第一个元素之前的元素。类似于<br>p[-1]、p[-2]这样的表达式在语法上都是合法的，它们分别引用位于 p[0]之前的两个元素。<br>当然，引用数组边界之外的对象是非法的。</p>
+<h3 id="地址算术运算"><a href="#地址算术运算" class="headerlink" title="地址算术运算"></a>地址算术运算</h3><p>下面我们将给出函数alloc和afree，他们分别对标malloc.h头文件中的malloc函数和free函数，只是功能相对于malloc和free更菜而已。这里就先直接贴代码，看不懂也没关系，继续往下看就行</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">char</span> * <span class="hljs-title">alloc</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> n )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> ( ( allocbuf + ALLOCSIZE - allocp &gt;= n ) ) &#123;<br>        allocp += n ;<br>        <span class="hljs-keyword">return</span> allocp - n ; <br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> ; <br>    <span class="hljs-comment">//C语言保证，0永远不是有效的数据地址，因此返回值0可用来表示发生了异常事件</span><br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">afree</span> <span class="hljs-params">( <span class="hljs-keyword">char</span> * p )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> ( p &gt;= allocbuf &amp;&amp; p &lt; allocbuf + ALLOCSIZE ) allocp = p ;<br>    <span class="hljs-comment">//对指针进行比较</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>首先，在某些情况下对指针可以进 行比较运算。例如，如果指针 p 和 q 指向同一个数组的成员，那么它们之间就可以进行类似 于==、!=、&lt;、&gt;=的关系比较运算。如果 p 指向的数组元素的位置在 q 指向的数组元素位置 之前，那么关系表达式<br>p &lt; q<br>的值为真。任何指针与 0进行相等或不等的比较运算都有意义。但是，指向不同数组的元素的指针之间的算术或比较运算没有定义。（这里有一个特例：指针的算术运算中可使用数组最 后一个元素的下一个元素的地址。）<br>其次。我们从前面可以看到，指针可以和整数进行相加或相减运算。例如，结构<br>p + n<br>表示指针 p 当前指向的对象之后第 n 个对象的地址。无论指针 p 指向的对象是何种类型，上述结论都成立。在计算 p+n 时，n 将根据 p 指向的对象的长度按比例缩放，而 p 指向的对象的长度则取决于 p 的声明。例如，如果 int 类型占 4 个字节的存储空间，那么在 int 类型的计算中，对应的 n 将按 4 的倍数来计算。指针的减法运算也是有意义的：如果 p 和 q 指向相同数组中的元索，且 p&lt;q，那么 q-p+1就是位于 p 和 q 指向的元索之间的元素的数目。我们由此可以编写出函数 strlen 的另一个<br>版本，如</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strlen</span> <span class="hljs-params">( <span class="hljs-keyword">char</span> * s )</span> </span>&#123;<br>    <span class="hljs-keyword">char</span> * p = s ; <br>    <span class="hljs-keyword">while</span> ( * p != <span class="hljs-string">&#x27;\0&#x27;</span> ) p ++ ; <br>    <span class="hljs-keyword">return</span> p - s ; <br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="字符指针与函数"><a href="#字符指针与函数" class="headerlink" title="字符指针与函数"></a>字符指针与函数</h3><p>字符串常量是一个字符数组，例如：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs css">&quot;<span class="hljs-selector-tag">I</span> am <span class="hljs-selector-tag">a</span> string&quot; <br></code></pre></td></tr></table></figure>
+<p>在字符串的内部表示中，字符数组以空字符’\0’结尾，所以，程序可以通过检查空字符找到 字符数组的结尾。字符串常量占据的存储单元数也因此比双引号内的字符数大 1。<br>字符串常量最常见的用法也许是作为函数参数，例如：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">princf(<span class="hljs-string">&quot;hello, world\n&quot;</span>&#125;<span class="hljs-comment">; </span><br></code></pre></td></tr></table></figure>
+<p>当类似于这样的一个字符串出现在程序中时，实际上是通过字符指针访问该字符串的。在上<br>述语句中，printf 接受的是一个指向字符数组第一个字符的指针。也就是说，字符串常量可 通过一个指向其第一个元素的指针访问。<br>除了作为函数参数以外，字符串常量还有其它的用法。例如</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf">char *pmessage <span class="hljs-comment">; </span><br><span class="hljs-attribute">pmessage</span> = <span class="hljs-string">&quot;now is the time&quot;</span> <span class="hljs-comment">; </span><br></code></pre></td></tr></table></figure>
+<p>此操作把一个指向该字符数组的指针赋值给 pmessage。该过程并没有进行字符串的复制，而只 是涉及到指针的操作。C 语言没有提供将整个字符串作为一个整体进行处理的运算符。<br>下面两个定义之间有很大的差别：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">char</span> amessage[] = <span class="hljs-string">&quot;nw is the time&quot;</span>; <span class="hljs-comment">/* 定义一个数组 */</span> <br><span class="hljs-keyword">char</span> *pmessage = <span class="hljs-string">&quot;now is the time&quot;</span>; <span class="hljs-comment">/* 定义一个指针 */</span> <br></code></pre></td></tr></table></figure>
+<p>上述声明中，amessage 是一个仅仅足以存放初始化字符串以及空字符’\0’的一维数组。数组中的单个字符可以进行修改，但 amessage 始终指向同一个存储位置。另一方面，pmessage是一个指针，其初值指向一个字符串常量，之后它可以被修改以指向其它地址，但如果试图 修改字符串的内容，结果是没有定义的<br>掌握了上面的知识，我们现在可以理解下面的程序</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">strcpy</span> <span class="hljs-params">( <span class="hljs-keyword">char</span> * s , <span class="hljs-keyword">char</span> * t )</span> <span class="hljs-title">while</span> <span class="hljs-params">( * s ++ = * t ++ )</span> </span>; <br></code></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">strcmp</span> <span class="hljs-params">( <span class="hljs-keyword">char</span> * s , <span class="hljs-keyword">char</span> * t )</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> ( ; * s == * t ; s ++ , t ++ ) <span class="hljs-keyword">if</span> ( * s == <span class="hljs-string">&#x27;\0&#x27;</span> ) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> ; <br>    <span class="hljs-keyword">return</span> * s - * t ; <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="数组指针与指向指针的指针"><a href="#数组指针与指向指针的指针" class="headerlink" title="数组指针与指向指针的指针"></a>数组指针与指向指针的指针</h3><p>下面是一个运用快速排序来实现字符串排序的程序，qsort部分可自行使用快排实现，我自己想了想也可以用普通的sort + 结构体实现，或许会更好点，这里就不展开了。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span> </span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span> </span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXLINES 5000 <span class="hljs-comment">/* max #lines to be sorted */</span> </span><br><span class="hljs-keyword">char</span> *lineptr[MAXLINES]; <span class="hljs-comment">/* pointers to text lines */</span> <br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">readlines</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *lineptr[], <span class="hljs-keyword">int</span> nlines)</span></span>; <br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">writelines</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *lineptr[], <span class="hljs-keyword">int</span> nlines)</span></span>; <br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">qsort</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *lineptr[], <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right)</span></span>; <br><span class="hljs-comment">/* sort input lines */</span> <br><span class="hljs-built_in">main</span>() <br>&#123; <br>    <span class="hljs-keyword">int</span> nlines; <span class="hljs-comment">/* number of input lines read */</span> <br>    <span class="hljs-keyword">if</span> ((nlines = <span class="hljs-built_in">readlines</span>(lineptr, MAXLINES)) &gt;= <span class="hljs-number">0</span>) &#123; <br>        <span class="hljs-built_in">qsort</span>(lineptr, <span class="hljs-number">0</span>, nlines<span class="hljs-number">-1</span>); <br>        <span class="hljs-built_in">writelines</span>(lineptr, nlines); <br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <br>    &#125; <span class="hljs-keyword">else</span> &#123; <br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;error: input too big to sort\n&quot;</span>); <br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>; <br>    &#125; <br>&#125; <br>    <span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXLEN 1000 <span class="hljs-comment">/* max length of any input line */</span> </span><br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">getline</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *, <span class="hljs-keyword">int</span>)</span></span>; <br>    <span class="hljs-function"><span class="hljs-keyword">char</span> *<span class="hljs-title">alloc</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>; <br><span class="hljs-comment">/* readlines: read input lines */</span> <br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">readlines</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *lineptr[], <span class="hljs-keyword">int</span> maxlines)</span> </span><br><span class="hljs-function"></span>&#123; <br>    <span class="hljs-keyword">int</span> len, nlines; <br>    <span class="hljs-keyword">char</span> *p, line[MAXLEN]; <br>    nlines = <span class="hljs-number">0</span>; <br>    <span class="hljs-keyword">while</span> ((len = <span class="hljs-built_in">getline</span>(line, MAXLEN)) &gt; <span class="hljs-number">0</span>) <br>        <span class="hljs-keyword">if</span> (nlines &gt;= maxlines || p = <span class="hljs-built_in">alloc</span>(len) == <span class="hljs-literal">NULL</span>) <br>            <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>; <br>        <span class="hljs-keyword">else</span> &#123; <br>            line[len<span class="hljs-number">-1</span>] = <span class="hljs-string">&#x27;\0&#x27;</span>; <span class="hljs-comment">/* delete newline */</span> <br>            <span class="hljs-built_in">strcpy</span>(p, line); <br>            lineptr[nlines++] = p; <br>        &#125; <br>    <span class="hljs-keyword">return</span> nlines; <br>&#125; <br><span class="hljs-comment">/* writelines: write output lines */</span> <br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">writelines</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *lineptr[], <span class="hljs-keyword">int</span> nlines)</span> </span><br><span class="hljs-function"></span>&#123; <br>    <span class="hljs-keyword">int</span> i; <br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; nlines; i++) <br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, lineptr[i]); <br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">qsort</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *v[], <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right)</span> </span><br><span class="hljs-function"></span>&#123; <br>    <span class="hljs-keyword">int</span> i, last; <br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *v[], <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span></span>; <br>    <span class="hljs-keyword">if</span> (left &gt;= right) <span class="hljs-comment">/* do nothing if array contains */</span> <br>        <span class="hljs-keyword">return</span>; <span class="hljs-comment">/* fewer than two elements */</span> <br>    <span class="hljs-built_in">swap</span>(v, left, (left + right)/<span class="hljs-number">2</span>); <br>    last = left; <br>    <span class="hljs-keyword">for</span> (i = left+<span class="hljs-number">1</span>; i &lt;= right; i++) <br>        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(v[i], v[left]) &lt; <span class="hljs-number">0</span>) <br>            <span class="hljs-built_in">swap</span>(v, ++last, i); <br>        <span class="hljs-built_in">swap</span>(v, left, last); <br>        <span class="hljs-built_in">qsort</span>(v, left, last<span class="hljs-number">-1</span>); <br>        <span class="hljs-built_in">qsort</span>(v, last+<span class="hljs-number">1</span>, right); <br>&#125;<br><span class="hljs-comment">/* swap: interchange v[i] and v[j] */</span> <br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *v[], <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span><br><span class="hljs-function"></span>&#123; <br>    <span class="hljs-keyword">char</span> *temp; <br>    temp = v[i]; <br>    v[i] = v[j]; <br>    v[j] = temp; <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在该例子中，指针数组 lineptr 的声明是新出现的重要概念：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scss">char *lineptr<span class="hljs-selector-attr">[MAXLINES]</span>; <br></code></pre></td></tr></table></figure>
+<p>它表示 lineptr 是一个具有 MAXLINES 个元素的一维数组，其中数组的每个元素是一个指向字符类型对象的指针。也就是说，lineptr[i]是一个字符指针，而*lineptr[i]是该指针指向的第 i 个文本行的首字符。 由于 lineptr 本身是一个数组名，因此，可按照前面例子中相同的方法将其作为指针使用，这样，writelines 函数可以改写为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/* writelines: write output lines */</span> <br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">writelines</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *lineptr[], <span class="hljs-keyword">int</span> nlines)</span> </span><br><span class="hljs-function"></span>&#123; <br>    <span class="hljs-keyword">while</span> (nlines-- &gt; <span class="hljs-number">0</span>) <br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, *lineptr++); <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>（注意这里的数组变量 lineptr 可以改变值）<br>循环开始执行时，*lineptr 指向第一行，每执行一次自增运算都使得 lineptr 指向下 一行，同时对 nlines 进行自减运算。</p>
+<h3 id="多维数组"><a href="#多维数组" class="headerlink" title="多维数组"></a>多维数组</h3><p>如果将二维数组作为参数传递给函数，那么在函数的参数声明中必须指明数组的列数。<br>数组的行数没有太大关系，因为前面已经讲过，函数调用时传递的是一个指针，它指向由行 向量构成的一维数组，其中每个行向量是具有 13 个整型元素的一维数组。在该例子中，传递 给函数的是一个指向很多对象的指针，其中每个对象是由 13 个整型元素构成的一维数组。因 此，如果将数组 daytab 作为参数传递给函数 f，那么 f 的声明应该写成下列形式：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(int daytab[<span class="hljs-number">2</span>][<span class="hljs-number">13</span>])</span></span> &#123; ... &#125; <br></code></pre></td></tr></table></figure>
+<p>也可以写成</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(int daytab[][<span class="hljs-number">13</span>])</span></span> &#123; ... &#125; <br></code></pre></td></tr></table></figure>
+<p>因为数组的行数无关紧要，所以，该声明还可以写成</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">f</span><span class="hljs-params">(int (*daytab)</span></span><span class="hljs-selector-attr">[13]</span>) &#123; ... &#125; <br></code></pre></td></tr></table></figure>
+<p>这种声明形式表明参数是一个指针，它指向具有 13 个整型元素的一维数组。因为方括号[]的<br>优先级高于*的优先级，所以上述声明中必须使用圆括号。如果去掉括号，则声明变成</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-built_in">int</span> *daytab[<span class="hljs-number">13</span>] <br></code></pre></td></tr></table></figure>
+<p>这相当于声明了一个数组，该数组有 13 个元素，其中每个元素都是一个指向整型对象的指针。<br>一般来说，除数组的第一维（下标）可以不指定大小外，其余各维都必须明确指定大小。</p>
+<h3 id="指针数组的初始化"><a href="#指针数组的初始化" class="headerlink" title="指针数组的初始化"></a>指针数组的初始化</h3><p>考虑这样一个问题：编写一个函数 month_name(n)，它返回一个指向第 n 个月名字的 字符串的指针。这是内部 static 类型数组的一种理想的应用。month_name 函数中包含一 个私有的字符串数组，当它被调用时，返回一个指向正确元素的指针。本节将说明如何初始<br>化该名字数组。<br>指针数组的初始化语法和前面所讲的其它类型对象的初始化语法类似：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">/* month_name: return name of n-th month */</span> <br><span class="hljs-function"><span class="hljs-keyword">char</span> *<span class="hljs-title">month_name</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span><br><span class="hljs-function"></span>&#123; <br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">char</span> *name[] = &#123; <br>        <span class="hljs-string">&quot;Illegal month&quot;</span>, <br>        <span class="hljs-string">&quot;January&quot;</span>, <span class="hljs-string">&quot;February&quot;</span>, <span class="hljs-string">&quot;March&quot;</span>, <br>        <span class="hljs-string">&quot;April&quot;</span>, <span class="hljs-string">&quot;May&quot;</span>, <span class="hljs-string">&quot;June&quot;</span>, <br>        <span class="hljs-string">&quot;July&quot;</span>, <span class="hljs-string">&quot;August&quot;</span>, <span class="hljs-string">&quot;September&quot;</span>, <br>        <span class="hljs-string">&quot;October&quot;</span>, <span class="hljs-string">&quot;November&quot;</span>, <span class="hljs-string">&quot;December&quot;</span> <br>    &#125;;<br>    <span class="hljs-keyword">return</span> name ; <br></code></pre></td></tr></table></figure>
+<p>其中，name 的声明与排序例子中 lineptr 的声明相同，是一个一维数组，数组的元素为字 符指针。name 数组的初始化通过一个字符串列表实现，列表中的每个字符串赋值给数组相应 位置的元素。第 i 个字符串的所有字符存储在存储器中的某个位置，指向它的指针存储在name[i]中。由于上述声明中没有指明 name 的长度，因此，编译器编译时将对初值个数进 行统计，并将这一准确数字填入数组的长度。</p>
+<h3 id="指针与多维数组"><a href="#指针与多维数组" class="headerlink" title="指针与多维数组"></a>指针与多维数组</h3><p>对于 C 语言的初学者来说，很容易混淆二维数组与指针数组之间的区别，比如上面例子 中的 name。假如有下面两个定义：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css">int <span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[10]</span><span class="hljs-selector-attr">[20]</span>; <br>int \*<span class="hljs-selector-tag">b</span><span class="hljs-selector-attr">[10]</span>; <br></code></pre></td></tr></table></figure>
+<p>那么，从语法角度讲，a[3][4]和 b[3][4]都是对一个 int 对象的合法引用。但 a 是一个真正的二维数组，它分配了 200 个 int 类型长度的存储空间，并且通过常规的矩阵下标计算公式 20×row+col（其中，row 表示行，col 表示列）计算得到元素 a[row][col]的位置。但是，对 b 来说，该定义仅仅分配了 10 个指针，并且没有对它们初始化，它们的初始化必须以显式的方式进行，比如静态初始化或通过代码初始化。假定 b 的每个元素(其实只取决于最大的）都指向一个具有 20 个元 素的数组，那么编译器就要为它分配 200 个 int 类型长度的存储空间以及 10 个指针的存储空间。指针数组的一个重要优点在于，数组的每一行长度可以不同，也就是说，b 的每个元素不 必都指向一个具有 20 个元素的向量，某些元素可以指向具有 2 个元素的向量，某些元素可以指向具有 50 个元素的向量，而某些元素可以不指向任何向量。</p>
+<h3 id="命令行参数"><a href="#命令行参数" class="headerlink" title="命令行参数"></a>命令行参数</h3><p>编程实际场景中感觉是不常用的，我自己也没看懂，日后补<br>略</p>
+<h3 id="指向函数的指针"><a href="#指向函数的指针" class="headerlink" title="指向函数的指针"></a>指向函数的指针</h3><p>在系统学习完指向含糊的指针后，我发现这玩意就是个纸老虎，只是听起来挺高大上的，其实非常简单。<br>在实际运用中就差不多减少一点代码行数而已，感觉替代性挺强的。（也可能是因为我太菜了）<br>那就开始吧<br>在C语言中，函数本身不是变量，但可以定义指向函数的指针。这种类型的指针可以被赋值、存放在数组中、传递给函数以及作为函数的返回值等等。我们接下来将修改排序函数，在给定可选参数-n的情况下，该函数将按树枝大小而非字典顺序对输入行进行排序。<br>排序程序通常包括3部分：判断任何两个对象之间次序的比较操作、颠倒对象次序的交 换操作、一个用于比较和交换对象直到所有对象都按正确次序排列的排序算法。<br>由于排序算法与比较、交换操作无关，因此，通过在排序算法中调用不同的比较和交换函数，便可以实 现按照不同的标准排序。这就是我们的新版本排序函数所采用的方法。<br>函数 strcmp 按字典顺序比较两个输入行。在这里，我们还需要一个以数值为基础来比较两个输入行，并返回与 strcmp 同样的比较结果的函数 numcmp。这些函 数在 main 之前声明，并且，指向恰当函数的指针将被传递给 qsort 函数。在这里，参数的出错处理并不是问题的重点，我们将主要考虑指向函数的指针问题。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAXLINES 5000 <span class="hljs-comment">/* max #lines to be sorted */</span></span><br><span class="hljs-keyword">char</span> *lineptr[MAXLINES]; <span class="hljs-comment">/* pointers to text lines */</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">readlines</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *lineptr[], <span class="hljs-keyword">int</span> nlines)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">writelines</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *lineptr[], <span class="hljs-keyword">int</span> nlines)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">qsort</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *lineptr[], <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right,</span></span><br><span class="hljs-params"><span class="hljs-function"><span class="hljs-keyword">int</span> (*comp)(<span class="hljs-keyword">void</span> *, <span class="hljs-keyword">void</span> *))</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">numcmp</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *, <span class="hljs-keyword">char</span> *)</span></span>;<br><span class="hljs-comment">/* sort input lines */</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">int</span> argc, <span class="hljs-keyword">char</span> *argv[])</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> nlines; <span class="hljs-comment">/* number of input lines read */</span><br>    <span class="hljs-keyword">int</span> numeric = <span class="hljs-number">0</span>; <span class="hljs-comment">/* 1 if numeric sort */</span><br>    <span class="hljs-keyword">if</span> (argc &gt; <span class="hljs-number">1</span> &amp;&amp; <span class="hljs-built_in">strcmp</span>(argv[<span class="hljs-number">1</span>], <span class="hljs-string">&quot;-n&quot;</span>) == <span class="hljs-number">0</span>)<br>        numeric = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> ((nlines = <span class="hljs-built_in">readlines</span>(lineptr, MAXLINES)) &gt;= <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-built_in">qsort</span>((<span class="hljs-keyword">void</span>**) lineptr, <span class="hljs-number">0</span>, nlines<span class="hljs-number">-1</span>,<br>            (<span class="hljs-built_in"><span class="hljs-keyword">int</span></span> (*)(<span class="hljs-keyword">void</span>*,<span class="hljs-keyword">void</span>*))(numeric ? numcmp : strcmp));<br>        <span class="hljs-built_in">writelines</span>(lineptr, nlines);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;input too big to sort\n&quot;</span>);<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br><span class="hljs-comment">/* qsort: sort v[left]...v[right] into increasing order */</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">qsort</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *v[], <span class="hljs-keyword">int</span> left, <span class="hljs-keyword">int</span> right,</span></span><br><span class="hljs-params"><span class="hljs-function"><span class="hljs-keyword">int</span> (*comp)(<span class="hljs-keyword">void</span> *, <span class="hljs-keyword">void</span> *))</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">int</span> i, last;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">swap</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *v[], <span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>)</span></span>;<br>    <span class="hljs-keyword">if</span> (left &gt;= right) <span class="hljs-comment">/* do nothing if array contains */</span><br>        <span class="hljs-keyword">return</span>; <span class="hljs-comment">/* fewer than two elements */</span><br>    <span class="hljs-built_in">swap</span>(v, left, (left + right)/<span class="hljs-number">2</span>);<br>    last = left;<br>    <span class="hljs-keyword">for</span> (i = left+<span class="hljs-number">1</span>; i &lt;= right; i++)<br>        <span class="hljs-keyword">if</span> ((*comp)(v[i], v[left]) &lt; <span class="hljs-number">0</span>)<br>            <span class="hljs-built_in">swap</span>(v, ++last, i);<br>    <span class="hljs-built_in">swap</span>(v, left, last);<br>    <span class="hljs-built_in">qsort</span>(v, left, last<span class="hljs-number">-1</span>, comp);<br>    <span class="hljs-built_in">qsort</span>(v, last+<span class="hljs-number">1</span>, right, comp);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>在调用函数qsort的语句中，strcmp和numcmp是函数的地址，因为它们是函数，所以前面不需要加上取地址运算符&amp;，同样的原因，数组名前面也不需要&amp;运算符。<br>改写后的 qsort 函数能够处理任何数据类型，而不仅仅限于字符串。从函数 qsort 的 原型可以看出，它的参数表包括一个指针数组、两个整数和一个有两个指针参数的函数。其中，指针数组参数的类型为通用指针类型 void <em>。由于任何类型的指针都可以转换为 void</em>类型，并且在将它转换回原来的类型时不会丢失信息，所以，调用 qsort 函数时可以将参数强制转换为 void *类型。比较函数的参数也要执行这种类型的转换。这种转换通常不会影响到数据的实际表示，但要确保编译器不会报错。</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-built_in">int</span> ( * comp ) ( <span class="hljs-built_in">void</span> * , <span class="hljs-built_in">void</span> * ) <br></code></pre></td></tr></table></figure>
+<p>它表明comp是一个指向函数的指针，该函数具有两个void * 类型的参数，其返回值为int。<br>值得注意的是圆括号是必须的，这样才能保证其中的各个部分正确结合，如果没有括号，如</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-built_in">int</span> * comp ( <span class="hljs-built_in">void</span> * , <span class="hljs-built_in">void</span> * ) <br></code></pre></td></tr></table></figure>
+<p>则表明comp是一个函数，该函数返回一个指向int类型的指针<br>我们在前面讲过函数 strcmp，占用于比较两个字符串。这里介绍的函数 numcmp 也是比 较两个字符串，但它通过调用 atof 计算字符串对应的数值，然后在此基础上进行比较：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs smali"><span class="hljs-comment">#include &lt;stdlib.h&gt;</span><br>/* numcmp: compare s1<span class="hljs-built_in"> and </span>s2 numerically */<span class="hljs-built_in"></span><br><span class="hljs-built_in">int </span>numcmp(char *s1, char *s2)<br>&#123;<br>   <span class="hljs-built_in"> double </span>v1, v2;<br>    v1 = atof(s1);<br>    v2 = atof(s2);<br>   <span class="hljs-built_in"> if </span>(v1 &lt; v2)<br>       <span class="hljs-built_in"> return </span>-1;<br>    else<span class="hljs-built_in"> if </span>(v1 &gt; v2)<br>       <span class="hljs-built_in"> return </span>1;<br>    else<br>       <span class="hljs-built_in"> return </span>0;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>交换两个指引的 swap 函数和本章前面所述的 swap 函数相同，但它的参数声明为 void *<br>类型。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-type">void</span> swap(<span class="hljs-type">void</span> * v[], <span class="hljs-type">int</span> i, <span class="hljs-type">int</span> j;)<br>&#123;<br>    <span class="hljs-type">void</span> *<span class="hljs-keyword">temp</span>;<br>    <span class="hljs-keyword">temp</span> = v[i];<br>    v[i] = v[j];<br>    v[j] = <span class="hljs-keyword">temp</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><p>关于malloc：</p>
+<h4 id="函数原型："><a href="#函数原型：" class="headerlink" title="函数原型："></a>函数原型：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">void</span> \*<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> num\_bytes);<br></code></pre></td></tr></table></figure>
+<h4 id="malloc函数返回值"><a href="#malloc函数返回值" class="headerlink" title="malloc函数返回值"></a>malloc函数返回值</h4><p>如果分配成功则返回指向被分配内存的指针，否则返回空指针NULL。</p>
+<h4 id="malloc函数使用注意事项"><a href="#malloc函数使用注意事项" class="headerlink" title="malloc函数使用注意事项"></a>malloc函数使用注意事项</h4><p>malloc函数的返回的是无类型指针，在使用时一定要强制转换为所需要的类型。<br>在使用malloc开辟空间时，使用完成一定要释放空间，如果不释放会造内存泄漏。<br>在使用malloc函数开辟的空间中，不要进行指针的移动，因为一旦移动之后可能出现申请的空间和释放空间大小的不匹配</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;malloc.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std ; <br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> &#123;</span><br>    <span class="hljs-keyword">int</span> value ; <br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> * <span class="hljs-title">next</span> ;</span> <br>&#125; ; <br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">node</span> <span class="hljs-title">Node</span> ;</span> <br><span class="hljs-comment">//创造节点</span><br><span class="hljs-function">Node * <span class="hljs-title">create_node</span> <span class="hljs-params">( Node * head , <span class="hljs-keyword">int</span> value )</span> </span>&#123;<br>    Node * t_node = ( Node * ) <span class="hljs-built_in">malloc</span> ( <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span> ( Node ) ) ; <span class="hljs-comment">//千万不可自己去计算数据填入!!!</span><br>    <span class="hljs-keyword">if</span> ( ! t_node ) &#123; <span class="hljs-built_in">printf</span> ( <span class="hljs-string">&quot;failed&quot;</span> ) ; <span class="hljs-built_in">exit</span> ( <span class="hljs-number">-1</span> ) ; &#125;<br>    t_node -&gt; value = value ; <span class="hljs-comment">// ( * t_node ).value ; </span><br>    t_node -&gt; next = head ; <span class="hljs-comment">//</span><br>    <span class="hljs-keyword">return</span> t_node ; <br>&#125;<br><span class="hljs-comment">//搜索目标节点</span><br><span class="hljs-function">Node * <span class="hljs-title">search_node</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> val , Node * head )</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> ( Node * p = head ; p ; p = p -&gt; next ) &#123;<br>        <span class="hljs-keyword">if</span> ( p -&gt; value == val ) <span class="hljs-keyword">return</span> p ; <br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> ; <br>&#125;<br><span class="hljs-comment">//删除节点，直接越过目标节点进行连接</span><br><span class="hljs-function">Node * <span class="hljs-title">delete_node</span> <span class="hljs-params">( Node * head , <span class="hljs-keyword">int</span> n )</span> </span>&#123;<br>    Node * pre , * cur ;<br>    <span class="hljs-keyword">for</span> ( pre = <span class="hljs-number">0</span> , cur = head ; cur &amp;&amp; cur -&gt; value != n ; pre = cur , cur = cur -&gt; next ) ; <br>    <span class="hljs-keyword">if</span> ( ! cur ) <span class="hljs-keyword">return</span> head ; <br>    <span class="hljs-keyword">if</span> ( ! pre ) head = head -&gt; next ; <br>    <span class="hljs-keyword">else</span> pre -&gt; next = cur -&gt; next ; <br>    <span class="hljs-built_in">free</span> ( cur ) ; cur = <span class="hljs-literal">NULL</span> ; <span class="hljs-comment">//指向NULL养成好习惯</span><br>    <span class="hljs-keyword">return</span> head ; <br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">( )</span> </span>&#123;<br>    Node * head = <span class="hljs-number">0</span> ;  <br>    <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> ) &#123;<br>        <span class="hljs-keyword">int</span> val ; <span class="hljs-built_in">scanf</span> ( <span class="hljs-string">&quot;%d&quot;</span> , &amp; val ) ; <br>        <span class="hljs-keyword">if</span> ( val == <span class="hljs-number">-1</span> ) <span class="hljs-keyword">break</span> ; <br>        head = <span class="hljs-built_in">create_node</span> ( head , val ) ;<br>    &#125;<br>    <span class="hljs-keyword">int</span> find_val ; <span class="hljs-built_in">scanf</span> ( <span class="hljs-string">&quot;%d&quot;</span> , &amp; find_val ) ; <br>    Node * goal = <span class="hljs-built_in">search_node</span> ( find_val , head ) ; <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> ; <br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Amentiraz<br>
+        <strong>本文链接：</strong><a href="http://1152396492.github.io/2021/11/04/%E6%8C%87%E9%92%88/" title="http:&#x2F;&#x2F;1152396492.github.io&#x2F;2021&#x2F;11&#x2F;04&#x2F;%E6%8C%87%E9%92%88&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;1152396492.github.io&#x2F;2021&#x2F;11&#x2F;04&#x2F;%E6%8C%87%E9%92%88&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
+    </div>
+
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/c/">c</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E6%8C%87%E9%92%88/" rel="tag">指针</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '8be80b65760c84f9f5c0',
+        clientSecret: '1521912d9673b1d6e07a2c517cf0618d8b42c80c',
+        id: window.location.pathname,
+        repo: 'myblog',
+        owner: '1152396492',
+        admin: '1152396492'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
+            <div class="nexmoe-post-right">
+              <div class="nexmoe-fixed">
+                  <div class="nexmoe-tool"> 
+                    
+                      
+                        
+                          
+                          
+                              <button class="mdui-fab catalog" style="overflow:unset;">
+                                  <i class="nexmoefont icon-i-catalog"></i>
+                                  <div class="nexmoe-toc">
+                                      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E4%B8%8E%E5%9C%B0%E5%9D%80"><span class="toc-number">1.</span> <span class="toc-text">指针与地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E4%B8%8E%E6%8C%87%E9%92%88%E5%8F%82%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">指针与指针参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E4%B8%8E%E6%95%B0%E7%BB%84"><span class="toc-number">3.</span> <span class="toc-text">指针与数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97"><span class="toc-number">4.</span> <span class="toc-text">地址算术运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E6%8C%87%E9%92%88%E4%B8%8E%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">字符指针与函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%8C%87%E9%92%88%E4%B8%8E%E6%8C%87%E5%90%91%E6%8C%87%E9%92%88%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-number">6.</span> <span class="toc-text">数组指针与指向指针的指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">7.</span> <span class="toc-text">多维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">8.</span> <span class="toc-text">指针数组的初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E9%92%88%E4%B8%8E%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">9.</span> <span class="toc-text">指针与多维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0"><span class="toc-number">10.</span> <span class="toc-text">命令行参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E5%90%91%E5%87%BD%E6%95%B0%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-number">11.</span> <span class="toc-text">指向函数的指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">12.</span> <span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B%EF%BC%9A"><span class="toc-number">12.1.</span> <span class="toc-text">函数原型：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#malloc%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">12.2.</span> <span class="toc-text">malloc函数返回值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#malloc%E5%87%BD%E6%95%B0%E4%BD%BF%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">12.3.</span> <span class="toc-text">malloc函数使用注意事项</span></a></li></ol></li></ol>
+                                  </div>
+                              </button>
+                          
+                          
+                      
+                    
+                      <a href="#nexmoe-content" class="toc-link" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+     
+    <div id="nexmoe-search-space">
+        <div class="search-container">
+            <div class="search-header">
+                <div class="search-input-container">
+                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
+                </div>
+                <a class="search-close" onclick="sclose();">×</a>
+            </div>
+            <div class="search-body"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+ 
+
+<script async src="/js/app.js?v=1696684996918"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
+<script>
+	$(".justified-gallery").justifiedGallery({
+		rowHeight: 160,
+		margins: 10,
+	});
+</script>
+
+
+    
+
+
+
+
+
+</body>
+
+</html>
