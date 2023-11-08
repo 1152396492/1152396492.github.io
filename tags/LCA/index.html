@@ -19,12 +19,15 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="Amentiraz">
 <meta name="twitter:card" content="summary">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css?v=233" crossorigin>
     
-    <link rel="stylesheet" href="/lib/mdui_043tiny/css/mdui.css?v=1699410262491">
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1699410262491">
-    <link rel="stylesheet" href="/css/style.css?v=1699410262491">
-     
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/justifiedGallery/justifiedGallery.min.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1699411058429">
+    
+    <link rel="stylesheet" href="/css/style.css?v=1699411058429">
     
 <meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
@@ -213,7 +216,7 @@
         <a href="/2021/11/29/LCA/">
             
                 <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://tva1.sinaimg.cn/large/008i3skNly1gwth07vmchj31jk0qktis.jpg" data-sizes="auto" alt="LCA" class="lazyload">
+                    <img src="https://tva1.sinaimg.cn/large/008i3skNly1gwth07vmchj31jk0qktis.jpg" alt="LCA" loading="lazy">
                     <h1>LCA</h1>
                 </div>
             
@@ -221,11 +224,20 @@
 
         <div class="nexmoe-post-meta nexmoe-rainbow">
             <a><i class="nexmoefont icon-calendar-fill"></i>2021年11月29日</a>
+            
+                <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a>
+            
+            
+                <a class="nexmoefont icon-tag-fill -none-link" href="/tags/LCA/" rel="tag">LCA</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+            
         </div>
 
+        <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    
+</div>
+
         <article>
-            
-                <div id="aplayer-OTPtKPXP" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-WPFhnFEu" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="29850611" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 
@@ -233,7 +245,6 @@
 <p>LCA（Least Common Ancestors），即最近公共祖先，是指在有根树中，找出某两个结点u和v最近的公共祖先。 ———来自百度百科</p>
 </blockquote>
 <p>对于一棵树来说，我们为了求它的最近公共祖先其实思路和快速幂是差不多的，我们不能直接一个个的向上查找，这样会使时间复杂度爆表，我们应当以2^k的速率往上找，这样可以使其时间复杂度降为log级别。<br>不得不说luogu上的题解实在是晦涩难懂，我能明白他们在寻找相同深度的点的时候使用log可以更快的找到，但是其实可以一层层的向上跳，可能时间复杂度常数上乘个5左右的数，但影响不大。（还是自己的代码好懂）<br>听说树链剖分也可以做，但这玩意写起来太麻烦了，我高中最快时写一遍也要半个小时（毕竟100多行）<br>总之，我们求LCA时首先找每个节点2^i的父亲，然后先将它们跳到相同的深度然后再同时向上跳，注意特判其中一个节点就是LCA。</p>
-            
         </article>
     </div>
     
@@ -269,17 +280,19 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    
+<script src="/lib/mdui_043tiny/mdui.js"></script>
+<script src="/lib/jquery.min.js"></script>
+<script src="/lib/justifiedGallery/jquery.justifiedGallery.min.js"></script>
+<script src="/lib/fancybox/fancybox.umd.js"></script>
+
 
  
 
-<script async src="/js/app.js?v=1699410262491"></script>
+<script async src="/js/app.js?v=1699411058430"></script>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
 	$(".justified-gallery").justifiedGallery({
 		rowHeight: 160,
