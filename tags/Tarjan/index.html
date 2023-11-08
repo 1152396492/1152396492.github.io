@@ -25,9 +25,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1699414011006">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1699414033675">
     
-    <link rel="stylesheet" href="/css/style.css?v=1699414011006">
+    <link rel="stylesheet" href="/css/style.css?v=1699414033675">
     
 <meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
@@ -237,7 +237,7 @@
 </div>
 
         <article>
-            <div id="aplayer-wzriYFrH" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-YjVqJWsP" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="488388731" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 <p>想当年高中组织活动的时候我还专门写过Tarjan的流程和证明，如今已经忘的干干净净，原来的代码也找不到了，只能现写了。<br>总的来说就是利用一个栈，将每个访问到的点push入栈，在寻找的过程中记录两个值，一个是dfn——它是第几个搜索到的，一个是low——它能衍生的点中dfn最小的值。如果一个点dfn==low说明它本身就是最小的点，把它及它栈以上的点全部pop出来就行，因为它上面的点必定是与它形成强联通分量。我们不妨假设它上面的点有不是它强联通分量的，那么此点在回溯到它本身的时候只有两种情况，一是它本身是强联通最小的点，那么在找到此点时会把它上面的点全部pop出去，另一种是它不是最小点，那么在遍历的过程中总会到第一种情况把它排除。<br>Tarjan程序是正确无误的，然后最后要跑一个拓扑，然鹅我不大会。luogu上爆了40pt，然后去看别人的题解秒懂。用拓扑可以优化掉ans、Q、new_val等等数组，估计就80pt了，然后我们还得用dp去解决菊花图这种类型的数据。<br>这道题还给人一个教训是，对于缩点的题，我们记录下每条路径的开始与结束去构造新图，没必要单独列个Q这种数组。<br>40pt代码如下：<br>（其实会个Tarjan就行了吧）</p>
@@ -285,7 +285,7 @@
 
  
 
-<script async src="/js/app.js?v=1699414011007"></script>
+<script async src="/js/app.js?v=1699414033676"></script>
 
 
 
