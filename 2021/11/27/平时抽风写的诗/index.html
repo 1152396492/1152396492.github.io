@@ -30,9 +30,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1699850770057">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1699866858929">
     
-    <link rel="stylesheet" href="/css/style.css?v=1699850770057">
+    <link rel="stylesheet" href="/css/style.css?v=1699866858929">
     
 <meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
@@ -241,7 +241,7 @@
 </div>
 
       
-    <div id="aplayer-FHZJKNik" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-PLKSCebk" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="477215674" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 <p>这些诗也不是有意写出来的，有些时候情绪到了，突然之间有感觉了，也就写出来了。<br>虽然我知道写的很烂，因为毕竟我即没有大量的阅读现代诗，也没有经过专门的写作训练，但情绪对了，不也达到了目的嘛</p>
@@ -299,17 +299,19 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
 <div id="gitalk"></div>
 <script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script src="{{ site.baseurl }}/js/md5.min.js"></script>
 <script type="text/javascript">
     var gitalk = new Gitalk({
         clientID: 'd792bb4144ed2b426d10',
         clientSecret: '812d33a3a53d9f83437ed1e71c573a8b222a93f1',
-        id: window.location.pathname,
+        id: md5(window.location.pathname),
         repo: '1152396492.github.io',
         owner: '1152396492',
         admin: '1152396492'
     })
     gitalk.render('gitalk')
 </script>
+
 </section>
       </div>
   
@@ -353,7 +355,7 @@
 
  
 
-<script async src="/js/app.js?v=1699850770058"></script>
+<script async src="/js/app.js?v=1699866858930"></script>
 
 
 
