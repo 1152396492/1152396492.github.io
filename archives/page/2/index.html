@@ -25,9 +25,9 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1714210063674">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1714210378157">
     
-    <link rel="stylesheet" href="/css/style.css?v=1714210063674">
+    <link rel="stylesheet" href="/css/style.css?v=1714210378157">
     
 <meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
@@ -209,7 +209,7 @@
 </div>
 
         <article>
-            <div id="aplayer-dGjJbsHg" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-EchIaeZn" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="488388731" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 <p>想当年高中组织活动的时候我还专门写过Tarjan的流程和证明，如今已经忘的干干净净，原来的代码也找不到了，只能现写了。<br>总的来说就是利用一个栈，将每个访问到的点push入栈，在寻找的过程中记录两个值，一个是dfn——它是第几个搜索到的，一个是low——它能衍生的点中dfn最小的值。如果一个点dfn==low说明它本身就是最小的点，把它及它栈以上的点全部pop出来就行，因为它上面的点必定是与它形成强联通分量。我们不妨假设它上面的点有不是它强联通分量的，那么此点在回溯到它本身的时候只有两种情况，一是它本身是强联通最小的点，那么在找到此点时会把它上面的点全部pop出去，另一种是它不是最小点，那么在遍历的过程中总会到第一种情况把它排除。<br>Tarjan程序是正确无误的，然后最后要跑一个拓扑，然鹅我不大会。luogu上爆了40pt，然后去看别人的题解秒懂。用拓扑可以优化掉ans、Q、new_val等等数组，估计就80pt了，然后我们还得用dp去解决菊花图这种类型的数据。<br>这道题还给人一个教训是，对于缩点的题，我们记录下每条路径的开始与结束去构造新图，没必要单独列个Q这种数组。<br>40pt代码如下：<br>（其实会个Tarjan就行了吧）</p>
@@ -241,7 +241,7 @@
 </div>
 
         <article>
-            <div id="aplayer-tpOKidPp" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-bwytfuUz" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="29850611" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 
@@ -277,7 +277,7 @@
 </div>
 
         <article>
-            <div id="aplayer-VwlHisRi" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-lWzVrqjW" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="27846868" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 <p>线段树是一种树状数据结构，它可以区间加减，区间乘除等一系列操作，用于处理那种可以合并状态的数据，在使用其3倍左右的空间的代价下使得其修改、查询、求区间和等等操作变得更加快捷。但与此同时，我们无法利用它处理类似于区间最长01序列此类问题，而且线段树代码冗长，其实很容易写错（也可能是因为我太菜了）。<br>我们将一组数据进行如下处理，每相邻的两个数据有一个父亲节点来记录其总的状态，然后再记录其相邻父节点的总的状态，以此类推，最终得到一个树状结构，我们从上到下依次编号1-n，这棵树满足父节点*2=左节点，父节点*2+1=右节点，设每个父节点代表l-r区间的状态，则左区间为l,(r+l)/2 , 右区间为(r+l)/2+1,r。根据此性质我们可以对他们进行维护。<br>每当我们访问一个节点，我们保证此节点的值一定正确，并尽可能少的改变其子孙节点的值，让时间消耗尽可能的小，同时把lazy标记也就是本来应该加的数传递到下一节点。<br>第一颗树实现了区间加与查询，第二颗树实现了区间乘法，加法，判断其中的先后顺序，其实也大同小异。<br>第三颗树用于实现历史最大值这种操作，然而由于本人电脑跑不动500mb的程序，再加之修改起来有点麻烦，就写个大致正确的程序摆在这了。<br>如果要继续完善，那么需要记录次大值并对于spread函数进行修改，就这样吧，后面再来补。</p>
@@ -309,7 +309,7 @@
 </div>
 
         <article>
-            <div id="aplayer-usNmmtpa" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-nidrpyYt" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1345488418" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 <p>Dijkstra算法用于解决单源最短路问题，假设起始点为S，在最开始我们可以知道S到某些点的距离，从中取出最小的一个，我们可以保证在我们取出这个最小值的时候不可能有任何路径可以更短的到达此点，，此过程使用了贪心的思想。每当我们找出一个这样的点就更新S到与此点相连的其它点的距离，我们每一次取点都保证取出的是最短的且未被访问的点，这就是Dijkstra算法。</p>
@@ -341,7 +341,7 @@
 </div>
 
         <article>
-            <div id="aplayer-GXKGlFtU" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-yzOUNfLC" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="477215674" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 <p>这些诗也不是有意写出来的，有些时候情绪到了，突然之间有感觉了，也就写出来了。<br>虽然我知道写的很烂，因为毕竟我即没有大量的阅读现代诗，也没有经过专门的写作训练，但情绪对了，不也达到了目的嘛</p>
@@ -373,7 +373,7 @@
 </div>
 
         <article>
-            <div id="aplayer-QVfUsOqz" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-qtsCWIAh" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="29393038" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 <h3 id="结构的基本知识"><a href="#结构的基本知识" class="headerlink" title="结构的基本知识"></a>结构的基本知识</h3><p>结构是一个或者多个变量的几何，这些变量可能为不同的类型，为了处理的方便而将这些变量组织在一个名字之下。<br>结构可以拷贝、赋值、传递给函数，函数也可以返回结构类型的返回值，在ANSI标准中，自动结构和数组现在也可以进行初始化。</p>
@@ -430,7 +430,7 @@
 </div>
 
         <article>
-            <div id="aplayer-tcFFAMxf" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-bVOMSuAo" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="447578836" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 <p>指针是一种保存变量地址的变量。在存储时，内存被分为一块一块的。每一块都有一个特有的编号。而这个编号可以暂时理解为指针，就像酒店的门牌号一样。</p>
@@ -462,7 +462,7 @@
 </div>
 
         <article>
-            <div id="aplayer-UFvRarpH" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-CYxkOaBH" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="26908739" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 <p>国庆回家的火车上读完了《小王子》这本书，对于自从高三结束以来一直没有再阅读纸质小说的我来说，这的的确确是一种很新鲜的感觉，让我讶异的发觉，原来阅读是这么一种充实而快乐的体验。当然，打游戏远比此要快乐的多，这也是没办法的事，但以后当我没办法玩手机，也不妨多看看书吧。</p>
@@ -494,7 +494,7 @@
 </div>
 
         <article>
-            <div id="aplayer-IzdCwzCT" class="aplayer aplayer-tag-marker meting-tag-marker"
+            <div id="aplayer-EkLAOXVW" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="502455381" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
 
@@ -547,7 +547,7 @@
 
  
 
-<script async src="/js/app.js?v=1714210063676"></script>
+<script async src="/js/app.js?v=1714210378158"></script>
 
 
 
