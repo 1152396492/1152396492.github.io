@@ -6,6 +6,7 @@
     
     <title>线段树 - Amentiraz blog</title>
     <meta charset="UTF-8">
+    <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
@@ -25,16 +26,10 @@
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="线段树">
 <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1715345750624">
     
-<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
-<link rel="stylesheet" href="/lib/justifiedGallery/justifiedGallery.min.css">
-<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
-
-
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1715089872279">
-    
-    <link rel="stylesheet" href="/css/style.css?v=1715089872279">
-    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1715345750624">
 <meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -61,9 +56,9 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>23</div>
-        <div><span>标签</span>23</div>
-        <div><span>分类</span>4</div>
+        <div><span>文章</span>25</div>
+        <div><span>标签</span>26</div>
+        <div><span>分类</span>5</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -71,13 +66,6 @@
             <i class="mdui-list-item-icon nexmoefont icon-home"></i>
             <div class="mdui-list-item-content">
                 回到首页
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
-            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
-            <div class="mdui-list-item-content">
-                文章归档
             </div>
         </a>
         
@@ -92,6 +80,13 @@
             <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
             <div class="mdui-list-item-content">
                 我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
             </div>
         </a>
         
@@ -112,9 +107,9 @@
     <div class="nexmoe-widget nexmoe-social">
         <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
             <i class="nexmoefont icon-QQ"></i>
-        </a><a class="mdui-ripple" href="https://space.bilibili.com/362195236" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
             <i class="nexmoefont icon-bilibili"></i>
-        </a><a class="mdui-ripple" href="https://github.com/1152396492" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
             <i class="nexmoefont icon-github"></i>
         </a>
     </div>
@@ -135,6 +130,13 @@
         
 
         <li class="category-list-item">
+          <a class="category-list-link" href="/categories/代码/">代码</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
           <a class="category-list-link" href="/categories/学习笔记/">学习笔记</a>
           <span class="category-list-count">5</span>
         </li>
@@ -150,7 +152,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/生活/">生活</a>
-          <span class="category-list-count">7</span>
+          <span class="category-list-count">8</span>
         </li>
 
         
@@ -171,7 +173,7 @@
     
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">C语言</a> <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/TOPSIS/" style="font-size: 12.5px;">TOPSIS</a> <a href="/tags/Tarjan/" style="font-size: 10px;">Tarjan</a> <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">c语言</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E4%B9%A6%E8%AF%84/" style="font-size: 15px;">书评</a> <a href="/tags/%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/" style="font-size: 10px;">复习资料</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">学习笔记</a> <a href="/tags/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/" style="font-size: 10px;">层次分析法</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/" style="font-size: 10px;">插值算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 17.5px;">数学建模</a> <a href="/tags/%E6%9D%82/" style="font-size: 10px;">杂</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 17.5px;">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 10px;">线段树</a> <a href="/tags/%E7%BB%93%E6%9E%84/" style="font-size: 10px;">结构</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 10px;">题解</a>
+      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">C语言</a> <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/TOPSIS/" style="font-size: 12.5px;">TOPSIS</a> <a href="/tags/Tarjan/" style="font-size: 10px;">Tarjan</a> <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">c语言</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E4%B9%A6%E8%AF%84/" style="font-size: 15px;">书评</a> <a href="/tags/%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">代码</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" style="font-size: 10px;">分布式</a> <a href="/tags/%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/" style="font-size: 10px;">复习资料</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">学习笔记</a> <a href="/tags/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/" style="font-size: 10px;">层次分析法</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/" style="font-size: 10px;">插值算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 17.5px;">数学建模</a> <a href="/tags/%E6%9D%82/" style="font-size: 10px;">杂</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 17.5px;">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 10px;">线段树</a> <a href="/tags/%E7%BB%93%E6%9E%84/" style="font-size: 10px;">结构</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 10px;">题解</a>
     </div>
     
   </div>
@@ -193,24 +195,24 @@
   <article>
       
           <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
-              <img src="https://tva1.sinaimg.cn/large/008i3skNly1gwth07vmchj31jk0qktis.jpg" alt="线段树" loading="lazy">
+              <img data-src="https://tva1.sinaimg.cn/large/008i3skNly1gwth07vmchj31jk0qktis.jpg" data-sizes="auto" alt="线段树" class="lazyload">
               <h1>线段树</h1>
           </div>
       
       
       <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
     <a><i class="nexmoefont icon-calendar-fill"></i>2021年11月27日</a>
-</div>
-
-      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
-    
+    <a><i class="nexmoefont icon-areachart"></i>2.8k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 16 分钟</a>
 </div>
 
       
-    <div id="aplayer-GAdtMQOQ" class="aplayer aplayer-tag-marker meting-tag-marker"
+
+      
+    <div id="aplayer-CGzngJKO" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="27846868" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
-<p>线段树是一种树状数据结构，它可以区间加减，区间乘除等一系列操作，用于处理那种可以合并状态的数据，在使用其3倍左右的空间的代价下使得其修改、查询、求区间和等等操作变得更加快捷。但与此同时，我们无法利用它处理类似于区间最长01序列此类问题，而且线段树代码冗长，其实很容易写错（也可能是因为我太菜了）。<br>我们将一组数据进行如下处理，每相邻的两个数据有一个父亲节点来记录其总的状态，然后再记录其相邻父节点的总的状态，以此类推，最终得到一个树状结构，我们从上到下依次编号1-n，这棵树满足父节点*2=左节点，父节点*2+1=右节点，设每个父节点代表l-r区间的状态，则左区间为l,(r+l)/2 , 右区间为(r+l)/2+1,r。根据此性质我们可以对他们进行维护。<br>每当我们访问一个节点，我们保证此节点的值一定正确，并尽可能少的改变其子孙节点的值，让时间消耗尽可能的小，同时把lazy标记也就是本来应该加的数传递到下一节点。<br>第一颗树实现了区间加与查询，第二颗树实现了区间乘法，加法，判断其中的先后顺序，其实也大同小异。<br>第三颗树用于实现历史最大值这种操作，然而由于本人电脑跑不动500mb的程序，再加之修改起来有点麻烦，就写个大致正确的程序摆在这了。<br>如果要继续完善，那么需要记录次大值并对于spread函数进行修改，就这样吧，后面再来补。</p>
+<p>线段树是一种树状数据结构，它可以区间加减，区间乘除等一系列操作，用于处理那种可以合并状态的数据，在使用其3倍左右的空间的代价下使得其修改、查询、求区间和等等操作变得更加快捷。但与此同时，我们无法利用它处理类似于区间最长01序列此类问题，而且线段树代码冗长，其实很容易写错（也可能是因为我太菜了）。<br>我们将一组数据进行如下处理，每相邻的两个数据有一个父亲节点来记录其总的状态，然后再记录其相邻父节点的总的状态，以此类推，最终得到一个树状结构，我们从上到下依次编号1-n，这棵树满足父节点*2&#x3D;左节点，父节点*2+1&#x3D;右节点，设每个父节点代表l-r区间的状态，则左区间为l,(r+l)&#x2F;2 , 右区间为(r+l)&#x2F;2+1,r。根据此性质我们可以对他们进行维护。<br>每当我们访问一个节点，我们保证此节点的值一定正确，并尽可能少的改变其子孙节点的值，让时间消耗尽可能的小，同时把lazy标记也就是本来应该加的数传递到下一节点。<br>第一颗树实现了区间加与查询，第二颗树实现了区间乘法，加法，判断其中的先后顺序，其实也大同小异。<br>第三颗树用于实现历史最大值这种操作，然而由于本人电脑跑不动500mb的程序，再加之修改起来有点麻烦，就写个大致正确的程序摆在这了。<br>如果要继续完善，那么需要记录次大值并对于spread函数进行修改，就这样吧，后面再来补。</p>
 <span id="more"></span>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;vector&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std ; <br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> LL ; <br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn = <span class="hljs-number">500005</span> ; <br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">L</span> &#123;</span><br>    LL val , add ; <br>&#125; t[maxn] ; <br>LL n , m , a[maxn] ; <br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">build</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> p , <span class="hljs-keyword">int</span> l , <span class="hljs-keyword">int</span> r )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> ( l == r ) &#123; t[p].val = a[l] ; <span class="hljs-keyword">return</span> ; &#125; <br>    <span class="hljs-keyword">int</span> mid = ( l + r ) &gt;&gt; <span class="hljs-number">1</span> ; <br>    <span class="hljs-built_in">build</span> ( p &lt;&lt; <span class="hljs-number">1</span> , l , mid ) ; <br>    <span class="hljs-built_in">build</span> ( p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span> , mid + <span class="hljs-number">1</span> , r ) ; <br>    t[p].val = t[p&lt;&lt;<span class="hljs-number">1</span>].val + t[p&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].val ; <br>    <span class="hljs-keyword">return</span> ; <br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">spread</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> p , <span class="hljs-keyword">int</span> l , <span class="hljs-keyword">int</span> r )</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> ( t[p].add ) &#123;<br>        <span class="hljs-keyword">int</span> mid = ( l + r ) &gt;&gt; <span class="hljs-number">1</span> ; <br>        t[p&lt;&lt;<span class="hljs-number">1</span>].val = ( t[p&lt;&lt;<span class="hljs-number">1</span>].val + t[p].add * ( mid - l + <span class="hljs-number">1</span> ) ) , t[p&lt;&lt;<span class="hljs-number">1</span>].add += t[p].add ; <br>        t[p&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].val = ( t[p&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].val + t[p].add * ( r - mid ) ) , t[p&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].add += t[p].add ; <br>        t[p].add = <span class="hljs-number">0</span> ; <br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">change</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> p , <span class="hljs-keyword">int</span> l , <span class="hljs-keyword">int</span> r , <span class="hljs-keyword">int</span> x , <span class="hljs-keyword">int</span> y , <span class="hljs-keyword">int</span> z )</span> </span>&#123;<br>   <span class="hljs-keyword">if</span> ( x &lt;= l &amp;&amp; r &lt;= y ) &#123; t[p].val += z * ( r - l + <span class="hljs-number">1</span> ) ; t[p].add += z ; <span class="hljs-keyword">return</span> ; &#125;<br>   <span class="hljs-keyword">int</span> mid = ( l + r ) &gt;&gt; <span class="hljs-number">1</span> ; <span class="hljs-built_in">spread</span> ( p , l , r ) ; <br>   <span class="hljs-keyword">if</span> ( x &lt;= mid ) <span class="hljs-built_in">change</span> ( p &lt;&lt; <span class="hljs-number">1</span> , l , mid , x , y , z ) ; <br>   <span class="hljs-keyword">if</span> ( y &gt; mid ) <span class="hljs-built_in">change</span> ( p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span> , mid + <span class="hljs-number">1</span> , r , x , y , z ) ; <br>   t[p].val = t[p&lt;&lt;<span class="hljs-number">1</span>].val + t[p&lt;&lt;<span class="hljs-number">1</span>|<span class="hljs-number">1</span>].val ; <br>&#125;<br><br><span class="hljs-function">LL <span class="hljs-title">ask</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> p , <span class="hljs-keyword">int</span> l , <span class="hljs-keyword">int</span> r , <span class="hljs-keyword">int</span> x , <span class="hljs-keyword">int</span> y )</span> </span>&#123; <br>    <span class="hljs-keyword">if</span> ( x &lt;= l &amp;&amp; r &lt;= y ) &#123; <span class="hljs-keyword">return</span> t[p].val ; &#125; <br>    <span class="hljs-keyword">int</span> mid = ( l + r ) &gt;&gt; <span class="hljs-number">1</span> ; <span class="hljs-built_in">spread</span> ( p , l , r ) ; LL ans = <span class="hljs-number">0</span> ; <br>    <span class="hljs-keyword">if</span> ( x &lt;= mid ) ans = ans + <span class="hljs-built_in">ask</span> ( p &lt;&lt; <span class="hljs-number">1</span> , l , mid , x , y ) ; <br>    <span class="hljs-keyword">if</span> ( y &gt; mid ) ans = ans + <span class="hljs-built_in">ask</span> ( p &lt;&lt; <span class="hljs-number">1</span> | <span class="hljs-number">1</span> , mid + <span class="hljs-number">1</span> , r , x , y ) ; <br>    <span class="hljs-keyword">return</span> ans ; <br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-built_in">scanf</span> ( <span class="hljs-string">&quot;%lld%lld&quot;</span> , &amp; n , &amp; m ) ; <br>    <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i ++ ) <span class="hljs-built_in">scanf</span> ( <span class="hljs-string">&quot;%lld&quot;</span> , &amp; a[i] ) ; <br>    <span class="hljs-built_in">build</span> ( <span class="hljs-number">1</span> , <span class="hljs-number">1</span> , n ) ; <br>    <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= m ; i ++ ) &#123;<br>        <span class="hljs-keyword">int</span> com , x , y ; <span class="hljs-built_in">scanf</span> ( <span class="hljs-string">&quot;%d%d%d&quot;</span> , &amp; com , &amp; x , &amp; y ) ; <br>        <span class="hljs-keyword">if</span> ( com == <span class="hljs-number">1</span> ) &#123;<br>            LL k ; <span class="hljs-built_in">scanf</span> ( <span class="hljs-string">&quot;%lld&quot;</span> , &amp; k ) ; <br>            <span class="hljs-built_in">change</span> ( <span class="hljs-number">1</span> , <span class="hljs-number">1</span> , n , x , y , k ) ; <br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-built_in">printf</span> ( <span class="hljs-string">&quot;%lld\n&quot;</span> , <span class="hljs-built_in">ask</span> ( <span class="hljs-number">1</span> , <span class="hljs-number">1</span> , n , x , y ) ) ; <br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> ; <br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -248,19 +250,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
 <div id="gitalk"></div>
 <script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
-<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
 <script type="text/javascript">
     var gitalk = new Gitalk({
         clientID: 'd792bb4144ed2b426d10',
         clientSecret: '812d33a3a53d9f83437ed1e71c573a8b222a93f1',
-        id: md5(location.pathname),
+        id: window.location.pathname,
         repo: '1152396492.github.io',
         owner: '1152396492',
         admin: '1152396492'
     })
     gitalk.render('gitalk')
 </script>
-
 </section>
       </div>
   
@@ -282,32 +282,15 @@
             </div>
         </div>
     </div>
-     
-    <div id="nexmoe-search-space">
-        <div class="search-container">
-            <div class="search-header">
-                <div class="search-input-container">
-                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
-                </div>
-                <a class="search-close" onclick="sclose();">×</a>
-            </div>
-            <div class="search-body"></div>
-        </div>
-    </div>
-
-    
-<script src="/lib/mdui_043tiny/mdui.js"></script>
-<script src="/lib/jquery.min.js"></script>
-<script src="/lib/justifiedGallery/jquery.justifiedGallery.min.js"></script>
-<script src="/lib/fancybox/fancybox.umd.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
  
 
-<script async src="/js/app.js?v=1715089872290"></script>
+<script async src="/js/app.js?v=1715345750628"></script>
 
-
-
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
 	$(".justified-gallery").justifiedGallery({
 		rowHeight: 160,

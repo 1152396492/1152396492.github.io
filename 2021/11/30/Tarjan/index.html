@@ -6,18 +6,19 @@
     
     <title>Tarjan - Amentiraz blog</title>
     <meta charset="UTF-8">
+    <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
     
     
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <meta name="description" content="想当年高中组织活动的时候我还专门写过Tarjan的流程和证明，如今已经忘的干干净净，原来的代码也找不到了，只能现写了。总的来说就是利用一个栈，将每个访问到的点push入栈，在寻找的过程中记录两个值，一个是dfn——它是第几个搜索到的，一个是low——它能衍生的点中dfn最小的值。如果一个点dfn&#x3D;&#x3D;low说明它本身就是最小的点，把它及它栈以上的点全部pop出来就行，因为它上面的点必定是与它形成强">
+    <meta name="description" content="想当年高中组织活动的时候我还专门写过Tarjan的流程和证明，如今已经忘的干干净净，原来的代码也找不到了，只能现写了。总的来说就是利用一个栈，将每个访问到的点push入栈，在寻找的过程中记录两个值，一个是dfn——它是第几个搜索到的，一个是low——它能衍生的点中dfn最小的值。如果一个点dfn&#x3D;&#x3D;low说明它本身就是最小的点，把它及它栈以上的点全部pop出来就行，因为它上面">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tarjan">
 <meta property="og:url" content="http://1152396492.github.io/2021/11/30/Tarjan/index.html">
 <meta property="og:site_name" content="Amentiraz blog">
-<meta property="og:description" content="想当年高中组织活动的时候我还专门写过Tarjan的流程和证明，如今已经忘的干干净净，原来的代码也找不到了，只能现写了。总的来说就是利用一个栈，将每个访问到的点push入栈，在寻找的过程中记录两个值，一个是dfn——它是第几个搜索到的，一个是low——它能衍生的点中dfn最小的值。如果一个点dfn&#x3D;&#x3D;low说明它本身就是最小的点，把它及它栈以上的点全部pop出来就行，因为它上面的点必定是与它形成强">
+<meta property="og:description" content="想当年高中组织活动的时候我还专门写过Tarjan的流程和证明，如今已经忘的干干净净，原来的代码也找不到了，只能现写了。总的来说就是利用一个栈，将每个访问到的点push入栈，在寻找的过程中记录两个值，一个是dfn——它是第几个搜索到的，一个是low——它能衍生的点中dfn最小的值。如果一个点dfn&#x3D;&#x3D;low说明它本身就是最小的点，把它及它栈以上的点全部pop出来就行，因为它上面">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-29T16:50:27.000Z">
 <meta property="article:modified_time" content="2021-12-25T08:27:16.300Z">
@@ -25,16 +26,10 @@
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="Tarjan">
 <meta name="twitter:card" content="summary">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
+    <link rel="stylesheet" href="/css/style.css?v=1715345750620">
     
-<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
-<link rel="stylesheet" href="/lib/justifiedGallery/justifiedGallery.min.css">
-<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
-
-
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1715089872271">
-    
-    <link rel="stylesheet" href="/css/style.css?v=1715089872271">
-    
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1715345750620">
 <meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
 <script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 <script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
@@ -61,9 +56,9 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>文章</span>23</div>
-        <div><span>标签</span>23</div>
-        <div><span>分类</span>4</div>
+        <div><span>文章</span>25</div>
+        <div><span>标签</span>26</div>
+        <div><span>分类</span>5</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -71,13 +66,6 @@
             <i class="mdui-list-item-icon nexmoefont icon-home"></i>
             <div class="mdui-list-item-content">
                 回到首页
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
-            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
-            <div class="mdui-list-item-content">
-                文章归档
             </div>
         </a>
         
@@ -92,6 +80,13 @@
             <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
             <div class="mdui-list-item-content">
                 我的朋友
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archive.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
             </div>
         </a>
         
@@ -112,9 +107,9 @@
     <div class="nexmoe-widget nexmoe-social">
         <a class="mdui-ripple" href="https://jq.qq.com/?_wv=1027&k=5CfKHun" target="_blank" mdui-tooltip="{content: 'QQ群'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
             <i class="nexmoefont icon-QQ"></i>
-        </a><a class="mdui-ripple" href="https://space.bilibili.com/362195236" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+        </a><a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
             <i class="nexmoefont icon-bilibili"></i>
-        </a><a class="mdui-ripple" href="https://github.com/1152396492" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
             <i class="nexmoefont icon-github"></i>
         </a>
     </div>
@@ -135,6 +130,13 @@
         
 
         <li class="category-list-item">
+          <a class="category-list-link" href="/categories/代码/">代码</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
           <a class="category-list-link" href="/categories/学习笔记/">学习笔记</a>
           <span class="category-list-count">5</span>
         </li>
@@ -150,7 +152,7 @@
 
         <li class="category-list-item">
           <a class="category-list-link" href="/categories/生活/">生活</a>
-          <span class="category-list-count">7</span>
+          <span class="category-list-count">8</span>
         </li>
 
         
@@ -171,7 +173,7 @@
     
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">C语言</a> <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/TOPSIS/" style="font-size: 12.5px;">TOPSIS</a> <a href="/tags/Tarjan/" style="font-size: 10px;">Tarjan</a> <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">c语言</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E4%B9%A6%E8%AF%84/" style="font-size: 15px;">书评</a> <a href="/tags/%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/" style="font-size: 10px;">复习资料</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">学习笔记</a> <a href="/tags/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/" style="font-size: 10px;">层次分析法</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/" style="font-size: 10px;">插值算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 17.5px;">数学建模</a> <a href="/tags/%E6%9D%82/" style="font-size: 10px;">杂</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 17.5px;">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 10px;">线段树</a> <a href="/tags/%E7%BB%93%E6%9E%84/" style="font-size: 10px;">结构</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 10px;">题解</a>
+      <a href="/tags/C%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">C语言</a> <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Dijkstra/" style="font-size: 10px;">Dijkstra</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/TOPSIS/" style="font-size: 12.5px;">TOPSIS</a> <a href="/tags/Tarjan/" style="font-size: 10px;">Tarjan</a> <a href="/tags/c%E8%AF%AD%E8%A8%80/" style="font-size: 10px;">c语言</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E4%B9%A6%E8%AF%84/" style="font-size: 15px;">书评</a> <a href="/tags/%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">代码</a> <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" style="font-size: 10px;">分布式</a> <a href="/tags/%E5%A4%8D%E4%B9%A0%E8%B5%84%E6%96%99/" style="font-size: 10px;">复习资料</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">学习笔记</a> <a href="/tags/%E5%B1%82%E6%AC%A1%E5%88%86%E6%9E%90%E6%B3%95/" style="font-size: 10px;">层次分析法</a> <a href="/tags/%E6%8C%87%E9%92%88/" style="font-size: 10px;">指针</a> <a href="/tags/%E6%8F%92%E5%80%BC%E7%AE%97%E6%B3%95/" style="font-size: 10px;">插值算法</a> <a href="/tags/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/" style="font-size: 17.5px;">数学建模</a> <a href="/tags/%E6%9D%82/" style="font-size: 10px;">杂</a> <a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 17.5px;">生活</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" style="font-size: 10px;">线段树</a> <a href="/tags/%E7%BB%93%E6%9E%84/" style="font-size: 10px;">结构</a> <a href="/tags/%E8%AF%97/" style="font-size: 10px;">诗</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">读书笔记</a> <a href="/tags/%E9%A2%98%E8%A7%A3/" style="font-size: 10px;">题解</a>
     </div>
     
   </div>
@@ -193,24 +195,24 @@
   <article>
       
           <div class="nexmoe-post-cover" style="padding-bottom: NaN%;"> 
-              <img src="https://tva1.sinaimg.cn/large/008i3skNly1gwth07vmchj31jk0qktis.jpg" alt="Tarjan" loading="lazy">
+              <img data-src="https://tva1.sinaimg.cn/large/008i3skNly1gwth07vmchj31jk0qktis.jpg" data-sizes="auto" alt="Tarjan" class="lazyload">
               <h1>Tarjan</h1>
           </div>
       
       
       <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
     <a><i class="nexmoefont icon-calendar-fill"></i>2021年11月29日</a>
-</div>
-
-      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
-    
+    <a><i class="nexmoefont icon-areachart"></i>815 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
 </div>
 
       
-    <div id="aplayer-fVoMxHSt" class="aplayer aplayer-tag-marker meting-tag-marker"
+
+      
+    <div id="aplayer-ThMATanZ" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="488388731" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
     ></div>
-<p>想当年高中组织活动的时候我还专门写过Tarjan的流程和证明，如今已经忘的干干净净，原来的代码也找不到了，只能现写了。<br>总的来说就是利用一个栈，将每个访问到的点push入栈，在寻找的过程中记录两个值，一个是dfn——它是第几个搜索到的，一个是low——它能衍生的点中dfn最小的值。如果一个点dfn==low说明它本身就是最小的点，把它及它栈以上的点全部pop出来就行，因为它上面的点必定是与它形成强联通分量。我们不妨假设它上面的点有不是它强联通分量的，那么此点在回溯到它本身的时候只有两种情况，一是它本身是强联通最小的点，那么在找到此点时会把它上面的点全部pop出去，另一种是它不是最小点，那么在遍历的过程中总会到第一种情况把它排除。<br>Tarjan程序是正确无误的，然后最后要跑一个拓扑，然鹅我不大会。luogu上爆了40pt，然后去看别人的题解秒懂。用拓扑可以优化掉ans、Q、new_val等等数组，估计就80pt了，然后我们还得用dp去解决菊花图这种类型的数据。<br>这道题还给人一个教训是，对于缩点的题，我们记录下每条路径的开始与结束去构造新图，没必要单独列个Q这种数组。<br>40pt代码如下：<br>（其实会个Tarjan就行了吧）</p>
+<p>想当年高中组织活动的时候我还专门写过Tarjan的流程和证明，如今已经忘的干干净净，原来的代码也找不到了，只能现写了。<br>总的来说就是利用一个栈，将每个访问到的点push入栈，在寻找的过程中记录两个值，一个是dfn——它是第几个搜索到的，一个是low——它能衍生的点中dfn最小的值。如果一个点dfn&#x3D;&#x3D;low说明它本身就是最小的点，把它及它栈以上的点全部pop出来就行，因为它上面的点必定是与它形成强联通分量。我们不妨假设它上面的点有不是它强联通分量的，那么此点在回溯到它本身的时候只有两种情况，一是它本身是强联通最小的点，那么在找到此点时会把它上面的点全部pop出去，另一种是它不是最小点，那么在遍历的过程中总会到第一种情况把它排除。<br>Tarjan程序是正确无误的，然后最后要跑一个拓扑，然鹅我不大会。luogu上爆了40pt，然后去看别人的题解秒懂。用拓扑可以优化掉ans、Q、new_val等等数组，估计就80pt了，然后我们还得用dp去解决菊花图这种类型的数据。<br>这道题还给人一个教训是，对于缩点的题，我们记录下每条路径的开始与结束去构造新图，没必要单独列个Q这种数组。<br>40pt代码如下：<br>（其实会个Tarjan就行了吧）</p>
 <span id="more"></span>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;queue&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstring&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cmath&gt;</span></span><br><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std ; <br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> maxn = <span class="hljs-number">100005</span> ; <br><span class="hljs-keyword">int</span> n , m ; <br><span class="hljs-keyword">int</span> head[maxn] , val[maxn] , nex[maxn] , cnt , to[maxn] , group[<span class="hljs-number">10004</span>] ; <br><span class="hljs-keyword">int</span> tot , ind , a[<span class="hljs-number">10004</span>] , stac[<span class="hljs-number">10004</span>] , dfn[<span class="hljs-number">10004</span>] , vis[<span class="hljs-number">10004</span>] , low[<span class="hljs-number">10004</span>] ;<br>queue &lt; <span class="hljs-keyword">int</span> &gt; Q[<span class="hljs-number">10004</span>] ; <span class="hljs-keyword">int</span> col , in[<span class="hljs-number">10004</span>] , new_val[<span class="hljs-number">10004</span>] ; <br><span class="hljs-keyword">int</span> ans[<span class="hljs-number">10004</span>] , num ; <br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> x , <span class="hljs-keyword">int</span> y )</span> </span>&#123; nex[++cnt] = head[x] ; head[x] = cnt ; to[cnt] = y ; &#125; <br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Tarjan</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> u )</span> </span>&#123;<br>    dfn[u] = low[u] = ++ tot ; vis[u] = <span class="hljs-number">1</span> ; stac[++ind] = u ;  <br>    <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = head[u] ; i ; i = nex[i] ) &#123;<br>        <span class="hljs-keyword">if</span> ( ! dfn[to[i]] ) &#123;<br>            <span class="hljs-built_in">Tarjan</span> ( to[i] ) ; <br>            low[u] = <span class="hljs-built_in">min</span> ( low[u] , low[to[i]] ) ; <br>        &#125;   <br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( vis[to[i]] ) &#123;<br>            low[u] = <span class="hljs-built_in">min</span> ( low[u] , low[to[i]] ) ; <br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> ( low[u] == dfn[u] ) &#123;<br>        <span class="hljs-keyword">int</span> v ; col ++ ;  <br>        <span class="hljs-keyword">while</span> ( v = stac[ind--] ) &#123;<br>            Q[col].<span class="hljs-built_in">push</span> ( v ) ; group[v] = col ;  <br>            vis[v] = <span class="hljs-number">0</span> ; <br>            <span class="hljs-keyword">if</span> ( v == u ) <span class="hljs-keyword">break</span> ; <br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> x , <span class="hljs-keyword">int</span> val )</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> flag = <span class="hljs-number">0</span> ; <br>    <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = head[x] ; i ; i ++ ) &#123;<br>        flag = <span class="hljs-number">1</span> ; <br>        <span class="hljs-built_in">dfs</span> ( to[i] , val + new_val[to[i]] ) ; <br>    &#125;<br>    <span class="hljs-keyword">if</span> ( ! flag ) &#123;<br>        ans[++num] = val ; <br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">topo</span> <span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= col ; i ++ ) &#123;<br>        <span class="hljs-keyword">if</span> ( in[i] == <span class="hljs-number">0</span> ) &#123;<br>            <span class="hljs-built_in">dfs</span> ( i + n , new_val[i] ) ; <br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">cmp</span> <span class="hljs-params">( <span class="hljs-keyword">int</span> x , <span class="hljs-keyword">int</span> y )</span> </span>&#123; <span class="hljs-keyword">return</span> x &gt; y ; &#125; <br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span> <span class="hljs-params">( )</span> </span>&#123;<br>    <span class="hljs-built_in">scanf</span> ( <span class="hljs-string">&quot;%d%d&quot;</span> , &amp; n , &amp; m ) ; <br>    <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i ++ ) <span class="hljs-built_in">scanf</span> ( <span class="hljs-string">&quot;%d&quot;</span> , &amp; a[i] ) ; <br>    <span class="hljs-keyword">while</span> ( m -- ) &#123;<br>        <span class="hljs-keyword">int</span> x , y ; <span class="hljs-built_in">scanf</span> ( <span class="hljs-string">&quot;%d%d&quot;</span> , &amp; x , &amp; y ) ; <br>        <span class="hljs-built_in">add</span> ( x , y ) ; <br>    &#125;<br>    <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= n ; i ++ ) &#123;<br>        <span class="hljs-keyword">if</span> ( ! dfn[i] ) <span class="hljs-built_in">Tarjan</span> ( i ) ; <br>    &#125;<br>    <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span> ; i &lt;= col ; i ++ ) &#123;<br>        <span class="hljs-keyword">int</span> new_node = i + n , val = <span class="hljs-number">0</span> ;<br>        <span class="hljs-keyword">while</span> ( ! Q[i].<span class="hljs-built_in">empty</span> ( ) ) &#123;<br>            <span class="hljs-keyword">int</span> x = Q[i].<span class="hljs-built_in">front</span> ( ) ; Q[i].<span class="hljs-built_in">pop</span> ( ) ; val += a[x] ; <br>            <span class="hljs-keyword">for</span> ( <span class="hljs-keyword">int</span> j = head[x] ; j ; j = nex[j] ) &#123;<br>                <span class="hljs-keyword">if</span> ( group[to[j]] == group[x] ) <span class="hljs-keyword">continue</span> ; <br>                <span class="hljs-built_in">add</span> ( new_node , group[to[j]] + n ) ;<br>                in[to[j]] ++ ; <br>            &#125;<br>        &#125;<br>        new_val[i] = val ; <br>    &#125;<br>    <span class="hljs-built_in">topo</span> ( ) ; <br>    <span class="hljs-built_in">sort</span> ( ans + <span class="hljs-number">1</span> , ans + <span class="hljs-number">1</span> + num , cmp ) ; <br>    <span class="hljs-built_in">printf</span> ( <span class="hljs-string">&quot;%d&quot;</span> , ans[<span class="hljs-number">1</span>] ) ; <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> ; <br>&#125;<br><br></code></pre></td></tr></table></figure>
 
@@ -244,19 +246,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
 <div id="gitalk"></div>
 <script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
-<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
 <script type="text/javascript">
     var gitalk = new Gitalk({
         clientID: 'd792bb4144ed2b426d10',
         clientSecret: '812d33a3a53d9f83437ed1e71c573a8b222a93f1',
-        id: md5(location.pathname),
+        id: window.location.pathname,
         repo: '1152396492.github.io',
         owner: '1152396492',
         admin: '1152396492'
     })
     gitalk.render('gitalk')
 </script>
-
 </section>
       </div>
   
@@ -278,32 +278,15 @@
             </div>
         </div>
     </div>
-     
-    <div id="nexmoe-search-space">
-        <div class="search-container">
-            <div class="search-header">
-                <div class="search-input-container">
-                    <input class="search-input" type="text" placeholder="搜索" oninput="sinput();">
-                </div>
-                <a class="search-close" onclick="sclose();">×</a>
-            </div>
-            <div class="search-body"></div>
-        </div>
-    </div>
-
-    
-<script src="/lib/mdui_043tiny/mdui.js"></script>
-<script src="/lib/jquery.min.js"></script>
-<script src="/lib/justifiedGallery/jquery.justifiedGallery.min.js"></script>
-<script src="/lib/fancybox/fancybox.umd.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js?v=1"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 
  
 
-<script async src="/js/app.js?v=1715089872276"></script>
+<script async src="/js/app.js?v=1715345750622"></script>
 
-
-
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
 	$(".justified-gallery").justifiedGallery({
 		rowHeight: 160,
