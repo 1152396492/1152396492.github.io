@@ -4,7 +4,7 @@
 
 <head>
     
-    <title>标签：Tarjan - Amentiraz blog</title>
+    <title>或许我们永远无法获得平静 - Amentiraz blog</title>
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
@@ -13,21 +13,23 @@
     
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Amentiraz blog">
-<meta property="og:url" content="http://1152396492.github.io/tags/Tarjan/index.html">
+    <meta name="description" content="从小到大，我们不断成长，我们从哭闹，到隐忍，从无法控制自己的情绪，到能够向别人展示自己，可我们真的能达到自己理想的状态吗。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="或许我们永远无法获得平静">
+<meta property="og:url" content="http://1152396492.github.io/2024/06/09/%E6%88%96%E8%AE%B8%E6%88%91%E4%BB%AC%E6%B0%B8%E8%BF%9C%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E5%B9%B3%E9%9D%99/index.html">
 <meta property="og:site_name" content="Amentiraz blog">
+<meta property="og:description" content="从小到大，我们不断成长，我们从哭闹，到隐忍，从无法控制自己的情绪，到能够向别人展示自己，可我们真的能达到自己理想的状态吗。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-08T16:09:20.000Z">
+<meta property="article:modified_time" content="2024-06-09T05:20:21.566Z">
 <meta property="article:author" content="Amentiraz">
+<meta property="article:tag" content="生活">
 <meta name="twitter:card" content="summary">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1717910463803">
+    <link rel="stylesheet" href="/css/style.css?v=1717910463648">
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1717910463803">
-<meta name="generator" content="Hexo 6.0.0"><link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
-<script src="\assets\js\Meting.min.js" class="meting-script-marker"></script>
-</head>
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1717910463648">
+<meta name="generator" content="Hexo 6.0.0"></head>
 
 <body class="mdui-drawer-body-left">
     
@@ -191,36 +193,80 @@
     </div>
     <div id="nexmoe-content">
         <div class="nexmoe-primary">
-            <section class="nexmoe-posts">
-    
-    <div class="nexmoe-post">
-        <a href="/2021/11/30/Tarjan/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: NaN%;"> 
-                    <img data-src="https://tva1.sinaimg.cn/large/008i3skNly1gwth07vmchj31jk0qktis.jpg" data-sizes="auto" alt="Tarjan" class="lazyload">
-                    <h1>Tarjan</h1>
-                </div>
-            
-        </a>
+            <div class="nexmoe-post">
 
-        <div class="nexmoe-post-meta nexmoe-rainbow">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2021年11月29日</a>
-            <a><i class="nexmoefont icon-areachart"></i>815 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
-        </div>
+  <article>
+      
+          <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+              <img data-src="https://i.postimg.cc/XNHkwZh8/wallhaven-pkw6y3.jpg" data-sizes="auto" alt="或许我们永远无法获得平静" class="lazyload">
+              <h1>或许我们永远无法获得平静</h1>
+          </div>
+      
+      
+      <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2024年06月08日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1.3k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+</div>
 
-        <article>
-            
-                <div id="aplayer-tKuVrvZh" class="aplayer aplayer-tag-marker meting-tag-marker"
-         data-id="488388731" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="true" data-mutex="true" data-listmaxheight="340px" data-preload="none" data-theme="#ad7a86"
-    ></div>
-<p>想当年高中组织活动的时候我还专门写过Tarjan的流程和证明，如今已经忘的干干净净，原来的代码也找不到了，只能现写了。<br>总的来说就是利用一个栈，将每个访问到的点push入栈，在寻找的过程中记录两个值，一个是dfn——它是第几个搜索到的，一个是low——它能衍生的点中dfn最小的值。如果一个点dfn&#x3D;&#x3D;low说明它本身就是最小的点，把它及它栈以上的点全部pop出来就行，因为它上面的点必定是与它形成强联通分量。我们不妨假设它上面的点有不是它强联通分量的，那么此点在回溯到它本身的时候只有两种情况，一是它本身是强联通最小的点，那么在找到此点时会把它上面的点全部pop出去，另一种是它不是最小点，那么在遍历的过程中总会到第一种情况把它排除。<br>Tarjan程序是正确无误的，然后最后要跑一个拓扑，然鹅我不大会。luogu上爆了40pt，然后去看别人的题解秒懂。用拓扑可以优化掉ans、Q、new_val等等数组，估计就80pt了，然后我们还得用dp去解决菊花图这种类型的数据。<br>这道题还给人一个教训是，对于缩点的题，我们记录下每条路径的开始与结束去构造新图，没必要单独列个Q这种数组。<br>40pt代码如下：<br>（其实会个Tarjan就行了吧）</p>
-            
-        </article>
+      
+
+      <p>从小到大，我们不断成长，我们从哭闹，到隐忍，从无法控制自己的情绪，到能够向别人展示自己，可我们真的能达到自己理想的状态吗。</p>
+<span id="more"></span>
+<p>过去的两个月应当是我活到21岁的现在，成长最大的几个月了。我找到了自己存在的位置，找到了自己存在的方式，我决定去热爱这个世界。我已经能承受大部分的打击了，无论我处于怎样糟糕的情况我认为我都可以平静的处理。我取回了生活的激情又去除了其中隐藏着的偏执，我应当是活出了我高中时理想的样子了。</p>
+<p>然而，在这几天正是大三的我面临许多抉择的时候，也借此机会检验了自己的内心。找研究生导师是我上周主要做的工作。面对完全陌生的人，你向他请求在他手下学习三年，这如果让以前的我来做一定会无所适从吧，我原以为经历了成长的我能够平静而顺利的去找到自己的最优解，但生活总是事与愿违。从找有哪些老师，到该怎么找老师，中间我甚至为了了解相关信息去请了一位认识的人吃饭，主动向老师发邮件并约面谈——要知道，我其实并不愿意主动与他人来往。</p>
+<p>我干了太多原本自己不愿意去做的事，在这个过程中，我深刻的感受到自己的疲劳，自己的抓瞎和接踵而至的沮丧。在向老师发邮件的那天晚上我一个人在校园里面走了很久，走的时候什么都没想，在清静中回复了些许能量后，买了瓶小罐的啤酒，喝完就睡，酒精实在是逃避生活的一大良剂。或许对我而言，停止与外界接触才能获得平静吧。可这样怎么能行呢？</p>
+<p>在前几个月个人的蜕变中，其实遗留下来了一些问题，那就是我该如何看待我以前喜欢的人。这里的意思并不是我不知道该怎么面对她，而是当我看到她的消息或是想起她时我会生理性的感到恶心。这让我十分惊讶。我知道我的身体总比我的心灵能更快的对事物做出反应，我很想知道这背后的逻辑是什么。是我对过去的自己感到厌恶呢，还是对这位女生感到厌恶呢。我自认为的放下了她，而我是否只是隐藏了她的存在，进一步来说，我的成长是不是只是一种对过去的逃避呢？我思考了很久但并没有找到答案，乐观来想这也许只是单纯的PTSD呢（笑）。</p>
+<p>外界的信息不断的冲击着我的心灵，然而我的心灵也并不完善。但可笑的是再完善又有什么用呢？假如我一夜之间一贫如洗我仍能保持平静吗？假如我遭遇车祸，余生只能在病床上度过我如何去爱这个世界呢？或许所谓的独立与清醒不过是对现状理所当然的自大罢了。再进一步说对世界的坦然接受并积极的热爱生活似乎只是一种自我满足和自欺欺人罢了。</p>
+<p>我这里并不想引出一个消极的结论。消极解决不了问题，这是我大学三年总结出来的经验。那我应当如何去面对呢？</p>
+<p>纵观上面两个案例，其实我已经知道问题出在哪了，那就是这些案例当我面对他们时，并不存在或者极少存在我个人的意志，更多的是他人或者外在环境对我的影响，这也是我这篇杂文想说的：或许我们永远无法获得平静。为什么我们无法获得平静呢，那是我们的心灵必须向他人与世界开一个口子，我们能控制这个口的大小但往往我们并不能控制流入的内容对我们造成的影响。但这并不是我们封闭内心的理由。假如追求自己内心的充实与平静是我们的目标，那么其潜在的危害也是必须经历的。这是矛盾的，但我想说的是，在这个充满挑战的世界里，我们永远无法预测世界会对我们造成怎样的影响，难道我们要眼睁睁看着世界摧毁我们，再给我们扣上抑郁症、不支持的帽子，最后让我们自己放弃自己吗，我想不是的。</p>
+<p>也许我们永远无法获得内心的平静，但这不重要；在追求成功的路上，成功也并不重要，因为当你获得成功后，那它对你便毫无吸引力了。当我真正平静的时候，世界对我也一定会失去吸引力吧。正因为我们无法获得平静，所以我们才能爱着这个世界。</p>
+
+  </article>
+
+  
+      
+    <div class="nexmoe-post-copyright">
+        <strong>本文作者：</strong>Amentiraz<br>
+        <strong>本文链接：</strong><a href="http://1152396492.github.io/2024/06/09/%E6%88%96%E8%AE%B8%E6%88%91%E4%BB%AC%E6%B0%B8%E8%BF%9C%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E5%B9%B3%E9%9D%99/" title="http:&#x2F;&#x2F;1152396492.github.io&#x2F;2024&#x2F;06&#x2F;09&#x2F;%E6%88%96%E8%AE%B8%E6%88%91%E4%BB%AC%E6%B0%B8%E8%BF%9C%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E5%B9%B3%E9%9D%99&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;1152396492.github.io&#x2F;2024&#x2F;06&#x2F;09&#x2F;%E6%88%96%E8%AE%B8%E6%88%91%E4%BB%AC%E6%B0%B8%E8%BF%9C%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E5%B9%B3%E9%9D%99&#x2F;</a><br>
+        
+            <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+        
     </div>
-    
-</section>
 
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+    
+        <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
+    
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E7%94%9F%E6%B4%BB/" rel="tag">生活</a>
+    
+</div>
+
+  
+      <div class="nexmoe-post-footer">
+          <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: 'd792bb4144ed2b426d10',
+        clientSecret: '812d33a3a53d9f83437ed1e71c573a8b222a93f1',
+        id: window.location.pathname,
+        repo: '1152396492.github.io',
+        owner: '1152396492',
+        admin: '1152396492'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+      </div>
+  
+</div>
             <div class="nexmoe-post-right">
               <div class="nexmoe-fixed">
                   <div class="nexmoe-tool"> 
@@ -244,7 +290,7 @@
 
  
 
-<script async src="/js/app.js?v=1717910463804"></script>
+<script async src="/js/app.js?v=1717910463650"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
